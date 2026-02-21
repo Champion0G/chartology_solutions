@@ -1,0 +1,132 @@
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid transparent;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.header.scrolled {
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom-color: var(--border);
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 72px;
+}
+
+.logo {
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.logoImg {
+    height: 54px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.nav {
+    display: flex;
+    gap: 28px;
+    flex: 1;
+}
+
+.navLink {
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color 0.2s;
+}
+
+.navLink:hover {
+    color: var(--white);
+}
+
+.ctas {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.burger {
+    display: none;
+    margin-left: auto;
+    background: none;
+    color: var(--white);
+    padding: 6px;
+}
+
+/* Drawer */
+.drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(320px, 88vw);
+    height: 100vh;
+    background: #0a0a0a;
+    border-left: 1px solid var(--border);
+    z-index: 1100;
+    padding: 88px 32px 40px;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(110%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.drawerOpen {
+    transform: translateX(0);
+}
+
+.drawerLink {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--muted);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+}
+
+.drawerLink:hover {
+    color: var(--white);
+}
+
+.drawerCtas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1050;
+}
+
+@media (max-width: 768px) {
+
+    .nav,
+    .ctas {
+        display: none;
+    }
+
+    .burger {
+        display: flex;
+    }
+}

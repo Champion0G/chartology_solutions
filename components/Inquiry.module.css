@@ -1,0 +1,189 @@
+.section {
+    background: var(--bg-dark);
+    padding: 100px 0;
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+}
+
+/* Left */
+.left {
+    display: flex;
+    flex-direction: column;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.contactItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.contactIcon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(225, 6, 0, 0.12);
+    border: 1px solid rgba(225, 6, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--red);
+    flex-shrink: 0;
+}
+
+.contactLabel {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.contactVal {
+    font-size: 0.95rem;
+    color: var(--white);
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+/* Right form */
+.formWrap {
+    background: var(--red);
+    border-radius: 20px;
+    padding: 40px 36px;
+}
+
+.formTitle {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 28px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.field input,
+.field select,
+.field textarea {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-family: var(--font);
+    transition: border-color 0.2s;
+    width: 100%;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: #fff;
+    outline: none;
+}
+
+.field select option {
+    background: #c00;
+    color: #fff;
+}
+
+.field textarea {
+    resize: vertical;
+}
+
+.error {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+}
+
+.submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #000;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 14px;
+    border-radius: 8px;
+    margin-top: 4px;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.submit:hover {
+    background: #111;
+    transform: translateY(-1px);
+}
+
+.success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    text-align: center;
+    min-height: 300px;
+    color: #fff;
+}
+
+.success h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.success p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+    .inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+    }
+}

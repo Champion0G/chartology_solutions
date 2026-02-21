@@ -1,0 +1,246 @@
+/* ── Hero — Full-bleed photo layout ── */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    padding-top: 72px;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+}
+
+.hero.visible {
+    opacity: 1;
+}
+
+/* ── Photo: absolute, fills right 52% of screen ── */
+.photoBg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 52%;
+    height: 100%;
+    z-index: 0;
+}
+
+.trainerImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+}
+
+/* Dot grid overlay */
+.dotGrid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.10) 1.5px, transparent 1.5px);
+    background-size: 26px 26px;
+    pointer-events: none;
+}
+
+/* Left-to-right fade — covers left edge of photo so text is readable */
+.fadeOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+            #000 0%,
+            rgba(0, 0, 0, 0.82) 20%,
+            rgba(0, 0, 0, 0.12) 50%,
+            transparent 100%);
+    pointer-events: none;
+}
+
+/* ── Layout: full-width row, text pinned left ── */
+.inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 60px;
+    display: flex;
+    align-items: center;
+}
+
+/* Text block — fixed width, hugs the left */
+.content {
+    width: 480px;
+    max-width: 46%;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 18px;
+}
+
+.headline {
+    font-size: clamp(34px, 4.2vw, 58px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #fff;
+}
+
+.redText {
+    color: var(--red);
+}
+
+.sub {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-top: 20px;
+}
+
+.ctas {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+
+.btnPrimary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--red);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.97rem;
+    padding: 14px 28px;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.btnPrimary:hover {
+    background: var(--red-hover);
+    transform: translateY(-1px);
+}
+
+.btnOutline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.97rem;
+    padding: 13px 26px;
+    border-radius: 8px;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    white-space: nowrap;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.btnOutline:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* Stats */
+.stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.statVal {
+    font-size: 1.55rem;
+    font-weight: 900;
+    color: #fff;
+}
+
+.statLabel {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+/* Bottom tagline */
+.tagline {
+    position: absolute;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--red);
+    z-index: 2;
+    white-space: nowrap;
+}
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+    .inner {
+        padding: 80px 40px;
+    }
+
+    .content {
+        max-width: 50%;
+    }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+    .photoBg {
+        width: 100%;
+        opacity: 0.3;
+    }
+
+    .fadeOverlay {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, #000 80%);
+    }
+
+    .inner {
+        padding: 60px 24px;
+        justify-content: center;
+    }
+
+    .content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .stats {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .ctas {
+        flex-direction: column;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .tagline {
+        font-size: 0.6rem;
+        letter-spacing: 0.16em;
+    }
+}

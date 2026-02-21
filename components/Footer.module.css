@@ -1,0 +1,156 @@
+.footer {
+    background: #050505;
+    border-top: 1px solid var(--border);
+}
+
+.top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+    gap: 48px;
+    padding: 72px 24px 64px;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 16px;
+}
+
+.red {
+    color: var(--red);
+}
+
+.desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 24px;
+}
+
+.socials {
+    display: flex;
+    gap: 10px;
+}
+
+.social {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.social:hover {
+    border-color: var(--red);
+    color: var(--red);
+    background: rgba(225, 6, 0, 0.08);
+}
+
+.colTitle {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.link {
+    font-size: 0.875rem;
+    color: var(--muted);
+    transition: color 0.2s;
+}
+
+.link:hover {
+    color: var(--white);
+}
+
+.contactLine {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.ctaSmall {
+    display: inline-block;
+    margin-top: 24px;
+    background: var(--red);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 10px 22px;
+    border-radius: 6px;
+    transition: background 0.2s;
+    align-self: flex-start;
+}
+
+.ctaSmall:hover {
+    background: var(--red-hover);
+}
+
+.bottom {
+    border-top: 1px solid var(--border);
+    padding: 20px 24px;
+}
+
+.bottom>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.copy {
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.legal {
+    display: flex;
+    gap: 24px;
+}
+
+.legal a {
+    font-size: 0.78rem;
+    color: #555;
+    transition: color 0.2s;
+}
+
+.legal a:hover {
+    color: var(--white);
+}
+
+@media (max-width: 1024px) {
+    .top {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 580px) {
+    .top {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .bottom>div {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

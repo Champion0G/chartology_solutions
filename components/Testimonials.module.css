@@ -1,0 +1,235 @@
+.section {
+    background: #0d2b24;
+    padding: 100px 0 80px;
+}
+
+/* Header row: text left, arrows right */
+.header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.arrows {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.arrow {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.arrow:hover {
+    background: var(--red);
+    border-color: var(--red);
+}
+
+/* Full-width horizontal scroll track */
+.trackWrap {
+    width: 100%;
+    overflow: hidden;
+    padding-left: max(24px, calc((100vw - 1280px) / 2 + 24px));
+}
+
+.track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-right: 40px;
+    padding-bottom: 12px;
+    scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual card */
+.card {
+    flex: 0 0 320px;
+    scroll-snap-align: start;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.25s, transform 0.25s;
+}
+
+.card:hover {
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-4px);
+}
+
+/* ── Media area ── */
+.mediaBox {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: #111;
+    flex-shrink: 0;
+}
+
+.mediaImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.card:hover .mediaImg {
+    transform: scale(1.04);
+}
+
+.videoFrame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Play button overlay */
+.thumbWrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.playBtn {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(225, 6, 0, 0.9);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    backdrop-filter: blur(4px);
+}
+
+.playBtn:hover {
+    transform: scale(1.1);
+    background: var(--red);
+}
+
+/* Profit badge on media */
+.profitBadge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    color: #00d97e;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 217, 126, 0.25);
+}
+
+/* ── Card body ── */
+.cardBody {
+    padding: 20px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.stars {
+    color: #fbbf24;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.quoteIcon {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: rgba(225, 6, 0, 0.3);
+    line-height: 0.5;
+    margin-bottom: 12px;
+    font-family: Georgia, serif;
+}
+
+.text {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.75;
+    flex: 1;
+    margin-bottom: 18px;
+}
+
+/* Author row */
+.author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: auto;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.82rem;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.name {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #fff;
+}
+
+.role {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 2px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card {
+        flex: 0 0 280px;
+    }
+
+    .trackWrap {
+        padding-left: 20px;
+    }
+}

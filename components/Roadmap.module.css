@@ -1,0 +1,251 @@
+.section {
+    background: var(--bg);
+    padding: 110px 0;
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+/* ── LEFT ── */
+.left {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+
+.heading {
+    font-size: clamp(28px, 3.2vw, 40px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 52px;
+}
+
+.red {
+    color: var(--red);
+}
+
+/* ── Animated Steps ── */
+.stepsWrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 28px;
+    /* room for the line + dot */
+}
+
+/* Grey background track */
+.track {
+    position: absolute;
+    left: 8px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+/* Red animated progress line — grows via CSS custom property --progress */
+.progressLine {
+    position: absolute;
+    left: 8px;
+    top: 10px;
+    width: 2px;
+    height: var(--progress, 0%);
+    background: var(--red);
+    border-radius: 2px;
+    transition: height 0.25s ease-out;
+    box-shadow: 0 0 8px rgba(225, 6, 0, 0.6);
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 44px;
+    position: relative;
+    opacity: 0.4;
+    transition: opacity 0.4s ease;
+}
+
+.step:last-child {
+    padding-bottom: 0;
+}
+
+.stepActive {
+    opacity: 1;
+}
+
+/* Checkpoint dot */
+.dot {
+    position: absolute;
+    left: -28px;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    flex-shrink: 0;
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, color 0.3s;
+    z-index: 1;
+}
+
+.dotActive {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(225, 6, 0, 0.2), 0 0 12px rgba(225, 6, 0, 0.5);
+}
+
+/* Step text */
+.stepContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.stepTitle {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+
+.stepTitleActive {
+    color: var(--red);
+}
+
+.stepDesc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.stepHighlight {
+    color: var(--red);
+    font-weight: 600;
+}
+
+/* CTA */
+.cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 36px;
+    background: var(--red);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.97rem;
+    padding: 14px 30px;
+    border-radius: 8px;
+    align-self: flex-start;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.cta:hover {
+    background: var(--red-hover);
+    transform: translateY(-1px);
+}
+
+/* ── RIGHT: Illustration ── */
+.right {
+    position: sticky;
+    top: 120px;
+}
+
+.illustrationWrap {
+    position: relative;
+}
+
+.illustration {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    display: block;
+    filter: drop-shadow(0 20px 40px rgba(225, 6, 0, 0.12));
+}
+
+/* Floating progress card */
+.floatCard {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #111;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    min-width: 160px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.floatNum {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+}
+
+.floatNum span {
+    font-size: 1rem;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.floatLabel {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin: 6px 0 10px;
+}
+
+.floatBar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.floatBarFill {
+    height: 100%;
+    background: var(--red);
+    border-radius: 4px;
+    transition: width 0.35s ease;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .inner {
+        grid-template-columns: 1fr;
+        gap: 56px;
+    }
+
+    .right {
+        position: static;
+    }
+
+    .illustration {
+        max-width: 320px;
+    }
+
+    .floatCard {
+        right: 16px;
+        bottom: 16px;
+    }
+}

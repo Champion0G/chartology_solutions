@@ -1,0 +1,137 @@
+.section {
+    background: var(--bg);
+    padding: 100px 0;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 56px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.card {
+    background: var(--white);
+    border-radius: var(--radius-card);
+    padding: 36px 28px;
+    position: relative;
+    box-shadow: var(--shadow-card);
+    border: 2px solid transparent;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s, opacity 0.6s, translate 0.6s;
+    opacity: 0;
+    translate: 0 30px;
+}
+
+.card.visible {
+    opacity: 1;
+    translate: 0 0;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    border-color: rgba(225, 6, 0, 0.2);
+}
+
+.featured {
+    border-color: var(--red) !important;
+    box-shadow: 0 8px 48px rgba(225, 6, 0, 0.15) !important;
+}
+
+.badge {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--red);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.planName {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.priceRow {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 16px 0 28px;
+}
+
+.price {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #111;
+}
+
+.period {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: #444;
+}
+
+.check {
+    color: var(--red);
+    flex-shrink: 0;
+}
+
+.cta {
+    display: block;
+    text-align: center;
+    background: #111;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 13px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.cta:hover {
+    background: #222;
+}
+
+.ctaFeatured {
+    background: var(--red);
+}
+
+.ctaFeatured:hover {
+    background: var(--red-hover);
+}
+
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+}
