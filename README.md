@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chartology Solutions - Trading Masterclass Landing Page
 
-## Getting Started
+A modern, high-performance landing page for a trading mentorship program built with **Next.js 16**. The platform is designed to showcase course offerings, trainer expertise, student testimonials, and a comprehensive learning roadmap with smooth scroll animations.
 
-First, run the development server:
+## 🚀 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router & Turbopack)
+- **UI Library:** [React 19](https://react.dev/)
+- **Styling:** CSS Modules with modern vanilla CSS
+- **Animations:** [Framer Motion](https://www.framer.com/motion/) & Custom Scroll Reveal Hooks
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Language:** TypeScript
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Key Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Hero Section:** High-impact introduction with dynamic stats and call-to-actions.
+- **Scroll Animations:** Elements fade and slide into view seamlessly as the user scrolls down the page.
+- **Trainer Profile:** Detailed breakdown of the mentor's experience, stats, and achievements.
+- **Course Roadmap & Curriculum:** Visual timeline of the learning journey.
+- **Testimonials & Marquee:** Animated reviews showcasing student success stories.
+- **Responsive Design:** Fully optimized for mobile, tablet, and desktop viewing.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Getting Started
 
-## Learn More
+First, ensure you have Node.js installed. Then, follow these steps to run the application locally:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Open the application:**
+   Open [http://localhost:3000](http://localhost:3000) (or the port specified in the terminal, such as 3001) in your browser to see the result.
 
-## Deploy on Vercel
+## 📁 Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `/app` - Next.js App Router layout, global styles, and main page.
+- `/components` - Reusable UI components (Hero, AboutTrainer, Pricing, FAQ, etc.) with corresponding `.module.css` files.
+- `/hooks` - Custom React hooks (e.g., `useScrollReveal` for scroll animations).
+- `/public` - Static assets, images, and fonts.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📜 Available Scripts
+
+- `npm run dev` - Starts the development server using Turbopack.
+- `npm run build` - Builds the application for production.
+- `npm run start` - Starts the production server.
+- `npm run lint` - Runs ESLint to catch formatting or linting errors.
