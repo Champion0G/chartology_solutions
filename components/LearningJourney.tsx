@@ -1,17 +1,16 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { BookOpen, DollarSign, Clock, Globe, Swords, Wallet, Award, BarChart2 } from 'lucide-react';
+import { BookOpen, UserCheck, Users, BarChart2, Shield, Sparkles, Flame } from 'lucide-react';
 import styles from './LearningJourney.module.css';
 
 const cards = [
-    { icon: BookOpen, title: 'Learn from Zero', desc: 'Start from fundamentals — no prior trading experience required.' },
-    { icon: DollarSign, title: 'Earn While You Learn', desc: 'Apply practical strategies in live markets from week one.' },
-    { icon: Clock, title: '100+ Live Hours', desc: 'Intensive live sessions with expert traders and analysts.' },
-    { icon: Globe, title: 'Learn from Anywhere', desc: 'Access all content remotely with lifetime LMS login.' },
-    { icon: Swords, title: 'Trading Challenge', desc: 'Compete with peers in our monthly simulated trading challenge.' },
-    { icon: Wallet, title: 'Funding up to ₹5L', desc: 'Top performers receive prop trading funding up to INR 5 Lakhs.' },
-    { icon: Award, title: 'Certified Experts', desc: 'Get industry-recognized certifications upon completion.' },
-    { icon: BarChart2, title: 'Forex, Crypto & Stocks', desc: 'Multi-asset curriculum covering all major markets.' },
+    { icon: BookOpen, title: 'Structured Learning', desc: 'Go from scratch to building a rule-based trading system with step-by-step structured modules.' },
+    { icon: UserCheck, title: 'Live Mentorship', desc: 'Direct access to market practitioners during interactive live sessions. Ask questions in real-time.' },
+    { icon: Users, title: 'Community Support', desc: 'Discuss market setups, find study buddies, and share trade journals in active community rooms.' },
+    { icon: BarChart2, title: 'Practical Sessions', desc: 'Bridge the gap between theory and execution by analyzing charts in live market hours.' },
+    { icon: Shield, title: 'Risk Management Focus', desc: 'Learn the exact position sizing algorithms institutional traders use to protect their downside.' },
+    { icon: Sparkles, title: 'Beginner Friendly', desc: 'No prior finance, economics, or mathematical background required. We start from absolute basics.' },
+    { icon: Flame, title: 'Lifetime Network', desc: 'Retain access to our alumni channel, regional trading meetups, and continuous resources.' },
 ];
 
 export default function LearningJourney() {
@@ -29,13 +28,13 @@ export default function LearningJourney() {
     }, []);
 
     return (
-        <section id="learning" className={styles.section}>
+        <section id="why-choose" className={styles.section}>
             <div className="container">
                 <div className={styles.heading}>
-                    <p className="section-label">What You Get</p>
-                    <h2 className="section-heading">A Learning Journey Like Never<br />Before in India</h2>
+                    <p className="section-label">Why Choose Us</p>
+                    <h2 className="section-heading">Built to Teach Trading the Right Way</h2>
                     <p className="section-sub" style={{ maxWidth: 1080 }}>
-                        Everything you need to go from beginner to confident, independent trader.
+                        Here is what separates our education from generic video libraries and online hype.
                     </p>
                 </div>
                 <div ref={ref} className={styles.grid}>
@@ -56,3 +55,4 @@ export default function LearningJourney() {
         </section>
     );
 }
+

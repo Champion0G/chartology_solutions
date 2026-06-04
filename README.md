@@ -1,4 +1,4 @@
-# Chartology Solutions - Trading Masterclass Landing Page
+# Chartologic - Trading Masterclass Landing Page
 
 A modern, high-performance landing page for a trading mentorship program built with **Next.js 16**. The platform is designed to showcase course offerings, trainer expertise, student testimonials, and a comprehensive learning roadmap with smooth scroll animations.
 
@@ -50,3 +50,4 @@ First, ensure you have Node.js installed. Then, follow these steps to run the ap
 - `npm run build` - Builds the application for production.
 - `npm run start` - Starts the production server.
 - `npm run lint` - Runs ESLint to catch formatting or linting errors.
+

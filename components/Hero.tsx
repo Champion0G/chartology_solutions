@@ -32,31 +32,34 @@ export default function Hero() {
             {/* Text content — overlaid on left */}
             <div className={styles.inner}>
                 <div className={styles.content}>
-                    <p className={styles.eyebrow}>🔴 Stock Market For Everyone</p>
+                    <p className={styles.eyebrow}>🔴 PREMIUM TRADING EDUCATION</p>
 
                     <h1 className={styles.headline}>
-                        Invest in yourself,<br />
-                        <span className={styles.redText}>Before investing</span><br />
-                        in the markets!
+                        Master Trading With<br />
+                        <span className={styles.redText}>Proven Systems &</span><br />
+                        Expert Guidance!
                     </h1>
 
                     <p className={styles.sub}>
-                        Flexible, easy-to-access learning opportunities can bring significant
-                        change in how you prefer to learn. The eCademy can offer you the
-                        beauty of eLearning!
+                        Transform your trading journey with structured live cohorts, personalized mentorship, risk management frameworks, practical market sessions, and an active peer learning community.
                     </p>
 
                     <div className={styles.ctas}>
-                        <a href="#inquiry" className={styles.btnPrimary}>
-                            <User size={17} /> Join For Free
+                        <a href="#register" className={styles.btnPrimary}>
+                            <User size={17} /> Register for Free Workshop
                         </a>
-                        <a href="#learning" className={styles.btnOutline}>
-                            View Curriculum <ArrowRight size={17} />
+                        <a href="#programs" className={styles.btnOutline}>
+                            Explore Programs <ArrowRight size={17} />
                         </a>
                     </div>
 
                     <div className={styles.stats}>
-                        {[['10,000+', 'Students Enrolled'], ['100+', 'Live Hours'], ['95%', 'Success Rate']].map(([val, label]) => (
+                        {[
+                            ['10,000+', 'Students Trained'],
+                            ['5,000+', 'Community Members'],
+                            ['500+', 'Live Sessions'],
+                            ['24/7', 'Mentor Support']
+                        ].map(([val, label]) => (
                             <div key={label} className={styles.stat}>
                                 <span className={styles.statVal}>{val}</span>
                                 <span className={styles.statLabel}>{label}</span>
@@ -74,3 +77,4 @@ export default function Hero() {
         </section>
     );
 }
+

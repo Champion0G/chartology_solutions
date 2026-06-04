@@ -19,12 +19,12 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
     {
         name: 'Priya Sharma',
-        role: 'Equity Trader, Mumbai',
-        quote: 'Chartology completely transformed how I approach the markets. Within 3 months I went from basic candles to running my own options strategies profitably.',
+        role: 'Swing Trader, Mumbai',
+        quote: 'Chartologic completely transformed how I approach the markets. Within 3 months, I went from reading basic candles to executing my own options strategies with solid risk control.',
         stars: 5,
         avatar: 'PS',
         avatarColor: '#c0392b',
-        profit: '+₹43,200 this month',
+        profit: 'Options Mastery',
         media: {
             type: 'photo',
             src: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=480&q=80&auto=format',
@@ -32,12 +32,12 @@ const testimonials: Testimonial[] = [
     },
     {
         name: 'Rahul Mehta',
-        role: 'Crypto & Forex Trader, Delhi',
-        quote: 'The live sessions are incredible. The instructors break down complex concepts in a way that clicks instantly. Best investment I have made in myself.',
+        role: 'Commodity Trader, Delhi',
+        quote: 'The live sessions are incredible. The mentors break down complex order flow concepts in a way that clicks instantly. Best investment I have made in my financial literacy.',
         stars: 5,
         avatar: 'RM',
         avatarColor: '#1a6b3c',
-        profit: '+₹28,500 this month',
+        profit: 'Risk Controlled',
         media: {
             type: 'video',
             src: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
@@ -47,11 +47,11 @@ const testimonials: Testimonial[] = [
     {
         name: 'Ananya Patel',
         role: 'Part-time Trader, Bangalore',
-        quote: 'I never imagined I could understand derivatives this clearly. The trading challenge helped me build confidence with real market conditions.',
+        quote: 'I never imagined I could understand derivatives this clearly. The step-by-step curriculum helped me build massive execution confidence on simulated and small real accounts.',
         stars: 5,
         avatar: 'AP',
         avatarColor: '#8e44ad',
-        profit: '+₹19,000 this month',
+        profit: 'Confidence Built',
         media: {
             type: 'photo',
             src: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=480&q=80&auto=format',
@@ -60,11 +60,11 @@ const testimonials: Testimonial[] = [
     {
         name: 'Vikram Singh',
         role: 'Full-time Trader, Pune',
-        quote: 'Quit my 9-to-5 six months after joining Chartology. The risk management module alone was worth every rupee. Now I trade futures full time.',
+        quote: 'The risk management module alone was worth the enrollment fee. It saved me from making the classic beginner mistake of over-leveraging. Now I trade systematically.',
         stars: 5,
         avatar: 'VS',
         avatarColor: '#d35400',
-        profit: '+₹72,000 this month',
+        profit: 'Downside Protection',
         media: {
             type: 'video',
             src: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
@@ -73,12 +73,12 @@ const testimonials: Testimonial[] = [
     },
     {
         name: 'Neha Kapoor',
-        role: 'Swing Trader, Hyderabad',
-        quote: 'The curriculum is structured brilliantly. I especially loved the technical analysis deep-dives. My win rate has gone from 38% to over 65%.',
+        role: 'Intraday Trader, Hyderabad',
+        quote: 'The price action modules are brilliant. I stopped relying on lagging indicators and started reading raw market structure. My charting clarity is at an all-time high.',
         stars: 5,
         avatar: 'NK',
         avatarColor: '#16a085',
-        profit: '+₹34,800 this month',
+        profit: 'Price Action Edge',
         media: {
             type: 'photo',
             src: 'https://images.unsplash.com/photo-1642790551116-18e150f248e3?w=480&q=80&auto=format',
@@ -86,12 +86,12 @@ const testimonials: Testimonial[] = [
     },
     {
         name: 'Arjun Nair',
-        role: 'Intraday Trader, Chennai',
-        quote: 'Enrolled skeptically, graduated a believer. The mentors are accessible, the community is supportive, and the results speak for themselves.',
+        role: 'Positional Trader, Chennai',
+        quote: 'I enrolled skeptically, but graduated a believer. The trainers are always accessible, the community channels keep me accountable, and the structured homework reviews are top-notch.',
         stars: 5,
         avatar: 'AN',
         avatarColor: '#2471a3',
-        profit: '+₹51,100 this month',
+        profit: 'Disciplined Routine',
         media: {
             type: 'video',
             src: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
@@ -100,12 +100,12 @@ const testimonials: Testimonial[] = [
     },
     {
         name: 'Sneha Joshi',
-        role: 'Options Trader, Ahmedabad',
-        quote: 'Learning options here was eye-opening. The strategies taught are practical, not theoretical fluff. My portfolio is up over 40% since I started.',
+        role: 'Options Buyer, Ahmedabad',
+        quote: 'Learning how volatility affects options pricing was an eye-opener. The practical sheets provided during live market hours are incredibly valuable tools.',
         stars: 5,
         avatar: 'SJ',
         avatarColor: '#b7950b',
-        profit: '+₹61,500 this month',
+        profit: 'Volatility Mastery',
         media: {
             type: 'photo',
             src: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=480&q=80&auto=format',
@@ -113,12 +113,12 @@ const testimonials: Testimonial[] = [
     },
     {
         name: 'Karan Malhotra',
-        role: 'Positional Trader, Kolkata',
-        quote: 'I was a complete beginner. Now I manage my own portfolio of ₹8 Lakh with confidence. Chartology gave me both the knowledge and the mindset.',
+        role: 'Investor, Kolkata',
+        quote: 'I was a complete beginner. Chartologic gave me both the analytical skills and the emotional discipline needed to manage a long-term compound portfolio.',
         stars: 5,
         avatar: 'KM',
         avatarColor: '#922b21',
-        profit: '+₹38,900 this month',
+        profit: 'Systematic Investing',
         media: {
             type: 'video',
             src: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
@@ -218,3 +218,4 @@ export default function Testimonials() {
         </section>
     );
 }
+

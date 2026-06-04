@@ -17,3 +17,4 @@ export default function useScrollReveal(threshold = 0.12) {
 
     return { ref, visible };
 }
+

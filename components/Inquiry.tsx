@@ -1,18 +1,17 @@
 'use client';
 import { useState, FormEvent } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Calendar, Clock as ClockIcon } from 'lucide-react';
 import styles from './Inquiry.module.css';
 
-const courses = [
-    'Equity Trading',
-    'Forex & Currency',
-    'Cryptocurrency & Web3',
-    'Derivatives (F&O)',
-    'Technical Analysis Masterclass',
+const experienceLevels = [
+    'Complete Beginner (No experience)',
+    'Beginner (Under 1 year trading)',
+    'Intermediate (1-3 years trading)',
+    'Advanced (3+ years trading)',
 ];
 
 export default function Inquiry() {
-    const [form, setForm] = useState({ name: '', email: '', phone: '', course: '', message: '' });
+    const [form, setForm] = useState({ name: '', email: '', phone: '', experience: '', message: '' });
     const [errors, setErrors] = useState<Partial<typeof form>>({});
     const [sent, setSent] = useState(false);
 
@@ -21,8 +20,7 @@ export default function Inquiry() {
         if (!form.name.trim()) e.name = 'Name is required';
         if (!form.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) e.email = 'Valid email required';
         if (!form.phone.match(/^[0-9]{10}$/)) e.phone = 'Enter valid 10-digit phone';
-        if (!form.course) e.course = 'Please select a course';
-        if (!form.message.trim()) e.message = 'Message cannot be empty';
+        if (!form.experience) e.experience = 'Please select your experience level';
         return e;
     };
 
@@ -34,34 +32,36 @@ export default function Inquiry() {
     };
 
     return (
-        <section id="inquiry" className={styles.section}>
+        <section id="register" className={styles.section}>
             <div className={`container ${styles.inner}`}>
                 {/* Left */}
                 <div className={styles.left}>
-                    <p className="section-label">Get in Touch</p>
-                    <h2 className="section-heading">Start Your Trading<br />Journey Today</h2>
-                    <p className="section-sub">Have questions? Reach out and our team will get back to you within 24 hours.</p>
+                    <p className="section-label">Limited Slots</p>
+                    <h2 className="section-heading">Join Our Free Live<br />Trading Workshop</h2>
+                    <p className="section-sub">
+                        Learn how to read price action, manage risk, and identify high-probability setups in this interactive 2-hour session with our lead mentor.
+                    </p>
 
                     <div className={styles.contacts}>
                         <div className={styles.contactItem}>
+                            <div className={styles.contactIcon}><Calendar size={18} /></div>
+                            <div>
+                                <div className={styles.contactLabel}>Upcoming Date</div>
+                                <div className={styles.contactVal}>This Sunday at 11:00 AM IST</div>
+                            </div>
+                        </div>
+                        <div className={styles.contactItem}>
+                            <div className={styles.contactIcon}><ClockIcon size={18} /></div>
+                            <div>
+                                <div className={styles.contactLabel}>Duration</div>
+                                <div className={styles.contactVal}>2 Hours (Live + Q&A Session)</div>
+                            </div>
+                        </div>
+                        <div className={styles.contactItem}>
                             <div className={styles.contactIcon}><Mail size={18} /></div>
                             <div>
-                                <div className={styles.contactLabel}>Email Us</div>
-                                <div className={styles.contactVal}>hello@chartology.in</div>
-                            </div>
-                        </div>
-                        <div className={styles.contactItem}>
-                            <div className={styles.contactIcon}><Phone size={18} /></div>
-                            <div>
-                                <div className={styles.contactLabel}>Call Us</div>
-                                <div className={styles.contactVal}>+91 98765 43210</div>
-                            </div>
-                        </div>
-                        <div className={styles.contactItem}>
-                            <div className={styles.contactIcon}><MapPin size={18} /></div>
-                            <div>
-                                <div className={styles.contactLabel}>Office</div>
-                                <div className={styles.contactVal}>Bandra West, Mumbai, India</div>
+                                <div className={styles.contactLabel}>Support</div>
+                                <div className={styles.contactVal}>workshop@Chartologic.in</div>
                             </div>
                         </div>
                     </div>
@@ -72,19 +72,19 @@ export default function Inquiry() {
                     {sent ? (
                         <div className={styles.success}>
                             <span style={{ fontSize: '2.5rem' }}>🎉</span>
-                            <h3>Thank you, {form.name}!</h3>
-                            <p>We'll get back to you shortly at {form.email}.</p>
+                            <h3>Seat Reserved, {form.name}!</h3>
+                            <p>We have sent the live webinar link and calendar invite to {form.email}.</p>
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} noValidate className={styles.form}>
-                            <h3 className={styles.formTitle}>Inquiry Form</h3>
+                            <h3 className={styles.formTitle}>Reserve Your Free Seat</h3>
 
                             <div className={styles.field}>
-                                <label htmlFor="inq-name">Full Name *</label>
+                                <label htmlFor="reg-name">Full Name *</label>
                                 <input
-                                    id="inq-name"
+                                    id="reg-name"
                                     type="text"
-                                    placeholder="John Doe"
+                                    placeholder="Enter your name"
                                     value={form.name}
                                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                                     aria-invalid={!!errors.name}
@@ -94,11 +94,11 @@ export default function Inquiry() {
 
                             <div className={styles.row}>
                                 <div className={styles.field}>
-                                    <label htmlFor="inq-email">Email *</label>
+                                    <label htmlFor="reg-email">Email *</label>
                                     <input
-                                        id="inq-email"
+                                        id="reg-email"
                                         type="email"
-                                        placeholder="john@email.com"
+                                        placeholder="your@email.com"
                                         value={form.email}
                                         onChange={(e) => setForm({ ...form, email: e.target.value })}
                                         aria-invalid={!!errors.email}
@@ -106,11 +106,11 @@ export default function Inquiry() {
                                     {errors.email && <span className={styles.error}>{errors.email}</span>}
                                 </div>
                                 <div className={styles.field}>
-                                    <label htmlFor="inq-phone">Phone *</label>
+                                    <label htmlFor="reg-phone">Phone Number *</label>
                                     <input
-                                        id="inq-phone"
+                                        id="reg-phone"
                                         type="tel"
-                                        placeholder="9876543210"
+                                        placeholder="10-digit number"
                                         value={form.phone}
                                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
                                         aria-invalid={!!errors.phone}
@@ -120,34 +120,32 @@ export default function Inquiry() {
                             </div>
 
                             <div className={styles.field}>
-                                <label htmlFor="inq-course">Course *</label>
+                                <label htmlFor="reg-exp">Trading Experience Level *</label>
                                 <select
-                                    id="inq-course"
-                                    value={form.course}
-                                    onChange={(e) => setForm({ ...form, course: e.target.value })}
-                                    aria-invalid={!!errors.course}
+                                    id="reg-exp"
+                                    value={form.experience}
+                                    onChange={(e) => setForm({ ...form, experience: e.target.value })}
+                                    aria-invalid={!!errors.experience}
                                 >
-                                    <option value="">Select a course</option>
-                                    {courses.map((c) => <option key={c} value={c}>{c}</option>)}
+                                    <option value="">Select experience level</option>
+                                    {experienceLevels.map((lvl) => <option key={lvl} value={lvl}>{lvl}</option>)}
                                 </select>
-                                {errors.course && <span className={styles.error}>{errors.course}</span>}
+                                {errors.experience && <span className={styles.error}>{errors.experience}</span>}
                             </div>
 
                             <div className={styles.field}>
-                                <label htmlFor="inq-msg">Message *</label>
+                                <label htmlFor="reg-msg">What is your primary goal for this workshop? (Optional)</label>
                                 <textarea
-                                    id="inq-msg"
-                                    rows={4}
-                                    placeholder="Tell us about your goals..."
+                                    id="reg-msg"
+                                    rows={3}
+                                    placeholder="e.g., Learn options hedging, understand market structure..."
                                     value={form.message}
                                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                                    aria-invalid={!!errors.message}
                                 />
-                                {errors.message && <span className={styles.error}>{errors.message}</span>}
                             </div>
 
                             <button type="submit" className={styles.submit}>
-                                <Send size={16} /> Send Message
+                                <Send size={16} /> Secure My Free Seat
                             </button>
                         </form>
                     )}
@@ -156,3 +154,4 @@ export default function Inquiry() {
         </section>
     );
 }
+

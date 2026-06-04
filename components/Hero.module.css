@@ -6,7 +6,7 @@
     background: #000;
     display: flex;
     align-items: center;
-    padding-top: 72px;
+    padding-top: 80px;
     overflow: hidden;
     opacity: 0;
     transition: opacity 0.7s ease;
@@ -69,8 +69,8 @@
 
 /* Text block — fixed width, hugs the left */
 .content {
-    width: 480px;
-    max-width: 46%;
+    width: 560px;
+    max-width: 50%;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;

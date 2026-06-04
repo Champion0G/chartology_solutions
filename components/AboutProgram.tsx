@@ -4,11 +4,11 @@ import styles from './AboutProgram.module.css';
 import useScrollReveal from '@/hooks/useScrollReveal';
 
 const bullets = [
-    'Expert trainers with 10+ years of live trading experience',
-    'Lifetime LMS access — revisit material anytime',
-    '100% remote — learn from any device, any time zone',
-    'Personal development & trading psychology modules',
-    'Small batch sizes for personalized mentorship',
+    'Structured education focusing on long-term wealth building, not quick wins.',
+    'Emphasis on financial literacy as a core life skill for capital growth.',
+    'Small batch cohorts ensuring interactive live Q&As and personal reviews.',
+    'Strict risk management frameworks designed to preserve and protect capital.',
+    'Lifetime access to a supportive network of alumni and ongoing education.'
 ];
 
 export default function AboutProgram() {
@@ -32,12 +32,12 @@ export default function AboutProgram() {
 
                 {/* Right: Content */}
                 <div className={`${styles.content} ${visible ? styles.visible : ''}`} style={{ transitionDelay: '120ms' }}>
-                    <p className="section-label">About the Program</p>
+                    <p className="section-label">Our Mission</p>
                     <h2 className="section-heading">
-                        Master Trading &<br /><span style={{ color: 'var(--red)' }}>Financial Intelligence</span>
+                        Why Chartologic<br /><span style={{ color: 'var(--red)' }}>Exists</span>
                     </h2>
                     <p className="section-sub">
-                        Our curriculum is built for real-world applicability — from reading charts to managing capital at scale.
+                        We believe that financial literacy is the key to personal independence. Our platform focuses entirely on helping you master the mechanics of trading, manage risk scientifically, and build long-term wealth.
                     </p>
                     <ul className={styles.list}>
                         {bullets.map((b) => (
@@ -47,11 +47,12 @@ export default function AboutProgram() {
                             </li>
                         ))}
                     </ul>
-                    <a href="#learning" className="btn-outline" style={{ marginTop: '32px', alignSelf: 'flex-start' }}>
-                        View Curriculum
+                    <a href="#curriculum" className="btn-outline" style={{ marginTop: '32px', alignSelf: 'flex-start' }}>
+                        Explore Curriculum
                     </a>
                 </div>
             </div>
         </section>
     );
 }
+

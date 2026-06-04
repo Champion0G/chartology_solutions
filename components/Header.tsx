@@ -4,10 +4,12 @@ import { Menu, X } from 'lucide-react';
 import styles from './Header.module.css';
 
 const navLinks = [
-    { label: 'Home', href: '#hero' },
-    { label: 'About Us', href: '#about' },
-    { label: 'Pack', href: '#pricing' },
-    { label: 'Contact Us', href: '#inquiry' },
+    { label: 'Home', href: '/#hero' },
+    { label: 'About Us', href: '/about-us' },
+    { label: 'Programs', href: '/#programs' },
+    { label: 'Curriculum', href: '/#curriculum' },
+    { label: 'Testimonials', href: '/#testimonials' },
+    { label: 'Free Workshop', href: '/#register' },
 ];
 
 export default function Header() {
@@ -27,8 +29,8 @@ export default function Header() {
             <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
                 <div className={`container ${styles.inner}`}>
                     {/* Logo */}
-                    <a href="#hero" className={styles.logo}>
-                        <img src="/logo.png" alt="Chartology" className={styles.logoImg} />
+                    <a href="/#hero" className={styles.logo}>
+                        <img src="/logo.png" alt="Chartologic" className={styles.logoImg} />
                     </a>
 
                     {/* Desktop nav */}
@@ -40,8 +42,7 @@ export default function Header() {
 
                     {/* Desktop CTA */}
                     <div className={styles.ctas}>
-                        <a href="#inquiry" className="btn-outline" style={{ padding: '10px 22px' }}>Login</a>
-                        <a href="#inquiry" className="btn-primary" style={{ padding: '10px 22px' }}>Join Now</a>
+                        <a href="/#register" className="btn-primary" style={{ padding: '10px 22px' }}>Reserve Seat</a>
                     </div>
 
                     {/* Hamburger */}
@@ -63,8 +64,7 @@ export default function Header() {
                         <a key={l.label} href={l.href} className={styles.drawerLink} onClick={closeMenu}>{l.label}</a>
                     ))}
                     <div className={styles.drawerCtas}>
-                        <a href="#inquiry" className="btn-outline" onClick={closeMenu} style={{ width: '100%', justifyContent: 'center' }}>Login</a>
-                        <a href="#inquiry" className="btn-primary" onClick={closeMenu} style={{ width: '100%', justifyContent: 'center' }}>Join Now</a>
+                        <a href="/#register" className="btn-primary" onClick={closeMenu} style={{ width: '100%', justifyContent: 'center' }}>Reserve Seat</a>
                     </div>
                 </nav>
             </div>
@@ -72,3 +72,4 @@ export default function Header() {
         </>
     );
 }
+

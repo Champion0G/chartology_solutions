@@ -5,9 +5,9 @@
 
 .top {
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
-    gap: 48px;
-    padding: 72px 24px 64px;
+    grid-template-columns: 1.4fr 0.8fr 0.8fr 0.8fr 0.8fr;
+    gap: 40px;
+    padding: 72px 24px 48px;
 }
 
 .col {
@@ -16,14 +16,16 @@
 }
 
 .logo {
-    font-size: 1.4rem;
-    font-weight: 900;
-    color: var(--white);
+    display: flex;
+    align-items: center;
     margin-bottom: 16px;
 }
 
-.red {
-    color: var(--red);
+.logoImg {
+    height: 64px; /* Increased size in footer */
+    width: auto;
+    display: block;
+    object-fit: contain;
 }
 
 .desc {
@@ -135,6 +137,19 @@
 
 .legal a:hover {
     color: var(--white);
+}
+
+.disclaimerBox {
+    border-top: 1px solid var(--border);
+    padding: 24px;
+    background: #020202;
+}
+
+.disclaimerText {
+    font-size: 0.72rem;
+    color: #666;
+    line-height: 1.6;
+    text-align: justify;
 }
 
 @media (max-width: 1024px) {

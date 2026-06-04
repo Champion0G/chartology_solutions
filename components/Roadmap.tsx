@@ -1,31 +1,55 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { Download, UserCheck, ClipboardCheck, ShieldCheck } from 'lucide-react';
+import { UserPlus, BookOpen, Video, FileText, MessageSquare, UserCheck, TrendingUp, Award } from 'lucide-react';
 import styles from './Roadmap.module.css';
 
 const steps = [
     {
-        icon: Download,
-        title: 'Download & Read Brochure',
-        desc: 'Download our Brochure, read it carefully. All the answers to your questions are provided in the brochure.',
-        highlight: 'Brochure',
-    },
-    {
-        icon: UserCheck,
-        title: 'Register & Enrollment',
-        desc: 'Complete the registration process by paying the registration fee, and take a screenshot of the successful payment.',
+        icon: UserPlus,
+        title: '1. Structured Enrollment',
+        desc: 'Select your cohort (Beginner, Intermediate, Options, or Mentorship) and reserve your seat.',
         highlight: null,
     },
     {
-        icon: ClipboardCheck,
-        title: 'Confirmation',
-        desc: 'Send the screenshot of successful payment on WhatsApp',
-        highlight: '+91-8130245100',
+        icon: BookOpen,
+        title: '2. Welcome Onboarding',
+        desc: 'Get access to pre-cohort reading guides, set up your charting tools, and join the group chat.',
+        highlight: null,
     },
     {
-        icon: ShieldCheck,
-        title: 'Verification',
-        desc: 'As soon as your payment is verified, you will receive details of your assigned Relationship Manager.',
+        icon: Video,
+        title: '3. Interactive Live Cohorts',
+        desc: 'Attend highly structured live evening classes covering raw price action, indicators, and market mechanics.',
+        highlight: null,
+    },
+    {
+        icon: FileText,
+        title: '4. Practical Assignments',
+        desc: 'Complete weekend charting homework. Receive detailed feedback on your analysis from assistants.',
+        highlight: null,
+    },
+    {
+        icon: MessageSquare,
+        title: '5. Daily Peer Discussions',
+        desc: 'Debate active market charts, swap trade journals, and practice trade selection with your cohort.',
+        highlight: null,
+    },
+    {
+        icon: UserCheck,
+        title: '6. Mentor Review Session',
+        desc: 'Get personal reviews of your performance metrics. Locate and fix weaknesses in your execution.',
+        highlight: null,
+    },
+    {
+        icon: TrendingUp,
+        title: '7. Guided Market Practice',
+        desc: 'Enter live market executions using strict rules and a mandatory 1% risk limit per position.',
+        highlight: null,
+    },
+    {
+        icon: Award,
+        title: '8. Cohort Graduation',
+        desc: 'Receive your verified digital certificate and join our lifetime global alumni network.',
         highlight: null,
     },
 ];
@@ -44,18 +68,21 @@ export default function Roadmap() {
             const rect = section.getBoundingClientRect();
             const windowH = window.innerHeight;
 
-            // Progress: 0 when top of section hits bottom of viewport, 1 when bottom hits top
             const total = rect.height - windowH * 0.3;
             const scrolled = Math.max(0, windowH * 0.6 - rect.top);
             const progress = Math.min(1, Math.max(0, scrolled / total));
 
-            // Animate the line height
             line.style.setProperty('--progress', `${progress * 100}%`);
 
-            // Activate steps at 0%, 33%, 66%, 100% progress
-            const thresholds = [0.05, 0.35, 0.65, 0.92];
+            // Activate steps dynamically based on scroll progress
+            const stepCount = steps.length;
+            const stepInterval = 1 / stepCount;
             let active = -1;
-            thresholds.forEach((t, i) => { if (progress >= t) active = i; });
+            for (let i = 0; i < stepCount; i++) {
+                if (progress >= (i * stepInterval * 0.85 + 0.02)) {
+                    active = i;
+                }
+            }
             setActiveStep(active);
         };
 
@@ -70,11 +97,11 @@ export default function Roadmap() {
 
                 {/* LEFT: Title + Steps */}
                 <div className={styles.left}>
-                    <p className={styles.label}>How to Enroll</p>
+                    <p className={styles.label}>Learning Process</p>
                     <h2 className={styles.heading}>
-                        Feel Like You Are<br />
-                        Attending Your Classes<br />
-                        <span className={styles.red}>Physically!</span>
+                        Your Educational Roadmap<br />
+                        to Trading<br />
+                        <span className={styles.red}>Independence</span>
                     </h2>
 
                     {/* Steps with animated vertical line */}
@@ -110,8 +137,8 @@ export default function Roadmap() {
                         })}
                     </div>
 
-                    <a href="#inquiry" className={styles.cta}>
-                        <span>🎓</span> Enroll Now
+                    <a href="#register" className={styles.cta}>
+                        <span>🎓</span> Register for Workshop
                     </a>
                 </div>
 
@@ -124,18 +151,17 @@ export default function Roadmap() {
                             className={styles.illustration}
                             loading="lazy"
                             onError={(e) => {
-                                // Fallback to Unsplash if SVG fails
                                 (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=480&q=80&auto=format';
                             }}
                         />
                         {/* Floating step count card */}
                         <div className={styles.floatCard}>
-                            <div className={styles.floatNum}>{Math.max(0, activeStep + 1)}<span>/ 4</span></div>
+                            <div className={styles.floatNum}>{Math.max(0, activeStep + 1)}<span>/ 8</span></div>
                             <div className={styles.floatLabel}>Steps completed</div>
                             <div className={styles.floatBar}>
                                 <div
                                     className={styles.floatBarFill}
-                                    style={{ width: `${((activeStep + 1) / 4) * 100}%` }}
+                                    style={{ width: `${((activeStep + 1) / 8) * 100}%` }}
                                 />
                             </div>
                         </div>
@@ -146,3 +172,4 @@ export default function Roadmap() {
         </section>
     );
 }
+

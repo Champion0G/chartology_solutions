@@ -1,0 +1,187 @@
+.section {
+    background: var(--bg);
+    padding: var(--section-py) 0;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 56px;
+}
+
+.accordion {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.item:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.open {
+    border-color: rgba(225, 6, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(225, 6, 0, 0.05);
+}
+
+.trigger {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    padding: 24px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+}
+
+.triggerLeft {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-grow: 1;
+}
+
+.num {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--red);
+    text-transform: uppercase;
+    background: rgba(225, 6, 0, 0.1);
+    border: 1.5px solid rgba(225, 6, 0, 0.2);
+    padding: 6px 12px;
+    border-radius: 6px;
+    letter-spacing: 0.05em;
+    min-width: 90px;
+    text-align: center;
+}
+
+.moduleTitle {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--white);
+}
+
+.chevronWrap {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s, background 0.25s;
+}
+
+.chevron {
+    color: var(--muted);
+    transition: transform 0.25s, color 0.25s;
+}
+
+.open .chevronWrap {
+    background: rgba(225, 6, 0, 0.1);
+}
+
+.open .chevron {
+    transform: rotate(180deg);
+    color: var(--red);
+}
+
+.content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.open .content {
+    max-height: 500px;
+}
+
+.contentInner {
+    padding: 0 24px 28px 24px;
+    border-top: 1px solid var(--border);
+    margin-top: -2px; /* aligns smoothly */
+}
+
+.desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 20px 0 24px;
+}
+
+.listSection {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid var(--border);
+}
+
+.listHeading {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    margin-bottom: 14px;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.listItem {
+    font-size: 0.88rem;
+    color: var(--muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+}
+
+.bulletIcon {
+    color: var(--red);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+    .list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 580px) {
+    .trigger {
+        padding: 18px;
+    }
+    .triggerLeft {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .num {
+        min-width: unset;
+        width: max-content;
+        padding: 4px 8px;
+        font-size: 0.72rem;
+    }
+    .moduleTitle {
+        font-size: 1.1rem;
+    }
+    .contentInner {
+        padding: 0 18px 20px 18px;
+    }
+}

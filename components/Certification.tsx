@@ -30,7 +30,7 @@ export default function Certification() {
                             <span style={{ fontSize: '2rem' }}>🏆</span>
                             <div>
                                 <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>Certified Trader</div>
-                                <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Chartology Academy</div>
+                                <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Chartologic</div>
                             </div>
                         </div>
                     </div>
@@ -59,3 +59,4 @@ export default function Certification() {
         </section>
     );
 }
+

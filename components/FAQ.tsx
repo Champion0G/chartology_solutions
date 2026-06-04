@@ -20,7 +20,7 @@ const faqs: Record<string, { q: string; a: string }[]> = {
         { q: 'Are sessions live or recorded?', a: 'We offer both — regularly scheduled live sessions plus a growing library of recorded lessons available on-demand.' },
     ],
     'Trading Challenge': [
-        { q: 'What is the Trading Challenge?', a: 'A monthly virtual trading competition where students apply their skills in simulated live-market environments. Top performers receive prop funding up to ₹5 Lakhs.' },
+        { q: 'What is the Trading Challenge?', a: 'A monthly virtual trading competition where students apply their skills in simulated live-market environments. Top performers receive funded live prop trading accounts to trade risk-free.' },
         { q: 'Who can participate?', a: 'All enrolled students can participate in the monthly Trading Challenge at no additional cost.' },
     ],
     Payment: [
@@ -84,3 +84,4 @@ export default function FAQ() {
         </section>
     );
 }
+
