@@ -21,6 +21,11 @@ export default function StickyEnrollBar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const handleRegisterClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        window.dispatchEvent(new CustomEvent('open-register-modal'));
+    };
+
     return (
         <AnimatePresence>
             {isVisible && (
@@ -41,7 +46,7 @@ export default function StickyEnrollBar() {
                             </span>
                         </div>
                         <div className={styles.right}>
-                            <a href="#register" className={styles.cta}>
+                            <a href="#register" onClick={handleRegisterClick} className={styles.cta}>
                                 Reserve Workshop Seat
                             </a>
                         </div>

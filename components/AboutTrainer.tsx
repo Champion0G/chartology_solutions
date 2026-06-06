@@ -13,6 +13,11 @@ export default function AboutTrainer() {
         { icon: Library, label: 'SEBI Certified RA', desc: 'Qualified credentials ensuring strict, compliant educational standards.' }
     ];
 
+    const handleRegisterClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        window.dispatchEvent(new CustomEvent('open-register-modal'));
+    };
+
     return (
         <section id="trainer" className={styles.section} ref={ref as any}>
             <div className={`container ${styles.inner}`}>
@@ -29,7 +34,7 @@ export default function AboutTrainer() {
                     <p className={styles.body} style={{ marginTop: '16px' }}>
                         We teach structured market participation based on historical patterns, mathematical drawing indices, risk parameters, and continuous post-execution audits.
                     </p>
-
+ 
                     <div className={styles.statsGrid}>
                         {qualities.map((q) => {
                             const Icon = q.icon;
@@ -43,11 +48,11 @@ export default function AboutTrainer() {
                                         <p className={styles.statDesc}>{q.desc}</p>
                                     </div>
                                 </div>
-                            );
+                             );
                         })}
                     </div>
 
-                    <a href="#register" className={styles.cta}>
+                    <a href="#register" onClick={handleRegisterClick} className={styles.cta}>
                         <span>🎓</span> Reserve My Workshop Seat <ArrowRight size={16} />
                     </a>
                 </div>

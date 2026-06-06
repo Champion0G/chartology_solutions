@@ -20,6 +20,11 @@ export default function Hero() {
         'Community Support'
     ];
 
+    const handleRegisterClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        window.dispatchEvent(new CustomEvent('open-register-modal'));
+    };
+
     return (
         <section id="hero" className={styles.hero} ref={heroRef}>
             {/* Background Image / Gradient */}
@@ -52,10 +57,10 @@ export default function Hero() {
                     </p>
 
                     <div className={styles.ctas}>
-                        <a href="#register" className={styles.btnPrimary}>
+                        <a href="#register" onClick={handleRegisterClick} className={styles.btnPrimary}>
                             🚀 Reserve My Workshop Seat
                         </a>
-                        <a href="#register" className={styles.btnOutline}>
+                        <a href="#register" onClick={handleRegisterClick} className={styles.btnOutline}>
                             📘 Download Program Brochure <ArrowRight size={17} />
                         </a>
                     </div>

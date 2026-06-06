@@ -6,6 +6,11 @@ import useScrollReveal from '@/hooks/useScrollReveal';
 export default function Community() {
     const { ref, visible } = useScrollReveal();
 
+    const handleRegisterClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        window.dispatchEvent(new CustomEvent('open-register-modal'));
+    };
+
     return (
         <section id="community" className={styles.section}>
             <div className={`container ${styles.inner}`} ref={ref as any}>
@@ -42,7 +47,7 @@ export default function Community() {
                         </div>
                     </div>
 
-                    <a href="#register" className="btn-primary" style={{ marginTop: '36px' }}>
+                    <a href="#register" onClick={handleRegisterClick} className="btn-primary" style={{ marginTop: '36px' }}>
                         Join Our Community
                     </a>
                 </div>

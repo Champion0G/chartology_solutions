@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import RegistrationModal from '@/components/RegistrationModal';
 
 export const metadata: Metadata = {
   title: 'Chartologic — Master Financial Markets & Trading Intelligence',
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         {children}
         <Footer />
+        <RegistrationModal />
       </body>
     </html>
   );
