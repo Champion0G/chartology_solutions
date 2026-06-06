@@ -71,10 +71,6 @@ export default function Hero() {
                     </div>
                 </div>
             </div>
-
-            <div className={styles.tagline} aria-hidden="true">
-                FINANCIAL LITERACY IS POWER
-            </div>
         </section>
     );
 }
