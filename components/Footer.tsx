@@ -1,16 +1,12 @@
-import { Twitter, Instagram, Youtube, Linkedin, Facebook } from 'lucide-react';
+import { Instagram, Youtube, Linkedin, Send } from 'lucide-react';
 import styles from './Footer.module.css';
 
-const companyLinks = [
+const quickLinks = [
     { label: 'About Us', href: '/about-us' },
-    { label: 'Careers', href: '/careers' },
-    { label: 'Contact', href: '/#register' }
-];
-
-const programLinks = [
-    { label: 'Cohorts', href: '/#programs' },
     { label: 'Curriculum', href: '/#curriculum' },
-    { label: 'Free Workshop', href: '/#register' }
+    { label: 'Workshop', href: '/#register' },
+    { label: 'FAQ', href: '/#faq' },
+    { label: 'Contact', href: '/#register' }
 ];
 
 const legalLinks = [
@@ -18,12 +14,6 @@ const legalLinks = [
     { label: 'Terms & Conditions', href: '/terms-and-conditions' },
     { label: 'Refund Policy', href: '/refund-policy' },
     { label: 'Disclaimer', href: '/disclaimer' }
-];
-
-const resourceLinks = [
-    { label: 'Testimonials', href: '/#testimonials' },
-    { label: 'FAQ', href: '/#faq' },
-    { label: 'Sitemap', href: '/site-map' }
 ];
 
 export default function Footer() {
@@ -36,15 +26,14 @@ export default function Footer() {
                         <img src="/logo.png" alt="Chartologic" className={styles.logoImg} />
                     </div>
                     <p className={styles.desc}>
-                        India's premium trading education platform. Turning beginners into disciplined, independent traders since 2019.
+                        We help students and working professionals understand financial markets through structured learning, mentorship, certifications, and practical exposure.
                     </p>
                     <div className={styles.socials}>
                         {[
-                            { Icon: Twitter, label: 'Twitter', href: '#' },
                             { Icon: Instagram, label: 'Instagram', href: '#' },
-                            { Icon: Youtube, label: 'YouTube', href: '#' },
                             { Icon: Linkedin, label: 'LinkedIn', href: '#' },
-                            { Icon: Facebook, label: 'Facebook', href: '#' },
+                            { Icon: Youtube, label: 'YouTube', href: '#' },
+                            { Icon: Send, label: 'Telegram', href: '#' },
                         ].map(({ Icon, label, href }) => (
                             <a key={label} href={href} aria-label={label} className={styles.social}>
                                 <Icon size={16} />
@@ -53,41 +42,21 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Col 2: Company */}
+                {/* Col 2: Quick Links */}
                 <div className={styles.col}>
-                    <h4 className={styles.colTitle}>Company</h4>
+                    <h4 className={styles.colTitle}>Quick Links</h4>
                     <ul className={styles.links}>
-                        {companyLinks.map((l) => (
+                        {quickLinks.map((l) => (
                             <li key={l.label}><a href={l.href} className={styles.link}>{l.label}</a></li>
                         ))}
                     </ul>
                 </div>
 
-                {/* Col 3: Programs */}
-                <div className={styles.col}>
-                    <h4 className={styles.colTitle}>Programs</h4>
-                    <ul className={styles.links}>
-                        {programLinks.map((l) => (
-                            <li key={l.label}><a href={l.href} className={styles.link}>{l.label}</a></li>
-                        ))}
-                    </ul>
-                </div>
-
-                {/* Col 4: Legal */}
+                {/* Col 3: Legal */}
                 <div className={styles.col}>
                     <h4 className={styles.colTitle}>Legal</h4>
                     <ul className={styles.links}>
                         {legalLinks.map((l) => (
-                            <li key={l.label}><a href={l.href} className={styles.link}>{l.label}</a></li>
-                        ))}
-                    </ul>
-                </div>
-
-                {/* Col 5: Resources */}
-                <div className={styles.col}>
-                    <h4 className={styles.colTitle}>Resources</h4>
-                    <ul className={styles.links}>
-                        {resourceLinks.map((l) => (
                             <li key={l.label}><a href={l.href} className={styles.link}>{l.label}</a></li>
                         ))}
                     </ul>

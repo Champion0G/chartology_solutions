@@ -1,0 +1,89 @@
+.section {
+    padding: var(--section-py) 0;
+    background: var(--bg-dark);
+    border-bottom: 1.5px solid var(--border);
+}
+
+.heading {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 56px auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.grid.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 30px;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(225, 6, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(225, 6, 0, 0.05);
+}
+
+/* Make 7th card span nicely or center align */
+@media (min-width: 993px) {
+    .card:nth-child(7) {
+        grid-column: 2 / 3;
+    }
+}
+
+.iconWrap {
+    background: rgba(225, 6, 0, 0.08);
+    border: 1px solid rgba(225, 6, 0, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.icon {
+    color: var(--red);
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .card:nth-child(7) {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

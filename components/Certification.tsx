@@ -1,62 +1,57 @@
 'use client';
-import { CheckCircle2 } from 'lucide-react';
+import { Award, ShieldCheck, Check, Sparkles } from 'lucide-react';
 import styles from './Certification.module.css';
 import useScrollReveal from '@/hooks/useScrollReveal';
-
-const bullets = [
-    'Verified digital certification on course completion',
-    'Shareable digital badge for LinkedIn & socials',
-    'Industry-recognized by leading trading institutions',
-    'Credentialing backed by exam-based assessment',
-    'Separate certificates for each asset class',
-];
 
 export default function Certification() {
     const { ref, visible } = useScrollReveal();
 
+    const certs = [
+        { title: 'Financial Markets Foundation', desc: 'Validates structure of global exchanges, indices mechanics, order types, and clearing houses.', code: 'CM-FND' },
+        { title: 'Technical Trader Practitioner', desc: 'Validates trends analysis, candlestick patterns, support & resistance, and multi-timeframe analysis.', code: 'CM-TTP' },
+        { title: 'Price Action Specialist', desc: 'Validates raw market structures, breaks of structure, order blocks, FVG, and liquidity sweeps.', code: 'CM-PAS' },
+        { title: 'Risk Management Associate', desc: 'Validates position sizing math, 1% rule models, drawdown parameters, and capital rules.', code: 'CM-RMA' },
+        { title: 'Trading Psychology Certified', desc: 'Validates systemic checks, discipline protocols, journal records, and cognitive biases.', code: 'CM-TPC' },
+        { title: 'Equity Analysis Specialist', desc: 'Validates corporate filings, balance sheets, cash flow models, and fundamental ratios.', code: 'CM-EAS' },
+        { title: 'Derivatives & Options Expert', desc: 'Validates options chain analysis, spread strategies, futures hedging, and Greeks mathematics.', code: 'CM-DOE' },
+        { title: 'Portfolio Allocation Architect', desc: 'Validates risk-adjusted returns, satellite assets, rebalancing protocols, and compounding roadmaps.', code: 'CM-PAA' }
+    ];
+
     return (
-        <section id="certification" className={styles.section}>
-            <div className={`container ${styles.inner}`} ref={ref as any}>
-                {/* Left: Certification image */}
-                <div className={`${styles.imgCol} ${visible ? styles.visible : ''}`}>
-                    <div className={styles.imgWrap}>
-                        <img
-                            src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=580&q=80&auto=format"
-                            alt="Digital certification badge on laptop"
-                            className={styles.img}
-                            loading="lazy"
-                        />
-                        <div className={styles.certBadge}>
-                            <span style={{ fontSize: '2rem' }}>🏆</span>
-                            <div>
-                                <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>Certified Trader</div>
-                                <div style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>Chartologic</div>
-                            </div>
-                        </div>
-                    </div>
+        <section id="certification" className={styles.section} ref={ref as any}>
+            <div className="container">
+                <div className={styles.heading}>
+                    <p className="section-label">Skill Credentials</p>
+                    <h2 className="section-heading">Earn Certifications Along The Way</h2>
+                    <p className="section-sub">
+                        Accelerate your credibility. Pass module assessments and evaluation stages to secure verifiable digital credentials.
+                    </p>
                 </div>
 
-                {/* Right: Content */}
-                <div className={`${styles.content} ${visible ? styles.visible : ''}`} style={{ transitionDelay: '120ms' }}>
-                    <p className="section-label">Certification</p>
-                    <h2 className="section-heading">
-                        Get Your Quality Skills Certificate<br />Through Online Exam
-                    </h2>
-                    <p className="section-sub">Prove your trading expertise with our globally recognized certifications.</p>
-                    <ul className={styles.list}>
-                        {bullets.map((b) => (
-                            <li key={b} className={styles.listItem}>
-                                <CheckCircle2 size={18} className={styles.check} />
-                                <span>{b}</span>
-                            </li>
-                        ))}
-                    </ul>
-                    <a href="#inquiry" className="btn-primary" style={{ marginTop: '32px', alignSelf: 'flex-start' }}>
-                        Apply Now
-                    </a>
+                <div className={`${styles.grid} ${visible ? styles.visible : ''}`}>
+                    {certs.map((c, i) => (
+                        <div
+                            key={c.code}
+                            className={styles.card}
+                            style={{ transitionDelay: `${(i % 4) * 80}ms` }}
+                        >
+                            <div className={styles.cardHeader}>
+                                <div className={styles.badgeWrap}>
+                                    <Award size={18} className={styles.badgeIcon} />
+                                    <span className={styles.code}>{c.code}</span>
+                                </div>
+                                <ShieldCheck size={18} className={styles.verifiedIcon} />
+                            </div>
+                            <h3>{c.title}</h3>
+                            <p>{c.desc}</p>
+                            <div className={styles.footer}>
+                                <Check size={12} className={styles.checkIcon} />
+                                <span>Exam-Verified Assessment</span>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
     );
 }
-

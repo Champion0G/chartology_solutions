@@ -3,7 +3,7 @@ import { MessageCircle } from 'lucide-react';
 import styles from './FloatingWhatsApp.module.css';
 
 export default function FloatingWhatsApp() {
-    const message = encodeURIComponent("Hello Chartologic, I would like to inquire about the next trading cohort.");
+    const message = encodeURIComponent("Hello Chartologic, I would like to inquire about the next Free Live Workshop.");
     const whatsappUrl = `https://wa.me/918130245100?text=${message}`;
 
     return (

@@ -11,9 +11,9 @@ export default function Community() {
             <div className={`container ${styles.inner}`} ref={ref as any}>
                 <div className={`${styles.content} ${visible ? styles.visible : ''}`}>
                     <p className="section-label">The Network Effect</p>
-                    <h2 className="section-heading">Learn Together. Grow Together.</h2>
+                    <h2 className="section-heading">You're Not Learning Alone</h2>
                     <p className="section-sub">
-                        Trading can be lonely and emotionally draining when done in isolation. At Chartologic, you join an active ecosystem of like-minded learners and expert mentors.
+                        Trading and investing can be lonely and emotionally challenging in isolation. At Chartologic, you join an active, moderated ecosystem of like-minded learners and expert mentors across WhatsApp, Discord, and Telegram.
                     </p>
 
                     <div className={styles.benefits}>

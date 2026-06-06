@@ -42,7 +42,7 @@ export default function StickyEnrollBar() {
                         </div>
                         <div className={styles.right}>
                             <a href="#register" className={styles.cta}>
-                                Reserve My Seat
+                                Reserve Workshop Seat
                             </a>
                         </div>
                     </div>

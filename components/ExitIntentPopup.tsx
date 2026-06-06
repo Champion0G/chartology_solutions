@@ -1,12 +1,12 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { X, ArrowRight, BookOpen, Gift } from 'lucide-react';
+import { X, ArrowRight, Gift } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './ExitIntentPopup.module.css';
 
 export default function ExitIntentPopup() {
     const [isOpen, setIsOpen] = useState(false);
-    const [email, setEmail] = useState('');
+    const [form, setForm] = useState({ name: '', email: '', phone: '' });
     const [submitted, setSubmitted] = useState(false);
 
     useEffect(() => {
@@ -15,7 +15,6 @@ export default function ExitIntentPopup() {
         if (hasSeen) return;
 
         const handleMouseLeave = (e: MouseEvent) => {
-            // Trigger when cursor leaves the top of the window
             if (e.clientY < 20) {
                 setIsOpen(true);
                 sessionStorage.setItem('exit_intent_seen', 'true');
@@ -23,7 +22,6 @@ export default function ExitIntentPopup() {
             }
         };
 
-        // Fallback for mobile/timing
         const timer = setTimeout(() => {
             const hasSeenDelayed = sessionStorage.getItem('exit_intent_seen');
             if (!hasSeenDelayed) {
@@ -44,7 +42,7 @@ export default function ExitIntentPopup() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (email.trim()) {
+        if (form.name.trim() && form.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) && form.phone.match(/^[0-9]{10}$/)) {
             setSubmitted(true);
             setTimeout(() => {
                 setIsOpen(false);
@@ -96,17 +94,38 @@ export default function ExitIntentPopup() {
                             <div className={styles.right}>
                                 <span className={styles.label}>🔴 LIMITED TIME OFFER</span>
                                 <h4 className={styles.title}>Don't Leave Empty Handed!</h4>
-                                <p className={styles.sub}>Enter your email to receive our comprehensive trading starter bundle instantly.</p>
+                                <p className={styles.sub}>Enter your details to receive our comprehensive trading starter bundle instantly.</p>
 
                                 {!submitted ? (
                                     <form onSubmit={handleSubmit} className={styles.form}>
                                         <div className={styles.inputGroup}>
                                             <input 
-                                                type="email" 
-                                                placeholder="Enter your best email address"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
+                                                type="text" 
+                                                placeholder="Enter your full name"
+                                                value={form.name}
+                                                onChange={(e) => setForm({ ...form, name: e.target.value })}
                                                 required
+                                                className={styles.input}
+                                            />
+                                        </div>
+                                        <div className={styles.inputGroup}>
+                                            <input 
+                                                type="email" 
+                                                placeholder="Enter your best email"
+                                                value={form.email}
+                                                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                                                required
+                                                className={styles.input}
+                                            />
+                                        </div>
+                                        <div className={styles.inputGroup}>
+                                            <input 
+                                                type="tel" 
+                                                placeholder="Enter 10-digit phone number"
+                                                value={form.phone}
+                                                onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                                                required
+                                                pattern="[0-9]{10}"
                                                 className={styles.input}
                                             />
                                         </div>
@@ -134,4 +153,3 @@ export default function ExitIntentPopup() {
         </AnimatePresence>
     );
 }
-

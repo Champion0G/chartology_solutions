@@ -4,12 +4,12 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Chartologic — Master Trading & Financial Intelligence',
-  description: 'Structured trading education, live cohorts, technical analysis mastery, risk management, and community learning. Start your trading journey today.',
-  keywords: 'Trading Course India, Trading Mentorship Program, Stock Market Education, Trading Cohort, Technical Analysis Course, Trading Classes Online, Trading Community India',
+  title: 'Chartologic — Master Financial Markets & Trading Intelligence',
+  description: 'We help students and working professionals understand financial markets through structured learning, mentorship, certifications, and practical exposure.',
+  keywords: 'Financial Market Education, Learn Trading India, Trading Mentorship Program, Stock Market Course, Technical Analysis, Risk Management, Trading Certifications, Financial Literacy for Students',
   openGraph: {
-    title: 'Chartologic — Master Trading & Financial Intelligence',
-    description: 'Learn trading, risk management, and market psychology through live cohorts, structured mentorship, and community-led learning in India.',
+    title: 'Chartologic — Master Financial Markets & Trading Intelligence',
+    description: 'We help students and working professionals understand financial markets through structured learning, mentorship, certifications, and practical exposure.',
     type: 'website',
     locale: 'en_IN',
     url: 'https://Chartologic-solutions.vercel.app/',

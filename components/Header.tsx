@@ -6,9 +6,7 @@ import styles from './Header.module.css';
 const navLinks = [
     { label: 'Home', href: '/#hero' },
     { label: 'About Us', href: '/about-us' },
-    { label: 'Programs', href: '/#programs' },
-    { label: 'Curriculum', href: '/#curriculum' },
-    { label: 'Testimonials', href: '/#testimonials' },
+    { label: 'Programs', href: '/programs' },
     { label: 'Free Workshop', href: '/#register' },
 ];
 

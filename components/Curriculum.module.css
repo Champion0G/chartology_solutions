@@ -1,23 +1,80 @@
 .section {
-    background: var(--bg);
     padding: var(--section-py) 0;
+    background: var(--bg);
 }
 
 .heading {
     text-align: center;
-    margin-bottom: 56px;
+    max-width: 800px;
+    margin: 0 auto 56px auto;
 }
 
+/* Metrics Bar */
+.metricsBar {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    margin-bottom: 48px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.metricsBar.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.metricItem {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.metricIcon {
+    color: var(--red);
+    flex-shrink: 0;
+}
+
+.metricVal {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 850;
+    color: var(--white);
+    line-height: 1.1;
+}
+
+.metricLabel {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 2px;
+    white-space: nowrap;
+}
+
+/* Accordion */
 .accordion {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.accordion.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .item {
-    background: var(--card);
+    background: var(--bg-dark);
     border: 1px solid var(--border);
     border-radius: var(--radius-card);
     overflow: hidden;
@@ -25,163 +82,156 @@
 }
 
 .item:hover {
-    border-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(225, 6, 0, 0.3);
 }
 
-.open {
-    border-color: rgba(225, 6, 0, 0.4);
-    box-shadow: 0 10px 30px rgba(225, 6, 0, 0.05);
+.item.open {
+    border-color: rgba(225, 6, 0, 0.45);
+    box-shadow: 0 8px 32px rgba(225, 6, 0, 0.05);
 }
 
 .trigger {
     width: 100%;
-    text-align: left;
     background: transparent;
-    padding: 24px;
+    padding: 24px 32px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    border: none;
-    cursor: pointer;
+    color: var(--white);
+    text-align: left;
 }
 
 .triggerLeft {
     display: flex;
     align-items: center;
-    gap: 16px;
-    flex-grow: 1;
+    gap: 24px;
 }
 
 .num {
     font-size: 0.8rem;
     font-weight: 800;
-    color: var(--red);
     text-transform: uppercase;
-    background: rgba(225, 6, 0, 0.1);
-    border: 1.5px solid rgba(225, 6, 0, 0.2);
+    color: var(--red);
+    background: rgba(225, 6, 0, 0.08);
+    border: 1px solid rgba(225, 6, 0, 0.2);
     padding: 6px 12px;
-    border-radius: 6px;
+    border-radius: 4px;
     letter-spacing: 0.05em;
-    min-width: 90px;
-    text-align: center;
 }
 
 .moduleTitle {
     font-size: 1.25rem;
     font-weight: 800;
-    color: var(--white);
+    letter-spacing: -0.01em;
 }
 
 .chevronWrap {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.04);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.25s, background 0.25s;
-}
-
-.chevron {
     color: var(--muted);
-    transition: transform 0.25s, color 0.25s;
+    transition: transform 0.25s;
 }
 
-.open .chevronWrap {
-    background: rgba(225, 6, 0, 0.1);
-}
-
-.open .chevron {
+.item.open .chevronWrap {
     transform: rotate(180deg);
-    color: var(--red);
+    color: var(--white);
 }
 
 .content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.open .content {
+.item.open .content {
     max-height: 500px;
 }
 
 .contentInner {
-    padding: 0 24px 28px 24px;
-    border-top: 1px solid var(--border);
-    margin-top: -2px; /* aligns smoothly */
+    padding: 0 32px 32px 88px;
 }
 
 .desc {
-    font-size: 0.95rem;
     color: var(--muted);
-    line-height: 1.6;
-    margin: 20px 0 24px;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
 }
 
-.listSection {
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 8px;
-    padding: 20px;
-    border: 1px solid var(--border);
-}
-
-.listHeading {
-    font-size: 0.8rem;
+.listSection h4 {
+    font-size: 0.9rem;
     font-weight: 700;
+    color: var(--white);
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--white);
     margin-bottom: 14px;
 }
 
 .list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 12px 24px;
 }
 
 .listItem {
-    font-size: 0.88rem;
-    color: var(--muted);
     display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    line-height: 1.4;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+.listItem span {
+    color: var(--white);
 }
 
 .bulletIcon {
     color: var(--red);
     flex-shrink: 0;
-    margin-top: 2px;
+}
+
+@media (max-width: 992px) {
+    .metricsBar {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
 }
 
 @media (max-width: 768px) {
+    .metricsBar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        padding: 20px;
+    }
+    .trigger {
+        padding: 20px;
+    }
+    .triggerLeft {
+        gap: 16px;
+    }
+    .num {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+    }
+    .moduleTitle {
+        font-size: 1.05rem;
+    }
+    .contentInner {
+        padding: 0 20px 20px 20px;
+    }
     .list {
         grid-template-columns: 1fr;
     }
 }
 
-@media (max-width: 580px) {
-    .trigger {
-        padding: 18px;
+@media (max-width: 480px) {
+    .metricsBar {
+        grid-template-columns: 1fr;
     }
     .triggerLeft {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
-    }
-    .num {
-        min-width: unset;
-        width: max-content;
-        padding: 4px 8px;
-        font-size: 0.72rem;
-    }
-    .moduleTitle {
-        font-size: 1.1rem;
-    }
-    .contentInner {
-        padding: 0 18px 20px 18px;
+        gap: 10px;
     }
 }

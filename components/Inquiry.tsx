@@ -1,17 +1,10 @@
 'use client';
 import { useState, FormEvent } from 'react';
-import { Mail, Phone, MapPin, Send, Calendar, Clock as ClockIcon } from 'lucide-react';
+import { Calendar, Clock, Laptop, Users2, ShieldCheck, Send, Check } from 'lucide-react';
 import styles from './Inquiry.module.css';
 
-const experienceLevels = [
-    'Complete Beginner (No experience)',
-    'Beginner (Under 1 year trading)',
-    'Intermediate (1-3 years trading)',
-    'Advanced (3+ years trading)',
-];
-
 export default function Inquiry() {
-    const [form, setForm] = useState({ name: '', email: '', phone: '', experience: '', message: '' });
+    const [form, setForm] = useState({ name: '', email: '', phone: '', occupation: '', city: '' });
     const [errors, setErrors] = useState<Partial<typeof form>>({});
     const [sent, setSent] = useState(false);
 
@@ -19,8 +12,9 @@ export default function Inquiry() {
         const e: Partial<typeof form> = {};
         if (!form.name.trim()) e.name = 'Name is required';
         if (!form.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) e.email = 'Valid email required';
-        if (!form.phone.match(/^[0-9]{10}$/)) e.phone = 'Enter valid 10-digit phone';
-        if (!form.experience) e.experience = 'Please select your experience level';
+        if (!form.phone.match(/^[0-9]{10}$/)) e.phone = '10-digit phone number is required';
+        if (!form.occupation) e.occupation = 'Please select your occupation';
+        if (!form.city.trim()) e.city = 'City is required';
         return e;
     };
 
@@ -28,124 +22,160 @@ export default function Inquiry() {
         e.preventDefault();
         const errs = validate();
         setErrors(errs);
-        if (Object.keys(errs).length === 0) setSent(true);
+        if (Object.keys(errs).length === 0) {
+            setSent(true);
+        }
     };
 
     return (
         <section id="register" className={styles.section}>
             <div className={`container ${styles.inner}`}>
-                {/* Left */}
+                {/* Section 15: Workshop Details (Left Side) */}
                 <div className={styles.left}>
-                    <p className="section-label">Limited Slots</p>
-                    <h2 className="section-heading">Join Our Free Live<br />Trading Workshop</h2>
+                    <p className="section-label">Upcoming Live Session</p>
+                    <h2 className="section-heading">Free Financial Markets Workshop</h2>
                     <p className="section-sub">
-                        Learn how to read price action, manage risk, and identify high-probability setups in this interactive 2-hour session with our lead mentor.
+                        Reserve your spot to understand the structural mechanics of Stocks, Forex, and Cryptocurrencies.
                     </p>
 
-                    <div className={styles.contacts}>
-                        <div className={styles.contactItem}>
-                            <div className={styles.contactIcon}><Calendar size={18} /></div>
+                    <div className={styles.detailsGrid}>
+                        <div className={styles.detailItem}>
+                            <Calendar className={styles.detailIcon} size={20} />
                             <div>
-                                <div className={styles.contactLabel}>Upcoming Date</div>
-                                <div className={styles.contactVal}>This Sunday at 11:00 AM IST</div>
+                                <span className={styles.detailLabel}>Date</span>
+                                <span className={styles.detailVal}>Upcoming Sunday</span>
                             </div>
                         </div>
-                        <div className={styles.contactItem}>
-                            <div className={styles.contactIcon}><ClockIcon size={18} /></div>
+                        <div className={styles.detailItem}>
+                            <Clock className={styles.detailIcon} size={20} />
                             <div>
-                                <div className={styles.contactLabel}>Duration</div>
-                                <div className={styles.contactVal}>2 Hours (Live + Q&A Session)</div>
+                                <span className={styles.detailLabel}>Time</span>
+                                <span className={styles.detailVal}>11:00 AM IST</span>
                             </div>
                         </div>
-                        <div className={styles.contactItem}>
-                            <div className={styles.contactIcon}><Mail size={18} /></div>
+                        <div className={styles.detailItem}>
+                            <Laptop className={styles.detailIcon} size={20} />
                             <div>
-                                <div className={styles.contactLabel}>Support</div>
-                                <div className={styles.contactVal}>workshop@Chartologic.in</div>
+                                <span className={styles.detailLabel}>Mode</span>
+                                <span className={styles.detailVal}>Online (Live Interactive)</span>
+                            </div>
+                        </div>
+                        <div className={styles.detailItem}>
+                            <Users2 className={styles.detailIcon} size={20} />
+                            <div>
+                                <span className={styles.detailLabel}>Seats Available</span>
+                                <span className={styles.detailVal} style={{ color: 'var(--red)', fontWeight: '700' }}>Limited to 100 Learners</span>
                             </div>
                         </div>
                     </div>
+
+                    <div className={styles.benefitsSection}>
+                        <h4>Key Session Benefits:</h4>
+                        <ul className={styles.benefitsList}>
+                            <li>
+                                <Check size={16} className={styles.check} />
+                                <span>Live Q&A with experienced market professionals</span>
+                            </li>
+                            <li>
+                                <Check size={16} className={styles.check} />
+                                <span>Fully interactive learning session</span>
+                            </li>
+                            <li>
+                                <Check size={16} className={styles.check} />
+                                <span>100% beginner-friendly explanation</span>
+                            </li>
+                            <li>
+                                <Check size={16} className={styles.check} />
+                                <span>Certificate of Participation issued to all attendees</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                {/* Right */}
+                {/* Section 16: Registration Form (Right Side) */}
                 <div className={styles.formWrap}>
                     {sent ? (
                         <div className={styles.success}>
-                            <span style={{ fontSize: '2.5rem' }}>🎉</span>
+                            <span className={styles.successEmoji}>🎉</span>
                             <h3>Seat Reserved, {form.name}!</h3>
-                            <p>We have sent the live webinar link and calendar invite to {form.email}.</p>
+                            <p>We have sent the live webinar links and calendar invite to {form.email}.</p>
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} noValidate className={styles.form}>
                             <h3 className={styles.formTitle}>Reserve Your Free Seat</h3>
+                            <p className={styles.formSub}>All fields are mandatory for certification eligibility.</p>
 
                             <div className={styles.field}>
                                 <label htmlFor="reg-name">Full Name *</label>
                                 <input
                                     id="reg-name"
                                     type="text"
-                                    placeholder="Enter your name"
+                                    placeholder="Enter your full name"
                                     value={form.name}
                                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                                    aria-invalid={!!errors.name}
+                                    className={errors.name ? styles.inputError : ''}
                                 />
-                                {errors.name && <span className={styles.error}>{errors.name}</span>}
+                                {errors.name && <span className={styles.errorText}>{errors.name}</span>}
                             </div>
 
                             <div className={styles.row}>
                                 <div className={styles.field}>
-                                    <label htmlFor="reg-email">Email *</label>
+                                    <label htmlFor="reg-email">Email Address *</label>
                                     <input
                                         id="reg-email"
                                         type="email"
                                         placeholder="your@email.com"
                                         value={form.email}
                                         onChange={(e) => setForm({ ...form, email: e.target.value })}
-                                        aria-invalid={!!errors.email}
+                                        className={errors.email ? styles.inputError : ''}
                                     />
-                                    {errors.email && <span className={styles.error}>{errors.email}</span>}
+                                    {errors.email && <span className={styles.errorText}>{errors.email}</span>}
                                 </div>
                                 <div className={styles.field}>
                                     <label htmlFor="reg-phone">Phone Number *</label>
                                     <input
                                         id="reg-phone"
                                         type="tel"
-                                        placeholder="10-digit number"
+                                        placeholder="10-digit mobile number"
                                         value={form.phone}
                                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                                        aria-invalid={!!errors.phone}
+                                        className={errors.phone ? styles.inputError : ''}
                                     />
-                                    {errors.phone && <span className={styles.error}>{errors.phone}</span>}
+                                    {errors.phone && <span className={styles.errorText}>{errors.phone}</span>}
                                 </div>
                             </div>
 
                             <div className={styles.field}>
-                                <label htmlFor="reg-exp">Trading Experience Level *</label>
+                                <label htmlFor="reg-occ">Occupation *</label>
                                 <select
-                                    id="reg-exp"
-                                    value={form.experience}
-                                    onChange={(e) => setForm({ ...form, experience: e.target.value })}
-                                    aria-invalid={!!errors.experience}
+                                    id="reg-occ"
+                                    value={form.occupation}
+                                    onChange={(e) => setForm({ ...form, occupation: e.target.value })}
+                                    className={errors.occupation ? styles.inputError : ''}
                                 >
-                                    <option value="">Select experience level</option>
-                                    {experienceLevels.map((lvl) => <option key={lvl} value={lvl}>{lvl}</option>)}
+                                    <option value="">Select your occupation</option>
+                                    <option value="Student">Student</option>
+                                    <option value="Working Professional">Working Professional</option>
+                                    <option value="Other">Other</option>
                                 </select>
-                                {errors.experience && <span className={styles.error}>{errors.experience}</span>}
+                                {errors.occupation && <span className={styles.errorText}>{errors.occupation}</span>}
                             </div>
 
                             <div className={styles.field}>
-                                <label htmlFor="reg-msg">What is your primary goal for this workshop? (Optional)</label>
-                                <textarea
-                                    id="reg-msg"
-                                    rows={3}
-                                    placeholder="e.g., Learn options hedging, understand market structure..."
-                                    value={form.message}
-                                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                                <label htmlFor="reg-city">City *</label>
+                                <input
+                                    id="reg-city"
+                                    type="text"
+                                    placeholder="Enter your current city"
+                                    value={form.city}
+                                    onChange={(e) => setForm({ ...form, city: e.target.value })}
+                                    className={errors.city ? styles.inputError : ''}
                                 />
+                                {errors.city && <span className={styles.errorText}>{errors.city}</span>}
                             </div>
 
-                            <button type="submit" className={styles.submit}>
-                                <Send size={16} /> Secure My Free Seat
+                            <button type="submit" className={styles.submitBtn}>
+                                <Send size={16} /> Reserve My Seat
                             </button>
                         </form>
                     )}
@@ -154,4 +184,3 @@ export default function Inquiry() {
         </section>
     );
 }
-

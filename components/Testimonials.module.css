@@ -1,235 +1,310 @@
 .section {
-    background: #0d2b24;
-    padding: 100px 0 80px;
+    padding: var(--section-py) 0;
+    background: var(--bg);
+    border-bottom: 1.5px solid var(--border);
 }
 
-/* Header row: text left, arrows right */
-.header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 24px;
-    margin-bottom: 40px;
+.heading {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 56px auto;
 }
 
-.arrows {
-    display: flex;
-    gap: 10px;
-    flex-shrink: 0;
+.subSection {
+    margin-bottom: 64px;
 }
 
-.arrow {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.06);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s, border-color 0.2s;
+.subSection:last-child {
+    margin-bottom: 0;
 }
 
-.arrow:hover {
-    background: var(--red);
-    border-color: var(--red);
+.subHeading {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 28px;
+    border-left: 3px solid var(--red);
+    padding-left: 14px;
+    line-height: 1.2;
 }
 
-/* Full-width horizontal scroll track */
-.trackWrap {
-    width: 100%;
+/* Video Grid */
+.videoGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.videoCard {
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
     overflow: hidden;
-    padding-left: max(24px, calc((100vw - 1280px) / 2 + 24px));
+    transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
-.track {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-right: 40px;
-    padding-bottom: 12px;
-    scrollbar-width: none;
-}
-
-.track::-webkit-scrollbar {
-    display: none;
-}
-
-/* Individual card */
-.card {
-    flex: 0 0 320px;
-    scroll-snap-align: start;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: border-color 0.25s, transform 0.25s;
-}
-
-.card:hover {
-    border-color: rgba(255, 255, 255, 0.22);
+.videoCard:hover {
     transform: translateY(-4px);
+    border-color: rgba(225, 6, 0, 0.3);
 }
 
-/* ── Media area ── */
-.mediaBox {
+.videoThumbWrap {
     position: relative;
     width: 100%;
     aspect-ratio: 16/9;
-    overflow: hidden;
-    background: #111;
-    flex-shrink: 0;
+    background: #000;
 }
 
-.mediaImg {
+.thumbOverlay {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+}
+
+.thumbImg {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
+    opacity: 0.65;
+    transition: opacity 0.3s;
 }
 
-.card:hover .mediaImg {
-    transform: scale(1.04);
+.videoCard:hover .thumbImg {
+    opacity: 0.85;
+}
+
+.playBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--red);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(225, 6, 0, 0.3);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.thumbOverlay:hover .playBtn {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--red-hover);
+}
+
+.duration {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.75);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .videoFrame {
     width: 100%;
     height: 100%;
     border: none;
-    display: block;
 }
 
-/* Play button overlay */
-.thumbWrap {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
+.videoCardBody {
+    padding: 24px;
 }
 
-.playBtn {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: rgba(225, 6, 0, 0.9);
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.2s, background 0.2s;
-    backdrop-filter: blur(4px);
-}
-
-.playBtn:hover {
-    transform: scale(1.1);
-    background: var(--red);
-}
-
-/* Profit badge on media */
-.profitBadge {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(6px);
-    color: #00d97e;
-    font-size: 0.78rem;
+.videoCardBody h4 {
+    font-size: 1.15rem;
     font-weight: 700;
-    padding: 5px 10px;
-    border-radius: 6px;
-    border: 1px solid rgba(0, 217, 126, 0.25);
+    color: var(--white);
 }
 
-/* ── Card body ── */
-.cardBody {
-    padding: 20px 22px 24px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+.videoRole {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 4px;
 }
 
-.stars {
-    color: #fbbf24;
-    font-size: 0.95rem;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+.badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: rgba(225, 6, 0, 0.08);
+    border: 1px solid rgba(225, 6, 0, 0.15);
+    color: var(--red);
+    margin-top: 14px;
 }
 
-.quoteIcon {
-    font-size: 3.5rem;
-    font-weight: 900;
-    color: rgba(225, 6, 0, 0.3);
-    line-height: 0.5;
-    margin-bottom: 12px;
-    font-family: Georgia, serif;
+/* LinkedIn Grid */
+.linkedinGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
 }
 
-.text {
-    font-size: 0.88rem;
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.75;
-    flex: 1;
-    margin-bottom: 18px;
+.linkedinCard {
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 32px;
+    transition: border-color 0.3s ease;
 }
 
-/* Author row */
-.author {
+.linkedinCard:hover {
+    border-color: rgba(14, 118, 168, 0.45);
+}
+
+.linkedinHeader {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding-top: 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    margin-top: auto;
+    gap: 16px;
+    margin-bottom: 20px;
+    position: relative;
 }
 
 .avatar {
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
+    color: var(--white);
+    font-weight: 800;
+    font-size: 0.95rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    font-size: 0.82rem;
-    color: #fff;
     flex-shrink: 0;
 }
 
-.name {
-    font-weight: 700;
-    font-size: 0.88rem;
-    color: #fff;
+.linkedinHeader h4 {
+    font-size: 1.1rem;
+    font-weight: 750;
+    color: var(--white);
 }
 
-.role {
-    font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.45);
+.linkedinTitle {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
     margin-top: 2px;
 }
 
-/* ── Responsive ── */
+.linkedinIcon {
+    color: #0e76a8;
+    position: absolute;
+    top: 2px;
+    right: 0;
+}
+
+.linkedinText {
+    font-size: 0.97rem;
+    color: var(--muted);
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* Written Grid */
+.writtenGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.writtenCard {
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+}
+
+.starIcon {
+    color: var(--red);
+}
+
+.writtenQuote {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.5;
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.writtenAuthor {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+}
+
+.userIconWrap {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    flex-shrink: 0;
+}
+
+.writtenName {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+}
+
+.writtenRole {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+@media (max-width: 992px) {
+    .videoGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    .linkedinGrid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .writtenGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
 @media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
+    .videoGrid {
+        grid-template-columns: 1fr;
     }
-
-    .card {
-        flex: 0 0 280px;
+    .writtenGrid {
+        grid-template-columns: 1fr;
     }
-
-    .trackWrap {
-        padding-left: 20px;
+    .linkedinCard, .videoCardBody, .writtenCard {
+        padding: 20px;
     }
 }

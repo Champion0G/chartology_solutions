@@ -1,11 +1,9 @@
 .section {
-    background:
-        radial-gradient(ellipse 70% 80% at 50% 50%, rgba(225, 6, 0, 0.55) 0%, transparent 70%),
-        linear-gradient(135deg, #000 0%, #1a0000 40%, #0a0000 60%, #000 100%);
+    background: linear-gradient(135deg, var(--red) 0%, var(--red-hover) 100%);
     padding: 90px 0;
     text-align: center;
-    border-top: 1px solid rgba(225, 6, 0, 0.2);
-    border-bottom: 1px solid rgba(225, 6, 0, 0.2);
+    border-top: none;
+    border-bottom: none;
 }
 
 .inner {

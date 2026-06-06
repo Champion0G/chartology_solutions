@@ -5,17 +5,16 @@ export default function CTABanner() {
         <section className={styles.section} id="cta-banner">
             <div className="container">
                 <div className={styles.inner}>
-                    <p className={styles.subText}>Over 10,000 traders have transformed their careers</p>
-                    <h2 className={styles.heading}>To find out more about our<br />Online Courses</h2>
+                    <p className={styles.subText}>Start Your Journey</p>
+                    <h2 className={styles.heading}>Ready To Understand Financial Markets<br />The Right Way?</h2>
                     <p className={styles.sub}>
-                        Join the most comprehensive trading education platform in India. Start your journey today.
+                        Join the next free live workshop and discover the roadmap followed by successful market participants.
                     </p>
-                    <a href="#inquiry" className={styles.btn}>
-                        Join Now →
+                    <a href="#register" className={styles.btn}>
+                        🚀 Reserve My Workshop Seat
                     </a>
                 </div>
             </div>
         </section>
     );
 }
-

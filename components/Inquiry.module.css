@@ -1,189 +1,235 @@
 .section {
+    padding: var(--section-py) 0;
     background: var(--bg-dark);
-    padding: 100px 0;
+    position: relative;
+    border-bottom: 1.5px solid var(--border);
 }
 
 .inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 72px;
-    align-items: start;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
+    align-items: flex-start;
 }
 
-/* Left */
+/* Left Side: Workshop Details */
 .left {
     display: flex;
     flex-direction: column;
 }
 
-.contacts {
-    display: flex;
-    flex-direction: column;
+.detailsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
-    margin-top: 40px;
+    margin: 36px 0;
 }
 
-.contactItem {
+.detailItem {
     display: flex;
-    align-items: flex-start;
     gap: 16px;
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 16px;
 }
 
-.contactIcon {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    background: rgba(225, 6, 0, 0.12);
-    border: 1px solid rgba(225, 6, 0, 0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.detailIcon {
     color: var(--red);
     flex-shrink: 0;
 }
 
-.contactLabel {
-    font-size: 0.75rem;
+.detailLabel {
+    display: block;
+    font-size: 0.8rem;
     color: var(--muted);
-    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.05em;
 }
 
-.contactVal {
-    font-size: 0.95rem;
+.detailVal {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
     color: var(--white);
-    font-weight: 600;
     margin-top: 2px;
 }
 
-/* Right form */
-.formWrap {
-    background: var(--red);
-    border-radius: 20px;
-    padding: 40px 36px;
+.benefitsSection h4 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
 }
 
-.formTitle {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 28px;
+.benefitsList {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.benefitsList li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.benefitsList li span {
+    color: var(--white);
+}
+
+.check {
+    color: var(--red);
+    flex-shrink: 0;
+}
+
+/* Right Side: Form */
+.formWrap {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 40px;
+    position: relative;
+    box-shadow: var(--shadow-card);
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
 }
 
-.row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
+.formTitle {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+}
+
+.formSub {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: -12px;
+    margin-bottom: 8px;
 }
 
 .field {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
 }
 
 .field label {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--muted);
 }
 
-.field input,
-.field select,
-.field textarea {
-    background: rgba(255, 255, 255, 0.15);
-    border: 1.5px solid rgba(255, 255, 255, 0.25);
-    border-radius: 8px;
-    padding: 12px 14px;
-    color: #fff;
-    font-size: 0.9rem;
+.field input, .field select {
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-btn);
+    padding: 13px 16px;
+    color: var(--white);
+    font-size: 0.95rem;
     font-family: var(--font);
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
     width: 100%;
 }
 
-.field input::placeholder,
-.field textarea::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+.field input:focus, .field select:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 12px rgba(225, 6, 0, 0.15);
 }
 
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
-    border-color: #fff;
-    outline: none;
+.inputError {
+    border-color: rgba(225, 6, 0, 0.5) !important;
 }
 
-.field select option {
-    background: #c00;
-    color: #fff;
-}
-
-.field textarea {
-    resize: vertical;
-}
-
-.error {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.9);
+.errorText {
+    font-size: 0.8rem;
+    color: #ff4d4d;
     font-weight: 600;
 }
 
-.submit {
-    display: flex;
+.row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+}
+
+.submitBtn {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background: #000;
-    color: #fff;
-    font-weight: 700;
-    font-size: 0.95rem;
-    padding: 14px;
-    border-radius: 8px;
-    margin-top: 4px;
+    background: var(--red);
+    color: var(--white);
+    font-weight: 800;
+    font-size: 1.05rem;
+    padding: 15px;
+    border-radius: var(--radius-btn);
     transition: background 0.2s, transform 0.15s;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
-.submit:hover {
-    background: #111;
+.submitBtn:hover {
+    background: var(--red-hover);
     transform: translateY(-1px);
 }
 
+.submitBtn:active {
+    transform: translateY(0);
+}
+
+/* Success State */
 .success {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
     text-align: center;
-    min-height: 300px;
-    color: #fff;
+    padding: 40px 0;
+}
+
+.successEmoji {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 20px;
 }
 
 .success h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 800;
+    color: var(--white);
+    margin-bottom: 12px;
 }
 
 .success p {
-    font-size: 0.95rem;
-    opacity: 0.85;
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.6;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 992px) {
     .inner {
         grid-template-columns: 1fr;
         gap: 48px;
     }
+}
 
+@media (max-width: 576px) {
     .row {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .detailsGrid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .formWrap {
+        padding: 30px 20px;
     }
 }

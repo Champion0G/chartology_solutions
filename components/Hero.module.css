@@ -150,30 +150,33 @@
     background: rgba(255, 255, 255, 0.07);
 }
 
-/* Stats */
-.stats {
+/* Trust Bar below CTA */
+.trustBar {
     display: flex;
-    gap: 32px;
+    flex-wrap: wrap;
+    gap: 16px 24px;
     margin-top: 40px;
-    padding-top: 28px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
 }
 
-.stat {
+.trustItem {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--white);
 }
 
-.statVal {
-    font-size: 1.55rem;
-    font-weight: 900;
-    color: #fff;
+.checkIcon {
+    color: var(--red);
+    flex-shrink: 0;
 }
 
-.statLabel {
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: 2px;
+.sparkle {
+    display: inline-block;
+    color: var(--red);
 }
 
 /* Bottom tagline */
@@ -206,11 +209,11 @@
 @media (max-width: 768px) {
     .photoBg {
         width: 100%;
-        opacity: 0.3;
+        opacity: 0.25;
     }
 
     .fadeOverlay {
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, #000 80%);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, #000 80%);
     }
 
     .inner {
@@ -222,11 +225,6 @@
         width: 100%;
         max-width: 100%;
     }
-
-    .stats {
-        gap: 20px;
-        flex-wrap: wrap;
-    }
 }
 
 @media (max-width: 480px) {
@@ -234,7 +232,7 @@
         flex-direction: column;
     }
 
-    .stats {
+    .trustBar {
         flex-direction: column;
         gap: 12px;
     }

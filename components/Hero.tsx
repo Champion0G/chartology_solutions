@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { ArrowRight, User } from 'lucide-react';
+import { ArrowRight, Sparkles, Check } from 'lucide-react';
 import styles from './Hero.module.css';
 
 export default function Hero() {
@@ -12,69 +12,69 @@ export default function Hero() {
         requestAnimationFrame(() => { el.classList.add(styles.visible); });
     }, []);
 
+    const trustItems = [
+        'Students & Professionals',
+        'Live Workshops',
+        'Expert Mentorship',
+        'Certifications',
+        'Community Support'
+    ];
+
     return (
         <section id="hero" className={styles.hero} ref={heroRef}>
-
-            {/* Full-bleed trainer photo — right side */}
+            {/* Background Image / Gradient */}
             <div className={styles.photoBg} aria-hidden="true">
                 <img
                     src="/trainer.jpg"
-                    alt="Lead trading instructor"
+                    alt="Financial markets charting"
                     className={styles.trainerImg}
                     loading="eager"
                 />
-                {/* Dot-grid overlay (matches reference) */}
                 <div className={styles.dotGrid} aria-hidden="true" />
-                {/* Left-to-right fade so text stays readable */}
                 <div className={styles.fadeOverlay} aria-hidden="true" />
             </div>
 
-            {/* Text content — overlaid on left */}
+            {/* Inner Content overlay */}
             <div className={styles.inner}>
                 <div className={styles.content}>
-                    <p className={styles.eyebrow}>🔴 PREMIUM TRADING EDUCATION</p>
+                    <p className={styles.eyebrow}>
+                        <Sparkles size={14} className={styles.sparkle} /> Premium Market Education
+                    </p>
 
                     <h1 className={styles.headline}>
-                        Master Trading With<br />
-                        <span className={styles.redText}>Proven Systems &</span><br />
-                        Expert Guidance!
+                        Master Stocks, Forex & Crypto<br />
+                        Markets Through<br />
+                        <span className={styles.redText}>Structured Learning</span>
                     </h1>
 
                     <p className={styles.sub}>
-                        Transform your trading journey with structured live cohorts, personalized mentorship, risk management frameworks, practical market sessions, and an active peer learning community.
+                        Designed for students and working professionals who want to develop financial market knowledge, analytical skills, risk management expertise, and practical market understanding.
                     </p>
 
                     <div className={styles.ctas}>
                         <a href="#register" className={styles.btnPrimary}>
-                            <User size={17} /> Register for Free Workshop
+                            🚀 Reserve My Workshop Seat
                         </a>
-                        <a href="#programs" className={styles.btnOutline}>
-                            Explore Programs <ArrowRight size={17} />
+                        <a href="#register" className={styles.btnOutline}>
+                            📘 Download Program Brochure <ArrowRight size={17} />
                         </a>
                     </div>
 
-                    <div className={styles.stats}>
-                        {[
-                            ['10,000+', 'Students Trained'],
-                            ['5,000+', 'Community Members'],
-                            ['500+', 'Live Sessions'],
-                            ['24/7', 'Mentor Support']
-                        ].map(([val, label]) => (
-                            <div key={label} className={styles.stat}>
-                                <span className={styles.statVal}>{val}</span>
-                                <span className={styles.statLabel}>{label}</span>
+                    {/* Section 1 Trust Bar Below CTA */}
+                    <div className={styles.trustBar}>
+                        {trustItems.map((item) => (
+                            <div key={item} className={styles.trustItem}>
+                                <Check size={14} className={styles.checkIcon} />
+                                <span>{item}</span>
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
 
-            {/* Bottom tagline (matches reference) */}
             <div className={styles.tagline} aria-hidden="true">
-                STOCK MARKET FOR EVERYONE
+                FINANCIAL LITERACY IS POWER
             </div>
-
         </section>
     );
 }
-

@@ -8,37 +8,6 @@
     margin-bottom: 48px;
 }
 
-.tabs {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 40px;
-}
-
-.tab {
-    padding: 9px 20px;
-    border-radius: 999px;
-    border: 1.5px solid var(--border);
-    background: transparent;
-    color: var(--muted);
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.tab:hover {
-    border-color: rgba(255, 255, 255, 0.3);
-    color: var(--white);
-}
-
-.tab.active {
-    background: var(--red);
-    border-color: var(--red);
-    color: #fff;
-}
-
 .accordion {
     max-width: 760px;
     margin: 0 auto;

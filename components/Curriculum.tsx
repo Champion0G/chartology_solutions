@@ -1,13 +1,14 @@
 'use client';
 import { useState } from 'react';
-import { ChevronDown, BookOpen, Clock, FileText, CheckCircle2 } from 'lucide-react';
+import { ChevronDown, CheckCircle2, BookOpen, Clock, Users, Award, ShieldAlert, Library } from 'lucide-react';
 import styles from './Curriculum.module.css';
+import useScrollReveal from '@/hooks/useScrollReveal';
 
 const modules = [
     {
         num: 'Module 1',
-        title: 'Market Basics',
-        desc: 'Build the foundational knowledge required for trading. Learn how stock exchanges, brokers, and clearing corporations function.',
+        title: 'Financial Markets Foundation',
+        desc: 'Understand market participants, brokers, exchanges, order types, clearing operations, and the core structural mechanics of stocks, forex, and digital assets.',
         items: [
             'Understanding Nifty, Sensex, and Indices',
             'Types of Markets: Cash, Futures, Options, and Commodities',
@@ -18,7 +19,7 @@ const modules = [
     {
         num: 'Module 2',
         title: 'Technical Analysis',
-        desc: 'Learn how to read price trends, volume trends, and build an understanding of historical patterns.',
+        desc: 'Master candlestick analysis, volume confirmation, price trends, range boundaries, and dynamic support & resistance frameworks.',
         items: [
             'Dow Theory and basic market structure (Trends, Ranges)',
             'Advanced Candlestick patterns (Single & Multi-candles)',
@@ -28,19 +29,8 @@ const modules = [
     },
     {
         num: 'Module 3',
-        title: 'Chart Reading',
-        desc: 'Master the art of chart interpretation across multiple timeframes to spot trading setups.',
-        items: [
-            'Classic chart patterns (Head & Shoulders, Double Tops/Bottoms, Flags)',
-            'Multi-timeframe analysis (MTA) for high-probability setups',
-            'Drawing trendlines and channels correctly',
-            'Introduction to popular charting tools and platforms'
-        ]
-    },
-    {
-        num: 'Module 4',
-        title: 'Price Action',
-        desc: 'Understand price behavior without lagging indicators. Learn to read raw buyers and sellers activity.',
+        title: 'Price Action & Market Structure',
+        desc: 'Learn advanced market mechanics: raw price shifted structures, breaks of structure (BOS), order blocks, fair value gaps, and liquidity sweeps.',
         items: [
             'Market structure shifts (MSS) and break of structure (BOS)',
             'Order blocks, demand-supply zones, and fair value gaps (FVG)',
@@ -49,9 +39,9 @@ const modules = [
         ]
     },
     {
-        num: 'Module 5',
+        num: 'Module 4',
         title: 'Risk Management',
-        desc: 'The single most important module. Protect your capital through math-based position sizing and strict rules.',
+        desc: 'Protect capital using position sizing mathematics, the 1% risk rule, win-rate parameters, and maximum drawdown buffers.',
         items: [
             'Risk-to-reward ratio (RRR) and win-rate dynamics',
             '1% risk rule and calculating exact position sizing',
@@ -60,9 +50,9 @@ const modules = [
         ]
     },
     {
-        num: 'Module 6',
+        num: 'Module 5',
         title: 'Trading Psychology',
-        desc: 'Manage the emotional roller coaster. Conquer fear, greed, FOMO, and revenge trading.',
+        desc: 'Develop systemic execution checklists, eliminate FOMO and revenge execution, and run a process-oriented trading routine.',
         items: [
             'The cognitive biases that destroy traders (Loss aversion, recency bias)',
             'Developing a discipline protocol and execution checklist',
@@ -71,76 +61,92 @@ const modules = [
         ]
     },
     {
-        num: 'Module 7',
-        title: 'Strategy Building',
-        desc: 'Assemble your tools into a repeatable, rule-based trading system tailored to your personality.',
+        num: 'Module 6',
+        title: 'Fundamental Analysis',
+        desc: 'Evaluate corporate balance sheets, earnings reports, global macroeconomic statistics, interest rates, and valuation parameters.',
         items: [
-            'Defining trend-following vs. mean-reversion setups',
-            'Creating clear entry, stop-loss, and target rules',
-            'Backtesting and forward-testing methodologies',
-            'System parameters and finding your edge'
+            'Corporate balance sheets and cash flow statement analysis',
+            'Key valuation metrics: P/E, Debt-to-Equity, EPS, ROE',
+            'Macroeconomic cycles: Inflation, interest rates, and central bank policies',
+            'Sector rotation analysis and long-term theme selection'
+        ]
+    },
+    {
+        num: 'Module 7',
+        title: 'Portfolio Building',
+        desc: 'Structure personal assets, diversify capital allocations, construct long-term stock portfolios, and manage tax implications.',
+        items: [
+            'Core principles of asset allocation & risk-adjusted returns',
+            'Constructing core-satellite long-term investment portfolios',
+            'Rebalancing schedules and passive compounding models',
+            'Taxation guidelines on capital gains (STCG, LTCG)'
         ]
     },
     {
         num: 'Module 8',
-        title: 'Live Market Sessions',
-        desc: 'Bridge theory and practice. Observe live market executions and real-time decision making.',
+        title: 'Challenge & Evaluation',
+        desc: 'Test your knowledge in a virtual simulation environment. Complete trade journals, pass risk parameters, and earn credentials.',
         items: [
-            'Pre-market analysis and creating a daily watchlist',
-            'Trading execution in live market hours (simulated/real)',
-            'Managing trades: Trailing stop losses, partial profit booking',
-            'Post-market review and feedback loops'
-        ]
-    },
-    {
-        num: 'Module 9',
-        title: 'Trade Journaling',
-        desc: 'Turn data into progress. Learn how to track and analyze your trades to optimize performance.',
-        items: [
-            'Setting up a detailed trading journal (Excel, Notion, or specialized tool)',
-            'Metrics to track: Expectancy, profit factor, average win/loss',
-            'Reviewing mistakes, identifying leaks, and tracking emotional state',
-            'Quarterly review and strategy adjustments'
-        ]
-    },
-    {
-        num: 'Module 10',
-        title: 'Long-Term Growth Framework',
-        desc: 'Transition from active trading to compounding wealth. Build a sustainable financial future.',
-        items: [
-            'Introduction to long-term investing principles (Valuation, Moats)',
-            'Blending swing trading returns into long-term mutual funds/equity portfolios',
-            'Taxation rules on trading profits (STCG, LTCG, Business income)',
-            'Constructing a lifetime compounding roadmap'
+            'Participating in the monthly virtual Trading Challenge',
+            'Maintaining standard professional trade journaling',
+            'Applying mathematical draw-down rules in simulated setups',
+            'Comprehensive knowledge assessment and certification exam'
         ]
     }
 ];
 
 export default function Curriculum() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
+    const { ref, visible } = useScrollReveal();
 
     const toggle = (i: number) => {
         setOpenIndex(openIndex === i ? null : i);
     };
 
+    const metrics = [
+        { icon: BookOpen, val: '50+', label: 'Topics Covered' },
+        { icon: Clock, val: '100+', label: 'Learning Hours' },
+        { icon: Users, val: 'Live', label: 'Interactive Sessions' },
+        { icon: Library, val: 'Weekly', label: 'Assignments' },
+        { icon: Award, val: 'Strict', label: 'Assessments' },
+        { icon: ShieldAlert, val: '24/7', label: 'Community Support' }
+    ];
+
     return (
-        <section id="curriculum" className={styles.section}>
+        <section id="curriculum" className={styles.section} ref={ref as any}>
             <div className="container">
                 <div className={styles.heading}>
-                    <p className="section-label">Curriculum</p>
-                    <h2 className="section-heading">A Highly Structured, 10-Module Roadmap</h2>
+                    <p className="section-label">Redesigned Timeline</p>
+                    <h2 className="section-heading">Comprehensive Financial Markets Curriculum</h2>
                     <p className="section-sub">
-                        Designed sequentially to take you from absolute scratch to constructing, executing, and journaling your own trading system.
+                        Our structured learning roadmap is designed to build institutional-grade competencies step-by-step.
                     </p>
                 </div>
 
-                <div className={styles.accordion}>
+                {/* Metrics Panel */}
+                <div className={`${styles.metricsBar} ${visible ? styles.visible : ''}`}>
+                    {metrics.map((m, idx) => {
+                        const Icon = m.icon;
+                        return (
+                            <div key={idx} className={styles.metricItem}>
+                                <Icon className={styles.metricIcon} size={18} />
+                                <div>
+                                    <span className={styles.metricVal}>{m.val}</span>
+                                    <span className={styles.metricLabel}>{m.label}</span>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+
+                {/* Timeline Accordion */}
+                <div className={`${styles.accordion} ${visible ? styles.visible : ''}`} style={{ transitionDelay: '100ms' }}>
                     {modules.map((m, i) => {
                         const isOpen = openIndex === i;
                         return (
                             <div key={m.num} className={`${styles.item} ${isOpen ? styles.open : ''}`}>
-                                <button 
-                                    className={styles.trigger} 
+                                <button
+                                    className={styles.trigger}
                                     onClick={() => toggle(i)}
                                     aria-expanded={isOpen}
                                 >
@@ -157,7 +163,7 @@ export default function Curriculum() {
                                     <div className={styles.contentInner}>
                                         <p className={styles.desc}>{m.desc}</p>
                                         <div className={styles.listSection}>
-                                            <h4 className={styles.listHeading}>Key Topics Covered:</h4>
+                                            <h4 className={styles.listHeading}>Core Modules:</h4>
                                             <ul className={styles.list}>
                                                 {m.items.map((item, idx) => (
                                                     <li key={idx} className={styles.listItem}>
@@ -177,4 +183,3 @@ export default function Curriculum() {
         </section>
     );
 }
-
