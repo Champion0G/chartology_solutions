@@ -4,7 +4,7 @@ import styles from './FloatingWhatsApp.module.css';
 
 export default function FloatingWhatsApp() {
     const message = encodeURIComponent("Hello Chartologic, I would like to inquire about the next Live Workshop.");
-    const whatsappUrl = `https://wa.me/918130245100?text=${message}`;
+    const whatsappUrl = `https://wa.me/917595881240?text=${message}`;
 
     return (
         <a 
