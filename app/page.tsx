@@ -4,10 +4,8 @@ import SocialProofBar from '@/components/SocialProofBar';
 import Marquee from '@/components/Marquee';
 import TheProblem from '@/components/TheProblem';
 import WhyMarketEducation from '@/components/WhyMarketEducation';
-import Curriculum from '@/components/Curriculum';
 import MarketsCovered from '@/components/MarketsCovered';
 import WhoIsThisFor from '@/components/WhoIsThisFor';
-import Certification from '@/components/Certification';
 import Internships from '@/components/Internships';
 import CareerOutcomes from '@/components/CareerOutcomes';
 import AboutTrainer from '@/components/AboutTrainer';
@@ -40,17 +38,11 @@ export default function Home() {
         {/* Section 4: Why Financial Market Education Matters */}
         <WhyMarketEducation />
 
-        {/* Section 5: What You Will Learn (8-Module Timeline + Metrics) */}
-        <Curriculum />
-
         {/* Section 6: Markets Covered */}
         <MarketsCovered />
 
         {/* Section 7: Who Is This For */}
         <WhoIsThisFor />
-
-        {/* Section 8: Certifications (8 premium glass cards) */}
-        <Certification />
 
         {/* Section 9: Internship Opportunities */}
         <Internships />

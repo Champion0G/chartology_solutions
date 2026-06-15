@@ -20,7 +20,7 @@ export default function WorkshopOutcomes() {
             <div className="container">
                 <div className={styles.heading}>
                     <p className="section-label">Webinar Blueprint</p>
-                    <h2 className="section-heading">What You'll Learn In The Free Workshop</h2>
+                    <h2 className="section-heading">What You'll Learn In The Live Workshop</h2>
                     <p className="section-sub">
                         Skip the commercial hype. In this structured 2-hour session, we break down the operational realities of global exchanges.
                     </p>

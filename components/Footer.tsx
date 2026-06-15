@@ -3,7 +3,8 @@ import styles from './Footer.module.css';
 
 const quickLinks = [
     { label: 'About Us', href: '/about-us' },
-    { label: 'Curriculum', href: '/#curriculum' },
+    { label: 'Careers', href: '/careers' },
+    { label: 'Curriculum', href: '/programs#curriculum' },
     { label: 'Workshop', href: '/#register' },
     { label: 'FAQ', href: '/#faq' },
     { label: 'Contact', href: '/#register' }
@@ -13,7 +14,8 @@ const legalLinks = [
     { label: 'Privacy Policy', href: '/privacy-policy' },
     { label: 'Terms & Conditions', href: '/terms-and-conditions' },
     { label: 'Refund Policy', href: '/refund-policy' },
-    { label: 'Disclaimer', href: '/disclaimer' }
+    { label: 'Disclaimer', href: '/disclaimer' },
+    { label: 'Sitemap', href: '/site-map' }
 ];
 
 export default function Footer() {

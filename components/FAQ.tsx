@@ -14,8 +14,8 @@ const faqs: FAQItem[] = [
         a: 'Yes, absolutely. Our curriculum starts from the absolute fundamentals of financial markets, assuming no prior background in finance, economics, or math.'
     },
     {
-        q: 'Is the workshop free?',
-        a: 'Yes. The live workshop is completely free of charge. Our goal is to introduce you to structured market mechanics, common beginner traps, and risk management parameters.'
+        q: 'What is the cost of the workshop?',
+        a: 'The live workshop requires a registration fee. Please check the booking section for current seat pricing and availability.'
     },
     {
         q: 'How are classes conducted?',

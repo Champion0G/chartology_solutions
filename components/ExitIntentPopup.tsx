@@ -81,7 +81,7 @@ export default function ExitIntentPopup() {
                                 <div className={styles.giftIconWrap}>
                                     <Gift size={32} className={styles.giftIcon} />
                                 </div>
-                                <h3 className={styles.offerHeading}>Free Starter Kit</h3>
+                                <h3 className={styles.offerHeading}>Starter Kit</h3>
                                 <p className={styles.offerDesc}>Get our "Stock Market Blueprint" PDF guide and unlock 3 exclusive webinar recordings.</p>
                                 <ul className={styles.perks}>
                                     <li>✓ Core Price Action Cheat Sheet</li>

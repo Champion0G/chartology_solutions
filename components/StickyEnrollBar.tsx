@@ -39,7 +39,7 @@ export default function StickyEnrollBar() {
                     <div className={`container ${styles.inner}`}>
                         <div className={styles.left}>
                             <span className={styles.dot}>🔴</span>
-                            <span className={styles.text}>Free Live Trading Workshop Coming Up!</span>
+                            <span className={styles.text}>Live Trading Workshop Coming Up!</span>
                             <span className={styles.divider}>•</span>
                             <span className={styles.seats}>
                                 <Clock size={14} className={styles.icon} /> Limited Seats Left

@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { ArrowRight, Sparkles, Check } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import styles from './Hero.module.css';
 
 export default function Hero() {
@@ -43,7 +43,7 @@ export default function Hero() {
             <div className={styles.inner}>
                 <div className={styles.content}>
                     <p className={styles.eyebrow}>
-                        <Sparkles size={14} className={styles.sparkle} /> Premium Market Education
+                        Premium Market Education
                     </p>
 
                     <h1 className={styles.headline}>
@@ -58,7 +58,7 @@ export default function Hero() {
 
                     <div className={styles.ctas}>
                         <a href="#register" onClick={handleRegisterClick} className={styles.btnPrimary}>
-                            🚀 Reserve My Workshop Seat
+                            Reserve My Workshop Seat
                         </a>
                         <a href="#register" onClick={handleRegisterClick} className={styles.btnOutline}>
                             📘 Download Program Brochure <ArrowRight size={17} />

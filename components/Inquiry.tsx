@@ -33,7 +33,7 @@ export default function Inquiry() {
                 {/* Section 15: Workshop Details (Left Side) */}
                 <div className={styles.left}>
                     <p className="section-label">Upcoming Live Session</p>
-                    <h2 className="section-heading">Free Financial Markets Workshop</h2>
+                    <h2 className="section-heading">Financial Markets Workshop</h2>
                     <p className="section-sub">
                         Reserve your spot to understand the structural mechanics of Stocks, Forex, and Cryptocurrencies.
                     </p>
@@ -102,7 +102,7 @@ export default function Inquiry() {
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} noValidate className={styles.form}>
-                            <h3 className={styles.formTitle}>Reserve Your Free Seat</h3>
+                            <h3 className={styles.formTitle}>Reserve Your Seat</h3>
                             <p className={styles.formSub}>All fields are mandatory for certification eligibility.</p>
 
                             <div className={styles.field}>

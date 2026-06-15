@@ -113,10 +113,10 @@ export default function Programs() {
 
                         <div className={styles.ctaBox}>
                             <p className={styles.ctaText}>
-                                Learn how to qualify for capital allocation. Register for our upcoming free live workshop.
+                                Learn how to qualify for capital allocation. Register for our upcoming live workshop.
                             </p>
                             <a href="/#register" onClick={handleRegisterClick} className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                                Register for Free Workshop <ArrowRight size={16} />
+                                Register for Workshop <ArrowRight size={16} />
                             </a>
                         </div>
                     </div>

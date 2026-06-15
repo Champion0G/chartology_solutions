@@ -7,7 +7,7 @@ const navLinks = [
     { label: 'Home', href: '/#hero' },
     { label: 'About Us', href: '/about-us' },
     { label: 'Programs', href: '/programs' },
-    { label: 'Free Workshop', href: '/#register' },
+    { label: 'Live Workshop', href: '/#register' },
 ];
 
 export default function Header() {

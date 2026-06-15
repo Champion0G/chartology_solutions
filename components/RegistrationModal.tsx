@@ -76,7 +76,7 @@ export default function RegistrationModal() {
                             {/* Left Side: Session Quick Recap */}
                             <div className={styles.left}>
                                 <span className={styles.badge}>🔴 LIVE WORKSHOP</span>
-                                <h3>Free Financial Markets Masterclass</h3>
+                                <h3>Financial Markets Masterclass</h3>
                                 <p className={styles.desc}>Understand Stocks, Forex, and Crypto mechanics from institutional practitioners.</p>
 
                                 <div className={styles.details}>
@@ -101,7 +101,7 @@ export default function RegistrationModal() {
                                 <ul className={styles.benefits}>
                                     <li><Check size={14} className={styles.check} /> Live interactive Q&A</li>
                                     <li><Check size={14} className={styles.check} /> 100% Beginner Friendly</li>
-                                    <li><Check size={14} className={styles.check} /> Free Certification Participation</li>
+                                    <li><Check size={14} className={styles.check} /> Certification Participation</li>
                                 </ul>
                             </div>
 
@@ -115,7 +115,7 @@ export default function RegistrationModal() {
                                     </div>
                                 ) : (
                                     <form onSubmit={handleSubmit} noValidate className={styles.form}>
-                                        <h4 className={styles.formTitle}>Reserve Your Free Seat</h4>
+                                        <h4 className={styles.formTitle}>Reserve Your Seat</h4>
                                         
                                         <div className={styles.field}>
                                             <label htmlFor="modal-name">Full Name *</label>
