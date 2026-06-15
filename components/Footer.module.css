@@ -22,7 +22,7 @@
 }
 
 .logoImg {
-    height: 64px; /* Increased size in footer */
+    height: 76px;
     width: auto;
     display: block;
     object-fit: contain;
