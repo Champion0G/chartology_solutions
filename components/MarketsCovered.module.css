@@ -16,8 +16,8 @@
 }
 
 .card {
-    background: var(--bg-dark);
-    border: 1px solid var(--border);
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
     border-radius: var(--radius-card);
     padding: 36px;
     opacity: 0;
@@ -32,8 +32,8 @@
 
 .card:hover {
     transform: translateY(-4px);
-    border-color: rgba(225, 6, 0, 0.3);
-    box-shadow: 0 10px 30px rgba(225, 6, 0, 0.05);
+    border-color: var(--red);
+    box-shadow: 0 10px 30px rgba(225, 6, 0, 0.1);
 }
 
 .cardHeader {
@@ -44,8 +44,8 @@
 }
 
 .iconWrap {
-    background: rgba(225, 6, 0, 0.1);
-    border: 1px solid rgba(225, 6, 0, 0.25);
+    background: rgba(225, 6, 0, 0.08);
+    border: 1px solid rgba(225, 6, 0, 0.15);
     border-radius: 10px;
     padding: 12px;
     display: flex;
@@ -61,12 +61,12 @@
 .cardHeader h3 {
     font-size: 1.35rem;
     font-weight: 800;
-    color: var(--white);
+    color: #0f0f0f;
 }
 
 .subText {
     font-size: 0.85rem;
-    color: var(--muted);
+    color: #555555;
     font-weight: 500;
 }
 
@@ -81,12 +81,12 @@
     align-items: flex-start;
     gap: 12px;
     font-size: 0.95rem;
-    color: var(--muted);
+    color: #555555;
     line-height: 1.4;
 }
 
 .featureItem span {
-    color: var(--white);
+    color: #0f0f0f;
     font-weight: 500;
 }
 

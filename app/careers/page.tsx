@@ -39,12 +39,12 @@ export default function Careers() {
                                 desc: 'Help backtest systematic trading strategies, maintain databases, and prepare research sheets for cohort assignments.'
                             }
                         ].map((role) => (
-                            <div key={role.title} style={{ padding: '24px', background: 'var(--card)', border: '1px solid var(--border)', borderRadius: '10px' }}>
+                            <div key={role.title} style={{ padding: '24px', background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '10px' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '10px' }}>
-                                    <h3 style={{ color: 'var(--white)', fontSize: '1.15rem', fontWeight: '700' }}>{role.title}</h3>
+                                    <h3 style={{ color: '#0f0f0f', fontSize: '1.15rem', fontWeight: '700' }}>{role.title}</h3>
                                     <span style={{ fontSize: '0.8rem', color: 'var(--red)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{role.type}</span>
                                 </div>
-                                <p style={{ fontSize: '0.92rem', color: 'var(--muted)' }}>{role.desc}</p>
+                                <p style={{ fontSize: '0.92rem', color: '#555555' }}>{role.desc}</p>
                             </div>
                         ))}
                     </div>

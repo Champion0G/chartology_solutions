@@ -25,8 +25,8 @@
 }
 
 .card {
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
     border-radius: var(--radius-card);
     padding: 30px;
     transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -34,8 +34,8 @@
 
 .card:hover {
     transform: translateY(-4px);
-    border-color: rgba(225, 6, 0, 0.3);
-    box-shadow: 0 10px 30px rgba(225, 6, 0, 0.05);
+    border-color: var(--red);
+    box-shadow: 0 10px 30px rgba(225, 6, 0, 0.1);
 }
 
 /* Make 7th card span nicely or center align */
@@ -63,13 +63,13 @@
 .card h3 {
     font-size: 1.2rem;
     font-weight: 800;
-    color: var(--white);
+    color: #0f0f0f;
     margin-bottom: 10px;
 }
 
 .card p {
     font-size: 0.95rem;
-    color: var(--muted);
+    color: #555555;
     line-height: 1.5;
 }
 

@@ -17,8 +17,8 @@
 }
 
 .card {
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
     border-radius: var(--radius-card);
     padding: 32px;
     opacity: 0;
@@ -33,13 +33,13 @@
 
 .card:hover {
     transform: translateY(-4px);
-    border-color: rgba(225, 6, 0, 0.3);
-    box-shadow: 0 10px 30px rgba(225, 6, 0, 0.05);
+    border-color: var(--red);
+    box-shadow: 0 10px 30px rgba(225, 6, 0, 0.1);
 }
 
 .iconWrap {
-    background: rgba(225, 6, 0, 0.1);
-    border: 1px solid rgba(225, 6, 0, 0.25);
+    background: rgba(225, 6, 0, 0.08);
+    border: 1px solid rgba(225, 6, 0, 0.15);
     border-radius: 10px;
     padding: 10px;
     display: inline-flex;
@@ -55,13 +55,13 @@
 .card h3 {
     font-size: 1.25rem;
     font-weight: 800;
-    color: var(--white);
+    color: #0f0f0f;
     margin-bottom: 12px;
 }
 
 .card p {
     font-size: 0.95rem;
-    color: var(--muted);
+    color: #555555;
     line-height: 1.6;
 }
 
