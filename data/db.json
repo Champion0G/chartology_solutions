@@ -1,0 +1,499 @@
+{
+  "schedule": {
+    "date": "Upcoming Sunday",
+    "time": "11:00 AM IST",
+    "seats": 100
+  },
+  "registrations": [
+    {
+      "name": "Ayush Singh",
+      "email": "ayushkumar1601@gmail.com",
+      "phone": "1234567890",
+      "occupation": "Student",
+      "city": "Kolkata",
+      "timestamp": "2026-07-01T01:40:24.434Z"
+    },
+    {
+      "name": "Rohan Sharma",
+      "email": "rohan@gmail.com",
+      "phone": "9876543210",
+      "occupation": "Working Professional",
+      "city": "Mumbai",
+      "timestamp": "2026-06-14T10:15:30.000Z"
+    },
+    {
+      "name": "Anjali Patel",
+      "email": "anjali@student.edu",
+      "phone": "8123456789",
+      "occupation": "Student",
+      "city": "Pune",
+      "timestamp": "2026-06-14T11:22:45.000Z"
+    }
+  ],
+  "starterKitLeads": [
+    {
+      "name": "Ayush Singh",
+      "email": "ayushkumar1601@gmail.com",
+      "phone": "4444444444",
+      "timestamp": "2026-07-01T01:53:22.092Z"
+    },
+    {
+      "name": "Vikram Singh",
+      "email": "vikram@yahoo.com",
+      "phone": "7012345678",
+      "timestamp": "2026-06-14T12:05:12.000Z"
+    }
+  ],
+  "certificates": [
+    {
+      "id": "CERT-CM-TPC-6446",
+      "name": "yoyo",
+      "email": "yoyo@yoyo.yoyo",
+      "certType": "Trading Psychology Certified",
+      "code": "CM-TPC",
+      "issueDate": "2026-07-01"
+    },
+    {
+      "id": "CERT-TTP-8849",
+      "name": "Aman Kumar",
+      "email": "aman@example.com",
+      "certType": "Technical Trader Practitioner",
+      "code": "CM-TTP",
+      "issueDate": "2026-06-12"
+    },
+    {
+      "id": "CERT-PAS-5021",
+      "name": "Sanya Iyer",
+      "email": "sanya@example.com",
+      "certType": "Price Action Specialist",
+      "code": "CM-PAS",
+      "issueDate": "2026-06-14"
+    }
+  ],
+  "clickStream": [
+    {
+      "event": "starter_kit_download",
+      "path": "/",
+      "sessionId": "sess_zyk0cr8a5_1782870777951",
+      "timestamp": "2026-07-01T01:53:22.106Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/admin",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "exit_intent_trigger",
+      "path": "/",
+      "sessionId": "sess_zyk0cr8a5_1782870777951",
+      "timestamp": "2026-07-01T01:53:04.973Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/admin",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "scroll_50",
+      "path": "/",
+      "sessionId": "sess_zyk0cr8a5_1782870777951",
+      "timestamp": "2026-07-01T01:52:58.344Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/admin",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_zyk0cr8a5_1782870777951",
+      "timestamp": "2026-07-01T01:52:57.966Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/admin",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "whatsapp_click",
+      "path": "/",
+      "sessionId": "sess_h4o4qsmw1_1782868815064",
+      "timestamp": "2026-07-01T01:52:10.690Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "modal_open",
+      "path": "/",
+      "sessionId": "sess_h4o4qsmw1_1782868815064",
+      "timestamp": "2026-07-01T01:52:08.359Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {
+        "ctaId": "header_nav"
+      }
+    },
+    {
+      "event": "modal_open",
+      "path": "/",
+      "sessionId": "sess_h4o4qsmw1_1782868815064",
+      "timestamp": "2026-07-01T01:52:04.932Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {
+        "ctaId": "hero_brochure_button"
+      }
+    },
+    {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_1zwlugo2u_1782869022700",
+      "timestamp": "2026-07-01T01:41:01.551Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/about-us",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "page_view",
+      "path": "/about-us",
+      "sessionId": "sess_1zwlugo2u_1782869022700",
+      "timestamp": "2026-07-01T01:40:59.911Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/programs",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "scroll_90",
+      "path": "/",
+      "sessionId": "sess_1zwlugo2u_1782869022700",
+      "timestamp": "2026-07-01T01:40:49.325Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/about-us",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "scroll_50",
+      "path": "/",
+      "sessionId": "sess_1zwlugo2u_1782869022700",
+      "timestamp": "2026-07-01T01:40:48.827Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/about-us",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "workshop_registration",
+      "path": "/",
+      "sessionId": "sess_1zwlugo2u_1782869022700",
+      "timestamp": "2026-07-01T01:40:24.443Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/about-us",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "modal_open",
+      "path": "/",
+      "sessionId": "sess_1zwlugo2u_1782869022700",
+      "timestamp": "2026-07-01T01:40:15.975Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/about-us",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {
+        "ctaId": "header_nav"
+      }
+    },
+    {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_1zwlugo2u_1782869022700",
+      "timestamp": "2026-07-01T01:40:13.798Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/about-us",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_1zwlugo2u_1782869022700",
+      "timestamp": "2026-07-01T01:40:12.240Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/about-us",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "faq_expand",
+      "path": "/",
+      "sessionId": "sess_h4o4qsmw1_1782868815064",
+      "timestamp": "2026-07-01T01:32:55.690Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {
+        "faqQuestion": "How much time is required weekly?"
+      }
+    },
+    {
+      "event": "faq_expand",
+      "path": "/",
+      "sessionId": "sess_h4o4qsmw1_1782868815064",
+      "timestamp": "2026-07-01T01:32:53.081Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {
+        "faqQuestion": "What is the cost of the workshop?"
+      }
+    },
+    {
+      "event": "scroll_90",
+      "path": "/",
+      "sessionId": "sess_h4o4qsmw1_1782868815064",
+      "timestamp": "2026-07-01T01:32:49.311Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "scroll_50",
+      "path": "/",
+      "sessionId": "sess_h4o4qsmw1_1782868815064",
+      "timestamp": "2026-07-01T01:32:40.811Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_h4o4qsmw1_1782868815064",
+      "timestamp": "2026-07-01T01:32:24.869Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "http://localhost:3000/",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_h4o4qsmw1_1782868815064",
+      "timestamp": "2026-07-01T01:24:34.052Z"
+    },
+    {
+      "event": "page_view",
+      "path": "/about-us",
+      "sessionId": "sess_1zwlugo2u_1782869022700",
+      "timestamp": "2026-07-01T01:24:19.583Z"
+    },
+    {
+      "event": "page_view",
+      "path": "/programs",
+      "sessionId": "sess_1zwlugo2u_1782869022700",
+      "timestamp": "2026-07-01T01:24:19.254Z"
+    },
+    {
+      "event": "modal_open",
+      "path": "/",
+      "sessionId": "sess_1zwlugo2u_1782869022700",
+      "timestamp": "2026-07-01T01:24:11.996Z"
+    },
+    {
+      "event": "modal_open",
+      "path": "/",
+      "sessionId": "sess_1zwlugo2u_1782869022700",
+      "timestamp": "2026-07-01T01:24:01.052Z"
+    },
+    {
+      "event": "exit_intent_trigger",
+      "path": "/",
+      "sessionId": "sess_1zwlugo2u_1782869022700",
+      "timestamp": "2026-07-01T01:23:44.325Z"
+    },
+    {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_1zwlugo2u_1782869022700",
+      "timestamp": "2026-07-01T01:23:42.715Z"
+    },
+    {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_h4o4qsmw1_1782868815064",
+      "timestamp": "2026-07-01T01:20:20.843Z"
+    },
+    {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_h4o4qsmw1_1782868815064",
+      "timestamp": "2026-07-01T01:20:15.266Z"
+    }
+  ]
+}

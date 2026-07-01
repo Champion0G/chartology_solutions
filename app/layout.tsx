@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import RegistrationModal from '@/components/RegistrationModal';
+import AnalyticsTracker from '@/components/AnalyticsTracker';
 
 export const metadata: Metadata = {
   title: 'Chartologic — Master Financial Markets & Trading Intelligence',
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <AnalyticsTracker />
         <Header />
         {children}
         <Footer />

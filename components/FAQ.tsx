@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import styles from './FAQ.module.css';
+import { trackFunnelEvent } from '@/lib/analytics';
 
 interface FAQItem {
     q: string;
@@ -62,7 +63,13 @@ export default function FAQ() {
                             <div key={i} className={`${styles.item} ${isOpen ? styles.open : ''}`}>
                                 <button
                                     className={styles.question}
-                                    onClick={() => setOpenIndex(isOpen ? null : i)}
+                                    onClick={() => {
+                                        const nextOpen = !isOpen;
+                                        setOpenIndex(nextOpen ? i : null);
+                                        if (nextOpen) {
+                                            trackFunnelEvent('faq_expand', { faqQuestion: faq.q });
+                                        }
+                                    }}
                                     aria-expanded={isOpen}
                                 >
                                     <span>{faq.q}</span>

@@ -23,7 +23,7 @@ export default function StickyEnrollBar() {
 
     const handleRegisterClick = (e: React.MouseEvent) => {
         e.preventDefault();
-        window.dispatchEvent(new CustomEvent('open-register-modal'));
+        window.dispatchEvent(new CustomEvent('open-register-modal', { detail: { ctaId: 'floating_sticky_bar' } }));
     };
 
     return (

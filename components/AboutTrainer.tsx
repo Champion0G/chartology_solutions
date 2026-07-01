@@ -15,7 +15,7 @@ export default function AboutTrainer() {
 
     const handleRegisterClick = (e: React.MouseEvent) => {
         e.preventDefault();
-        window.dispatchEvent(new CustomEvent('open-register-modal'));
+        window.dispatchEvent(new CustomEvent('open-register-modal', { detail: { ctaId: 'mentor_section' } }));
     };
 
     return (

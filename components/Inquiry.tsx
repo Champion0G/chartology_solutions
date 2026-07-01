@@ -2,11 +2,15 @@
 import { useState, FormEvent } from 'react';
 import { Calendar, Clock, Laptop, Users2, ShieldCheck, Send, Check } from 'lucide-react';
 import styles from './Inquiry.module.css';
+import useWorkshopSchedule from '@/hooks/useWorkshopSchedule';
+import { trackFunnelEvent } from '@/lib/analytics';
 
 export default function Inquiry() {
     const [form, setForm] = useState({ name: '', email: '', phone: '', occupation: '', city: '' });
     const [errors, setErrors] = useState<Partial<typeof form>>({});
     const [sent, setSent] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
+    const { schedule } = useWorkshopSchedule();
 
     const validate = () => {
         const e: Partial<typeof form> = {};
@@ -18,12 +22,30 @@ export default function Inquiry() {
         return e;
     };
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         const errs = validate();
         setErrors(errs);
         if (Object.keys(errs).length === 0) {
-            setSent(true);
+            setSubmitting(true);
+            try {
+                const res = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(form)
+                });
+                if (res.ok) {
+                    setSent(true);
+                    trackFunnelEvent('workshop_registration');
+                } else {
+                    alert('Failed to register. Please try again.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Connection error. Please try again.');
+            } finally {
+                setSubmitting(false);
+            }
         }
     };
 
@@ -43,14 +65,14 @@ export default function Inquiry() {
                             <Calendar className={styles.detailIcon} size={20} />
                             <div>
                                 <span className={styles.detailLabel}>Date</span>
-                                <span className={styles.detailVal}>Upcoming Sunday</span>
+                                <span className={styles.detailVal}>{schedule.date}</span>
                             </div>
                         </div>
                         <div className={styles.detailItem}>
                             <Clock className={styles.detailIcon} size={20} />
                             <div>
                                 <span className={styles.detailLabel}>Time</span>
-                                <span className={styles.detailVal}>11:00 AM IST</span>
+                                <span className={styles.detailVal}>{schedule.time}</span>
                             </div>
                         </div>
                         <div className={styles.detailItem}>
@@ -64,7 +86,7 @@ export default function Inquiry() {
                             <Users2 className={styles.detailIcon} size={20} />
                             <div>
                                 <span className={styles.detailLabel}>Seats Available</span>
-                                <span className={styles.detailVal} style={{ color: 'var(--red)', fontWeight: '700' }}>Limited to 100 Learners</span>
+                                <span className={styles.detailVal} style={{ color: 'var(--red)', fontWeight: '700' }}>Limited to {schedule.seats} Learners</span>
                             </div>
                         </div>
                     </div>

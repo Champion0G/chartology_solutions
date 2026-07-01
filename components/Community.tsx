@@ -8,7 +8,7 @@ export default function Community() {
 
     const handleRegisterClick = (e: React.MouseEvent) => {
         e.preventDefault();
-        window.dispatchEvent(new CustomEvent('open-register-modal'));
+        window.dispatchEvent(new CustomEvent('open-register-modal', { detail: { ctaId: 'community_section' } }));
     };
 
     return (

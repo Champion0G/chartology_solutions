@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { X, ArrowRight, Gift } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './ExitIntentPopup.module.css';
+import { trackFunnelEvent } from '@/lib/analytics';
 
 export default function ExitIntentPopup() {
     const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,7 @@ export default function ExitIntentPopup() {
                 setIsOpen(true);
                 sessionStorage.setItem('exit_intent_seen', 'true');
                 document.removeEventListener('mouseleave', handleMouseLeave);
+                trackFunnelEvent('exit_intent_trigger');
             }
         };
 
@@ -27,6 +29,7 @@ export default function ExitIntentPopup() {
             if (!hasSeenDelayed) {
                 setIsOpen(true);
                 sessionStorage.setItem('exit_intent_seen', 'true');
+                trackFunnelEvent('exit_intent_trigger');
             }
         }, 50000); // 50 seconds fallback
 
@@ -40,13 +43,27 @@ export default function ExitIntentPopup() {
 
     const closePopup = () => setIsOpen(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (form.name.trim() && form.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) && form.phone.match(/^[0-9]{10}$/)) {
-            setSubmitted(true);
-            setTimeout(() => {
-                setIsOpen(false);
-            }, 3000);
+            try {
+                const res = await fetch('/api/starter-kit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(form)
+                });
+                if (res.ok) {
+                    setSubmitted(true);
+                    trackFunnelEvent('starter_kit_download');
+                    setTimeout(() => {
+                        setIsOpen(false);
+                    }, 3000);
+                } else {
+                    alert('Submission failed. Please try again.');
+                }
+            } catch (err) {
+                console.error(err);
+            }
         }
     };
 

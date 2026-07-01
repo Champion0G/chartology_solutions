@@ -4,7 +4,7 @@ import styles from './CTABanner.module.css';
 export default function CTABanner() {
     const handleRegisterClick = (e: React.MouseEvent) => {
         e.preventDefault();
-        window.dispatchEvent(new CustomEvent('open-register-modal'));
+        window.dispatchEvent(new CustomEvent('open-register-modal', { detail: { ctaId: 'bottom_cta_banner' } }));
     };
 
     return (

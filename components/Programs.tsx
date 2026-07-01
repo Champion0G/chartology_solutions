@@ -41,7 +41,7 @@ export default function Programs() {
 
     const handleRegisterClick = (e: React.MouseEvent) => {
         e.preventDefault();
-        window.dispatchEvent(new CustomEvent('open-register-modal'));
+        window.dispatchEvent(new CustomEvent('open-register-modal', { detail: { ctaId: 'programs_page_residency' } }));
     };
 
     return (

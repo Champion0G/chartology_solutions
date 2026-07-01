@@ -22,7 +22,12 @@ export default function Hero() {
 
     const handleRegisterClick = (e: React.MouseEvent) => {
         e.preventDefault();
-        window.dispatchEvent(new CustomEvent('open-register-modal'));
+        window.dispatchEvent(new CustomEvent('open-register-modal', { detail: { ctaId: 'hero_primary_button' } }));
+    };
+
+    const handleBrochureClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        window.dispatchEvent(new CustomEvent('open-register-modal', { detail: { ctaId: 'hero_brochure_button' } }));
     };
 
     return (
@@ -60,7 +65,7 @@ export default function Hero() {
                         <a href="#register" onClick={handleRegisterClick} className={styles.btnPrimary}>
                             Reserve My Workshop Seat
                         </a>
-                        <a href="#register" onClick={handleRegisterClick} className={styles.btnOutline}>
+                        <a href="#register" onClick={handleBrochureClick} className={styles.btnOutline}>
                             📘 Download Program Brochure <ArrowRight size={17} />
                         </a>
                     </div>

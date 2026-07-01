@@ -4,7 +4,10 @@ export default function Sitemap() {
     const pages = [
         { name: 'Home Page', href: '/' },
         { name: 'About Us', href: '/about-us' },
+        { name: 'Programs', href: '/programs' },
         { name: 'Careers', href: '/careers' },
+        { name: 'Admin Portal', href: '/admin' },
+        { name: 'Credential Verification', href: '/verify' },
         { name: 'Privacy Policy', href: '/privacy-policy' },
         { name: 'Terms & Conditions', href: '/terms-and-conditions' },
         { name: 'Refund Policy', href: '/refund-policy' },

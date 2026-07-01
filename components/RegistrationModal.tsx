@@ -3,20 +3,26 @@ import { useState, useEffect, FormEvent } from 'react';
 import { X, Send, Calendar, Clock, Laptop, Users2, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './RegistrationModal.module.css';
+import useWorkshopSchedule from '@/hooks/useWorkshopSchedule';
+import { trackFunnelEvent } from '@/lib/analytics';
 
 export default function RegistrationModal() {
     const [isOpen, setIsOpen] = useState(false);
     const [form, setForm] = useState({ name: '', email: '', phone: '', occupation: '', city: '' });
     const [errors, setErrors] = useState<Partial<typeof form>>({});
     const [sent, setSent] = useState(false);
+    const { schedule } = useWorkshopSchedule();
 
     useEffect(() => {
-        const handleOpen = () => {
+        const handleOpen = (e: Event) => {
+            const customEvent = e as CustomEvent;
+            const ctaId = customEvent.detail?.ctaId || 'direct';
             setIsOpen(true);
             setSent(false);
             setForm({ name: '', email: '', phone: '', occupation: '', city: '' });
             setErrors({});
             document.body.style.overflow = 'hidden';
+            trackFunnelEvent('modal_open', { ctaId });
         };
 
         window.addEventListener('open-register-modal', handleOpen);
@@ -38,12 +44,27 @@ export default function RegistrationModal() {
         return e;
     };
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         const errs = validate();
         setErrors(errs);
         if (Object.keys(errs).length === 0) {
-            setSent(true);
+            try {
+                const res = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(form)
+                });
+                if (res.ok) {
+                    setSent(true);
+                    trackFunnelEvent('workshop_registration');
+                } else {
+                    alert('Registration failed. Please try again.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Connection error. Please try again.');
+            }
         }
     };
 
@@ -82,11 +103,11 @@ export default function RegistrationModal() {
                                 <div className={styles.details}>
                                     <div className={styles.detail}>
                                         <Calendar size={16} className={styles.icon} />
-                                        <span>Upcoming Sunday</span>
+                                        <span>{schedule.date}</span>
                                     </div>
                                     <div className={styles.detail}>
                                         <Clock size={16} className={styles.icon} />
-                                        <span>11:00 AM IST (2 Hours)</span>
+                                        <span>{schedule.time} (2 Hours)</span>
                                     </div>
                                     <div className={styles.detail}>
                                         <Laptop size={16} className={styles.icon} />
@@ -94,7 +115,7 @@ export default function RegistrationModal() {
                                     </div>
                                     <div className={styles.detail}>
                                         <Users2 size={16} className={styles.icon} />
-                                        <span style={{ color: 'var(--red)', fontWeight: '700' }}>Limited to 100 Seats</span>
+                                        <span style={{ color: 'var(--red)', fontWeight: '700' }}>Limited to {schedule.seats} Seats</span>
                                     </div>
                                 </div>
 
@@ -111,7 +132,7 @@ export default function RegistrationModal() {
                                     <div className={styles.success}>
                                         <span className={styles.successEmoji}>🎉</span>
                                         <h4>Seat Reserved!</h4>
-                                        <p>We sent the live links and calendar invites to {form.email}. See you on Sunday!</p>
+                                        <p>We sent the live links and calendar invites to {form.email}. See you at the workshop!</p>
                                     </div>
                                 ) : (
                                     <form onSubmit={handleSubmit} noValidate className={styles.form}>

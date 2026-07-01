@@ -1,0 +1,242 @@
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 140px 24px 80px 24px;
+    min-height: 85vh;
+}
+
+.title {
+    color: var(--white);
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.sub {
+    color: var(--muted);
+    font-size: 0.95rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Search Box */
+.searchBox {
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow-card);
+}
+
+.form {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: var(--white);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    min-width: 250px;
+}
+
+.input:focus {
+    border-color: var(--red);
+}
+
+.button {
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    padding: 14px 28px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+
+.button:hover {
+    background: var(--red-hover);
+}
+
+/* Certificate Card */
+.certCard {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--radius-card);
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 24px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logoImg {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
+.statusBadge {
+    background: rgba(34, 197, 94, 0.08);
+    border: 1.5px solid rgba(34, 197, 94, 0.2);
+    border-radius: 20px;
+    padding: 6px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #22c55e;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.cardBody {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.badgeIcon {
+    color: var(--red);
+    margin-bottom: 16px;
+}
+
+.certTitle {
+    color: #0f0f0f;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.certCode {
+    background: rgba(225, 6, 0, 0.08);
+    color: var(--red);
+    border: 1px solid rgba(225, 6, 0, 0.15);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
+.recipientText {
+    color: #555555;
+    font-size: 1rem;
+    margin-bottom: 6px;
+}
+
+.recipientName {
+    color: #0f0f0f;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+}
+
+.cardFooter {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-top: 2px solid #f1f5f9;
+    padding-top: 24px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footerCol {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.footerLabel {
+    color: #888888;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.footerVal {
+    color: #0f0f0f;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+/* Security BG patterns */
+.certCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--red);
+}
+
+/* Error States */
+.errorCard {
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 40px;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+}
+
+.errorTitle {
+    color: var(--white);
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+.errorDesc {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+@media (max-width: 576px) {
+    .certCard {
+        padding: 24px;
+    }
+    .cardHeader {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .cardFooter {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
