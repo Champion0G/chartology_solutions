@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { 
     Users, Download, RefreshCw, Calendar, Clock, 
     Award, ShieldCheck, Mail, Phone, MapPin, 
-    Lock, CheckCircle2, ChevronRight, LogOut 
+    Lock, CheckCircle2, ChevronRight, LogOut, Info 
 } from 'lucide-react';
 import styles from './admin.module.css';
 
@@ -24,6 +24,12 @@ export default function AdminDashboard() {
     const [loading, setLoading] = useState(true);
     const [savingSchedule, setSavingSchedule] = useState(false);
 
+    // Time filter & Info Popover states
+    const [timeRange, setTimeRange] = useState<'all' | 'today' | '7days' | '30days' | 'custom'>('all');
+    const [customStartDate, setCustomStartDate] = useState('');
+    const [customEndDate, setCustomEndDate] = useState('');
+    const [infoPopover, setInfoPopover] = useState<{ title: string; description: string } | null>(null);
+
     // Form state for Certificate
     const [certForm, setCertForm] = useState({
         name: '',
@@ -41,6 +47,25 @@ export default function AdminDashboard() {
     const [certSearch, setCertSearch] = useState('');
     const [funnelSearch, setFunnelSearch] = useState('');
     const [funnelEventFilter, setFunnelEventFilter] = useState('');
+
+    const handleInfoClick = (parameter: string) => {
+        const explanations: Record<string, string> = {
+            'Workshop Registrants': 'Shows the total number of students and working professionals who reserved a seat for the upcoming live masterclass. Clicking this box opens the Workshop Leads list.',
+            'Starter Kit Leads': 'Measures the number of high-intent visitors who submitted the exit intent form to download the Free Financial Markets Starter Kit. Clicking this box opens the Exit Popup Leads list.',
+            'Working Professional Ratio': 'Shows the percentage of total workshop registrants who identify as Working Professionals. Clicking this box filters the Workshop Leads list for professionals.',
+            'Student Ratio': 'Shows the percentage of total workshop registrants who identify as College/University Students. Clicking this box filters the Workshop Leads list for students.',
+            'System Status': 'Displays an overview of the server-side database status, API connections, and the scheduled date/time for the upcoming live session.',
+            'Workshop Schedule': 'An administrative form to change the live session date, start time, and available seat limits dynamically across all enrollment forms on the site.',
+            'Workshop Leads': 'A tabular database of all workshop seat registrations including name, contact details, occupation status, registration timestamp, and direct CSV exporting.',
+            'Exit Popup Leads': 'A database of leads captured from the exit-intent popup. Helpful for identifying users interested in starter materials who can be retargeted via campaigns.',
+            'Funnel Analytics': 'A detailed user acquisition flow dashboard. Visualizes page views, modal open click-through rates, and device/OS clickstream tracking details.',
+            'Certifications': 'A registry dashboard to issue verifiable student completion certificates and audit issued credentials.'
+        };
+        setInfoPopover({
+            title: parameter,
+            description: explanations[parameter] || 'Operational parameter details.'
+        });
+    };
 
     useEffect(() => {
         const storedAuth = sessionStorage.getItem('admin_authenticated');
@@ -217,8 +242,47 @@ export default function AdminDashboard() {
         document.body.removeChild(link);
     };
 
+    // Timeframe filter helper
+    const filterByTimeRange = <T extends { timestamp?: string; issueDate?: string }>(items: T[]): T[] => {
+        if (timeRange === 'all') return items;
+        const now = new Date();
+        const cutoff = new Date();
+        if (timeRange === 'today') {
+            cutoff.setHours(0, 0, 0, 0);
+        } else if (timeRange === '7days') {
+            cutoff.setDate(now.getDate() - 7);
+        } else if (timeRange === '30days') {
+            cutoff.setDate(now.getDate() - 30);
+        } else if (timeRange === 'custom') {
+            const start = customStartDate ? new Date(customStartDate) : null;
+            if (start) start.setHours(0, 0, 0, 0);
+            
+            const end = customEndDate ? new Date(customEndDate) : null;
+            if (end) end.setHours(23, 59, 59, 999);
+            
+            return items.filter(item => {
+                const dateStr = item.timestamp || item.issueDate;
+                if (!dateStr) return true;
+                const d = new Date(dateStr);
+                if (start && d < start) return false;
+                if (end && d > end) return false;
+                return true;
+            });
+        }
+        return items.filter(item => {
+            const dateStr = item.timestamp || item.issueDate;
+            if (!dateStr) return true;
+            return new Date(dateStr) >= cutoff;
+        });
+    };
+
+    const timeFilteredRegs = filterByTimeRange(registrations);
+    const timeFilteredStarters = filterByTimeRange(starterKitLeads);
+    const timeFilteredCerts = filterByTimeRange(certificates);
+    const timeFilteredClickStream = filterByTimeRange(clickStream);
+
     // Filters
-    const filteredRegs = registrations.filter(r => {
+    const filteredRegs = timeFilteredRegs.filter(r => {
         const matchSearch = r.name.toLowerCase().includes(regSearch.toLowerCase()) || 
                             r.email.toLowerCase().includes(regSearch.toLowerCase()) || 
                             r.city.toLowerCase().includes(regSearch.toLowerCase());
@@ -226,18 +290,18 @@ export default function AdminDashboard() {
         return matchSearch && matchOcc;
     });
 
-    const filteredStarters = starterKitLeads.filter(s => {
+    const filteredStarters = timeFilteredStarters.filter(s => {
         return s.name.toLowerCase().includes(starterSearch.toLowerCase()) || 
                s.email.toLowerCase().includes(starterSearch.toLowerCase());
     });
 
-    const filteredCerts = certificates.filter(c => {
+    const filteredCerts = timeFilteredCerts.filter(c => {
         return c.name.toLowerCase().includes(certSearch.toLowerCase()) || 
                c.email.toLowerCase().includes(certSearch.toLowerCase()) ||
                c.id.toLowerCase().includes(certSearch.toLowerCase());
     });
 
-    const filteredClickStream = clickStream.filter(e => {
+    const filteredClickStream = timeFilteredClickStream.filter(e => {
         const matchSearch = e.sessionId.toLowerCase().includes(funnelSearch.toLowerCase()) ||
                             e.event.toLowerCase().includes(funnelSearch.toLowerCase()) ||
                             e.path.toLowerCase().includes(funnelSearch.toLowerCase());
@@ -246,22 +310,22 @@ export default function AdminDashboard() {
     });
 
     // Clickstream Calculations
-    const uniqueSessionIds = new Set(clickStream.map(e => e.sessionId));
+    const uniqueSessionIds = new Set(timeFilteredClickStream.map(e => e.sessionId));
     const totalUniqueVisitors = uniqueSessionIds.size;
-    const pageViewEvents = clickStream.filter(e => e.event === 'page_view');
+    const pageViewEvents = timeFilteredClickStream.filter(e => e.event === 'page_view');
     const totalPageViews = pageViewEvents.length;
-    const modalOpenEvents = clickStream.filter(e => e.event === 'modal_open');
+    const modalOpenEvents = timeFilteredClickStream.filter(e => e.event === 'modal_open');
     const totalModalOpens = modalOpenEvents.length;
     const uniqueModalOpens = new Set(modalOpenEvents.map(e => e.sessionId)).size;
-    const registrationEvents = clickStream.filter(e => e.event === 'workshop_registration');
+    const registrationEvents = timeFilteredClickStream.filter(e => e.event === 'workshop_registration');
     const totalRegistrationsTracked = registrationEvents.length;
     const uniqueRegistrants = new Set(registrationEvents.map(e => e.sessionId)).size;
 
-    const exitIntentTriggerEvents = clickStream.filter(e => e.event === 'exit_intent_trigger');
+    const exitIntentTriggerEvents = timeFilteredClickStream.filter(e => e.event === 'exit_intent_trigger');
     const totalExitTriggers = exitIntentTriggerEvents.length;
     const uniqueExitTriggers = new Set(exitIntentTriggerEvents.map(e => e.sessionId)).size;
 
-    const starterKitDownloadEvents = clickStream.filter(e => e.event === 'starter_kit_download');
+    const starterKitDownloadEvents = timeFilteredClickStream.filter(e => e.event === 'starter_kit_download');
     const totalDownloadsTracked = starterKitDownloadEvents.length;
     const uniqueDownloads = new Set(starterKitDownloadEvents.map(e => e.sessionId)).size;
 
@@ -272,12 +336,15 @@ export default function AdminDashboard() {
     const exitConversionRate = uniqueExitTriggers > 0 ? Math.round((uniqueDownloads / uniqueExitTriggers) * 100) : 0;
 
     // Stats calculations
-    const totalWorkshopLeads = registrations.length;
-    const totalStarterLeads = starterKitLeads.length;
-    const totalCerts = certificates.length;
+    const totalWorkshopLeads = timeFilteredRegs.length;
+    const totalStarterLeads = timeFilteredStarters.length;
+    const totalCerts = timeFilteredCerts.length;
     
-    const studentCount = registrations.filter(r => r.occupation === 'Student').length;
+    const studentCount = timeFilteredRegs.filter(r => r.occupation === 'Student').length;
     const studentRatio = totalWorkshopLeads > 0 ? Math.round((studentCount / totalWorkshopLeads) * 100) : 0;
+
+    const professionalCount = timeFilteredRegs.filter(r => r.occupation === 'Working Professional').length;
+    const professionalRatio = totalWorkshopLeads > 0 ? Math.round((professionalCount / totalWorkshopLeads) * 100) : 0;
 
     if (!isAuth) {
         return (
@@ -317,46 +384,131 @@ export default function AdminDashboard() {
                     <h1 className={styles.title}>Chartologic Operations</h1>
                     <p style={{ color: 'var(--muted)', marginTop: '4px' }}>Administrative and analytical center.</p>
                 </div>
-                <button onClick={handleLogout} className={styles.logoutBtn}>
-                    <LogOut size={14} style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Sign Out
-                </button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                        <span style={{ fontSize: '0.85rem', color: 'var(--muted)', fontWeight: '600' }}>Timeframe:</span>
+                        <select 
+                            value={timeRange} 
+                            onChange={(e) => setTimeRange(e.target.value as any)}
+                            className={styles.input}
+                            style={{ background: 'var(--bg-dark)', padding: '6px 12px', fontSize: '0.85rem', border: '1px solid var(--border)', borderRadius: '6px', color: 'var(--white)', width: 'auto' }}
+                        >
+                            <option value="all">All Time</option>
+                            <option value="today">Today</option>
+                            <option value="7days">Last 7 Days</option>
+                            <option value="30days">Last 30 Days</option>
+                            <option value="custom">Custom Range...</option>
+                        </select>
+
+                        {timeRange === 'custom' && (
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                <input 
+                                    type="date" 
+                                    value={customStartDate} 
+                                    onChange={(e) => setCustomStartDate(e.target.value)}
+                                    className={styles.input}
+                                    style={{ background: 'var(--bg-dark)', padding: '4px 8px', fontSize: '0.8rem', border: '1px solid var(--border)', borderRadius: '6px', color: 'var(--white)', width: 'auto' }}
+                                />
+                                <span style={{ color: 'var(--muted)', fontSize: '0.75rem' }}>to</span>
+                                <input 
+                                    type="date" 
+                                    value={customEndDate} 
+                                    onChange={(e) => setCustomEndDate(e.target.value)}
+                                    className={styles.input}
+                                    style={{ background: 'var(--bg-dark)', padding: '4px 8px', fontSize: '0.8rem', border: '1px solid var(--border)', borderRadius: '6px', color: 'var(--white)', width: 'auto' }}
+                                />
+                            </div>
+                        )}
+                    </div>
+                    <button onClick={handleLogout} className={styles.logoutBtn}>
+                        <LogOut size={14} style={{ marginRight: '6px', verticalAlign: 'middle' }} /> Sign Out
+                    </button>
+                </div>
             </div>
 
             {/* Statistics */}
             <div className={styles.statsGrid}>
-                <div className={styles.statCard}>
+                <div className={`${styles.statCard} ${styles.clickableCard}`} onClick={() => { setActiveTab('workshop'); setRegOccFilter(''); }}>
                     <div className={styles.statIconWrap}>
                         <Users size={20} />
                     </div>
                     <div>
-                        <span className={styles.statLabel}>Workshop Registrants</span>
+                        <span className={styles.statLabel} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            Workshop Registrants
+                            <button 
+                                className={styles.infoBtn} 
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleInfoClick('Workshop Registrants');
+                                }}
+                                aria-label="More information"
+                            >
+                                <Info size={14} />
+                            </button>
+                        </span>
                         <span className={styles.statVal}>{totalWorkshopLeads}</span>
                     </div>
                 </div>
-                <div className={styles.statCard}>
+                <div className={`${styles.statCard} ${styles.clickableCard}`} onClick={() => { setActiveTab('starter'); }}>
                     <div className={styles.statIconWrap}>
                         <Download size={20} />
                     </div>
                     <div>
-                        <span className={styles.statLabel}>Starter Kit Leads</span>
+                        <span className={styles.statLabel} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            Starter Kit Leads
+                            <button 
+                                className={styles.infoBtn} 
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleInfoClick('Starter Kit Leads');
+                                }}
+                                aria-label="More information"
+                            >
+                                <Info size={14} />
+                            </button>
+                        </span>
                         <span className={styles.statVal}>{totalStarterLeads}</span>
                     </div>
                 </div>
-                <div className={styles.statCard}>
+                <div className={`${styles.statCard} ${styles.clickableCard}`} onClick={() => { setActiveTab('workshop'); setRegOccFilter('Working Professional'); }}>
                     <div className={styles.statIconWrap}>
                         <Award size={20} />
                     </div>
                     <div>
-                        <span className={styles.statLabel}>Issued Certificates</span>
-                        <span className={styles.statVal}>{totalCerts}</span>
+                        <span className={styles.statLabel} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            Working Professional Ratio
+                            <button 
+                                className={styles.infoBtn} 
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleInfoClick('Working Professional Ratio');
+                                }}
+                                aria-label="More information"
+                            >
+                                <Info size={14} />
+                            </button>
+                        </span>
+                        <span className={styles.statVal}>{professionalRatio}% Pro</span>
                     </div>
                 </div>
-                <div className={styles.statCard}>
+                <div className={`${styles.statCard} ${styles.clickableCard}`} onClick={() => { setActiveTab('workshop'); setRegOccFilter('Student'); }}>
                     <div className={styles.statIconWrap}>
                         <ShieldCheck size={20} />
                     </div>
                     <div>
-                        <span className={styles.statLabel}>Student Ratio</span>
+                        <span className={styles.statLabel} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            Student Ratio
+                            <button 
+                                className={styles.infoBtn} 
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleInfoClick('Student Ratio');
+                                }}
+                                aria-label="More information"
+                            >
+                                <Info size={14} />
+                            </button>
+                        </span>
                         <span className={styles.statVal}>{studentRatio}% Student</span>
                     </div>
                 </div>
@@ -368,37 +520,97 @@ export default function AdminDashboard() {
                     className={`${styles.tabBtn} ${activeTab === 'overview' ? styles.activeTab : ''}`}
                     onClick={() => setActiveTab('overview')}
                 >
-                    System Status
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        System Status
+                        <Info 
+                            size={12} 
+                            style={{ cursor: 'pointer', opacity: 0.6 }} 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleInfoClick('System Status');
+                            }} 
+                        />
+                    </span>
                 </button>
                 <button 
                     className={`${styles.tabBtn} ${activeTab === 'schedule' ? styles.activeTab : ''}`}
                     onClick={() => setActiveTab('schedule')}
                 >
-                    Workshop Schedule
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        Workshop Schedule
+                        <Info 
+                            size={12} 
+                            style={{ cursor: 'pointer', opacity: 0.6 }} 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleInfoClick('Workshop Schedule');
+                            }} 
+                        />
+                    </span>
                 </button>
                 <button 
                     className={`${styles.tabBtn} ${activeTab === 'workshop' ? styles.activeTab : ''}`}
                     onClick={() => setActiveTab('workshop')}
                 >
-                    Workshop Leads ({totalWorkshopLeads})
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        Workshop Leads ({totalWorkshopLeads})
+                        <Info 
+                            size={12} 
+                            style={{ cursor: 'pointer', opacity: 0.6 }} 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleInfoClick('Workshop Leads');
+                            }} 
+                        />
+                    </span>
                 </button>
                 <button 
                     className={`${styles.tabBtn} ${activeTab === 'starter' ? styles.activeTab : ''}`}
                     onClick={() => setActiveTab('starter')}
                 >
-                    Exit Popup Leads ({totalStarterLeads})
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        Exit Popup Leads ({totalStarterLeads})
+                        <Info 
+                            size={12} 
+                            style={{ cursor: 'pointer', opacity: 0.6 }} 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleInfoClick('Exit Popup Leads');
+                            }} 
+                        />
+                    </span>
                 </button>
                 <button 
                     className={`${styles.tabBtn} ${activeTab === 'funnel' ? styles.activeTab : ''}`}
                     onClick={() => setActiveTab('funnel')}
                 >
-                    Funnel Analytics
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        Funnel Analytics
+                        <Info 
+                            size={12} 
+                            style={{ cursor: 'pointer', opacity: 0.6 }} 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleInfoClick('Funnel Analytics');
+                            }} 
+                        />
+                    </span>
                 </button>
                 <button 
                     className={`${styles.tabBtn} ${activeTab === 'certs' ? styles.activeTab : ''}`}
                     onClick={() => setActiveTab('certs')}
                 >
-                    Certifications ({totalCerts})
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        Certifications ({totalCerts})
+                        <Info 
+                            size={12} 
+                            style={{ cursor: 'pointer', opacity: 0.6 }} 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleInfoClick('Certifications');
+                            }} 
+                        />
+                    </span>
                 </button>
             </div>
 
@@ -980,6 +1192,20 @@ export default function AdminDashboard() {
                         </div>
                     )}
                 </>
+            )}
+
+            {infoPopover && (
+                <div className={styles.infoModalOverlay} onClick={() => setInfoPopover(null)}>
+                    <div className={styles.infoModal} onClick={(e) => e.stopPropagation()}>
+                        <h3 className={styles.infoModalTitle}>
+                            <Info size={20} style={{ color: 'var(--red)' }} /> {infoPopover.title}
+                        </h3>
+                        <p className={styles.infoModalDesc}>{infoPopover.description}</p>
+                        <button className={styles.button} onClick={() => setInfoPopover(null)} style={{ width: '100%', justifyContent: 'center', display: 'flex' }}>
+                            Acknowledge
+                        </button>
+                    </div>
+                </div>
             )}
         </main>
     );
