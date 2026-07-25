@@ -14,7 +14,7 @@ export default function Testimonials() {
             role: 'B.Com Student, Delhi University',
             skills: 'Cleared CM-PAS Exam',
             thumb: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=480&q=80&auto=format',
-            videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            videoUrl: 'https://www.youtube.com/embed/g6iAABykS4E',
             duration: '1m 45s'
         },
         {
@@ -22,7 +22,7 @@ export default function Testimonials() {
             role: 'Software Architect, Bangalore',
             skills: 'CM-RMA Risk Certified',
             thumb: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=480&q=80&auto=format',
-            videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            videoUrl: 'https://www.youtube.com/embed/SF7p9S5fVb0',
             duration: '2m 10s'
         },
         {
@@ -30,7 +30,7 @@ export default function Testimonials() {
             role: 'Business Consultant, Mumbai',
             skills: 'Portfolio Allocation Builder',
             thumb: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=480&q=80&auto=format',
-            videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            videoUrl: 'https://www.youtube.com/embed/7hP5nZ0eFEE',
             duration: '3m 05s'
         }
     ];
@@ -40,23 +40,21 @@ export default function Testimonials() {
             name: 'Ankit Verma',
             title: 'Systems Analyst at TCS',
             quote: 'Chartologic replaced my speculative trading habits with a scientific, backtested execution strategy. The risk modules are absolute gold for corporate professionals planning long-term capital stability.',
-            avatar: 'AV',
-            avatarBg: '#0e76a8'
+            avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&q=80'
         },
         {
             name: 'Sneha Rao',
             title: 'MBA Student, IIM Bangalore',
             quote: 'The structured 8-module timeline is incredibly thorough. I cleared my institutional NISM certification assessments easily after completing their price action and risk modules. Highly structured!',
-            avatar: 'SR',
-            avatarBg: '#0072b1'
+            avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&q=80'
         }
     ];
 
     const studentTestimonials = [
-        { name: 'Rahul Mehta', role: 'Delhi', quote: 'The interactive sessions are outstanding. The mentors break down order flow concepts logically. Best investment in financial education.' },
-        { name: 'Ananya Patel', role: 'Bangalore', quote: 'I was skeptical, but the curriculum builds real confidence. Excellent support channels and assignments.' },
-        { name: 'Vikram Singh', role: 'Pune', quote: 'Discipline models in Module 4 completely transformed my execution. The position sizing templates are highly practical.' },
-        { name: 'Neha Kapoor', role: 'Hyderabad', quote: 'Reading raw market structure instead of lagging indicators has given me massive clarity. The curriculum is extremely detailed.' }
+        { name: 'Rahul Mehta', role: 'Delhi', quote: 'The interactive sessions are outstanding. The mentors break down order flow concepts logically. Best investment in financial education.', avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&q=80' },
+        { name: 'Ananya Patel', role: 'Bangalore', quote: 'I was skeptical, but the curriculum builds real confidence. Excellent support channels and assignments.', avatarUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&q=80' },
+        { name: 'Vikram Singh', role: 'Pune', quote: 'Discipline models in Module 4 completely transformed my execution. The position sizing templates are highly practical.', avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&q=80' },
+        { name: 'Neha Kapoor', role: 'Hyderabad', quote: 'Reading raw market structure instead of lagging indicators has given me massive clarity. The curriculum is extremely detailed.', avatarUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&q=80' }
     ];
 
     return (
@@ -112,8 +110,8 @@ export default function Testimonials() {
                         {linkedinRecs.map((l) => (
                             <div key={l.name} className={styles.linkedinCard}>
                                 <div className={styles.linkedinHeader}>
-                                    <div className={styles.avatar} style={{ background: l.avatarBg }}>
-                                        {l.avatar}
+                                    <div className={styles.avatar} style={{ overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <img src={l.avatarUrl} alt={l.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                     </div>
                                     <div>
                                         <h4>{l.name}</h4>
@@ -140,8 +138,8 @@ export default function Testimonials() {
                                 </div>
                                 <p className={styles.writtenQuote}>"{s.quote}"</p>
                                 <div className={styles.writtenAuthor}>
-                                    <div className={styles.userIconWrap}>
-                                        <User size={14} />
+                                    <div className={styles.userIconWrap} style={{ overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'none', border: 'none' }}>
+                                        <img src={s.avatarUrl} alt={s.name} style={{ width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover' }} />
                                     </div>
                                     <div>
                                         <span className={styles.writtenName}>{s.name}</span>

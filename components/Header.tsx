@@ -46,7 +46,7 @@ export default function Header() {
 
                     {/* Desktop CTA */}
                     <div className={styles.ctas}>
-                        <a href="/#register" onClick={handleRegisterClick} className="btn-primary" style={{ padding: '10px 22px' }}>Reserve Seat</a>
+                        <a href="/#register" onClick={handleRegisterClick} className={`btn-primary ${styles.blinkBtn}`} style={{ padding: '10px 22px' }}>Reserve Seat</a>
                     </div>
 
                     {/* Hamburger */}
@@ -68,7 +68,7 @@ export default function Header() {
                         <a key={l.label} href={l.href} className={styles.drawerLink} onClick={closeMenu}>{l.label}</a>
                     ))}
                     <div className={styles.drawerCtas}>
-                        <a href="/#register" className="btn-primary" onClick={handleRegisterClick} style={{ width: '100%', justifyContent: 'center' }}>Reserve Seat</a>
+                        <a href="/#register" className={`btn-primary ${styles.blinkBtn}`} onClick={handleRegisterClick} style={{ width: '100%', justifyContent: 'center' }}>Reserve Seat</a>
                     </div>
                 </nav>
             </div>

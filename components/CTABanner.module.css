@@ -1,9 +1,9 @@
 .section {
-    background: linear-gradient(135deg, var(--red) 0%, var(--red-hover) 100%);
+    background: linear-gradient(135deg, #050505 0%, #1c0202 60%, var(--red) 100%);
     padding: 90px 0;
     text-align: center;
-    border-top: none;
-    border-bottom: none;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .inner {

@@ -1,10 +1,16 @@
 'use client';
-import { Briefcase, BarChart, BookOpen, MessageSquare, Megaphone, AlertCircle } from 'lucide-react';
+import { useState } from 'react';
+import { Briefcase, BarChart, BookOpen, MessageSquare, Megaphone, AlertCircle, ChevronDown } from 'lucide-react';
 import styles from './Internships.module.css';
 import useScrollReveal from '@/hooks/useScrollReveal';
 
 export default function Internships() {
     const { ref, visible } = useScrollReveal();
+    const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
+
+    const toggleExpand = (idx: number) => {
+        setExpandedIdx(expandedIdx === idx ? null : idx);
+    };
 
     const roles = [
         { icon: Briefcase, title: 'Business Development', desc: 'Work on partnership channels, outreach strategies, and corporate client relations.' },
@@ -25,17 +31,29 @@ export default function Internships() {
                     </p>
                 </div>
 
-                <div className={`${styles.grid} ${visible ? styles.visible : ''}`}>
+                <div className={`${styles.list} ${visible ? styles.visible : ''}`}>
                     {roles.map((r, i) => {
                         const Icon = r.icon;
+                        const isExpanded = expandedIdx === i;
                         return (
-                            <div key={r.title} className={styles.card}>
-                                <div className={styles.iconWrap}>
-                                    <Icon size={20} className={styles.icon} />
+                            <div key={r.title} className={styles.item} onClick={() => toggleExpand(i)}>
+                                <div className={styles.itemHeader}>
+                                    <div className={styles.numWrap}>
+                                        <span className={styles.number}>0{i + 1}</span>
+                                    </div>
+                                    <div className={styles.iconWrap}>
+                                        <Icon size={20} className={styles.icon} />
+                                    </div>
+                                    <h3 className={styles.roleTitle}>{r.title}</h3>
+                                    <button 
+                                        className={`${styles.chevronBtn} ${isExpanded ? styles.expanded : ''}`}
+                                        aria-label="Toggle description"
+                                    >
+                                        <ChevronDown size={20} />
+                                    </button>
                                 </div>
-                                <div>
-                                    <h3>{r.title}</h3>
-                                    <p>{r.desc}</p>
+                                <div className={`${styles.itemBody} ${isExpanded ? styles.expandedBody : ''}`}>
+                                    <p className={styles.desc}>{r.desc}</p>
                                 </div>
                             </div>
                         );
@@ -44,7 +62,7 @@ export default function Internships() {
 
                 <div className={`${styles.disclaimer} ${visible ? styles.visible : ''}`}>
                     <AlertCircle size={16} className={styles.disclaimerIcon} />
-                    <span><strong>Disclaimer:</strong> Internships and practical project allocations are purely performance-based and subject to internal organization requirements. Certification requirements must be met before qualification.</span>
+                    <span><strong>Disclaimer:</strong> Internship allocations and operational role projects are purely performance-based, require passing certification modules, and could be paid, unpaid, volunteering, contract, or full-time opportunities depending on organization goals.</span>
                 </div>
             </div>
         </section>

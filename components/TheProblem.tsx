@@ -7,19 +7,19 @@ export default function TheProblem() {
     const { ref, visible } = useScrollReveal();
 
     const pitfalls = [
-        'Random YouTube Advice',
-        'Telegram Tips',
-        'Information Overload',
-        'No Structure',
-        'Poor Risk Management'
+        { label: 'The Hype', desc: 'Blindly following random social media advice.' },
+        { label: 'The Illusion', desc: 'Relying on luck instead of proven systems.' },
+        { label: 'The Noise', desc: 'Getting paralyzed by endless information overload.' },
+        { label: 'The Blindspot', desc: 'Trading without defined risk or backtested strategies.' },
+        { label: 'The Casino', desc: 'Pure gambling disguised as investing.' }
     ];
 
     const solutions = [
-        'Structured Learning',
-        'Practical Frameworks',
-        'Expert Guidance',
-        'Community Support',
-        'Continuous Assessment'
+        { label: 'The Roadmap', desc: 'Structured, step-by-step learning to build your foundation.' },
+        { label: 'The Edge', desc: 'Practical frameworks and actionable, proven strategies.' },
+        { label: 'The Data', desc: 'Continuous assessment and backtested results you can trust.' },
+        { label: 'The Shield', desc: 'Disciplined risk management to protect your capital.' },
+        { label: 'The Network', desc: 'Expert guidance and a supportive community of peers.' }
     ];
 
     return (
@@ -44,7 +44,7 @@ export default function TheProblem() {
                             {pitfalls.map((p, idx) => (
                                 <li key={idx} className={styles.itemPitfall}>
                                     <XCircle size={20} className={styles.iconX} />
-                                    <span>{p}</span>
+                                    <span><strong>{p.label}:</strong> {p.desc}</span>
                                 </li>
                             ))}
                         </ul>
@@ -60,7 +60,7 @@ export default function TheProblem() {
                             {solutions.map((s, idx) => (
                                 <li key={idx} className={styles.itemSolution}>
                                     <CheckCircle2 size={20} className={styles.iconCheck} />
-                                    <span>{s}</span>
+                                    <span><strong>{s.label}:</strong> {s.desc}</span>
                                 </li>
                             ))}
                         </ul>

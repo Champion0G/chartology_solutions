@@ -10,80 +10,80 @@
     margin: 0 auto 56px auto;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+.list {
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.grid.visible {
+.list.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-.card {
+.item {
     background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: var(--radius-card);
-    padding: 30px;
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
     transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
-    transform: translateY(-4px);
+.item:hover {
+    transform: translateX(6px);
     border-color: var(--red);
-    box-shadow: 0 10px 30px rgba(225, 6, 0, 0.1);
-}
-
-/* Make 7th card span nicely or center align */
-@media (min-width: 993px) {
-    .card:nth-child(7) {
-        grid-column: 2 / 3;
-    }
+    box-shadow: 0 5px 15px rgba(225, 6, 0, 0.04);
 }
 
 .iconWrap {
     background: rgba(225, 6, 0, 0.08);
-    border: 1px solid rgba(225, 6, 0, 0.2);
+    border: 1px solid rgba(225, 6, 0, 0.15);
     border-radius: 8px;
     padding: 10px;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    flex-shrink: 0;
 }
 
 .icon {
     color: var(--red);
 }
 
-.card h3 {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: #0f0f0f;
-    margin-bottom: 10px;
+.textWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
 }
 
-.card p {
-    font-size: 0.95rem;
+.textWrap h3 {
+    font-size: 1.15rem;
+    font-weight: 750;
+    color: #0f0f0f;
+    margin: 0;
+}
+
+.textWrap p {
+    font-size: 0.92rem;
     color: #555555;
     line-height: 1.5;
+    margin: 0;
 }
 
-@media (max-width: 992px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .card:nth-child(7) {
-        grid-column: auto;
-    }
-}
-
-@media (max-width: 576px) {
-    .grid {
-        grid-template-columns: 1fr;
+@media (max-width: 768px) {
+    .item {
+        padding: 18px 20px;
+        gap: 16px;
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

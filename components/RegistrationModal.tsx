@@ -8,7 +8,7 @@ import { trackFunnelEvent } from '@/lib/analytics';
 
 export default function RegistrationModal() {
     const [isOpen, setIsOpen] = useState(false);
-    const [form, setForm] = useState({ name: '', email: '', phone: '', occupation: '', city: '' });
+    const [form, setForm] = useState({ name: '', email: '', phone: '', occupation: '', collegeName: '', city: '' });
     const [errors, setErrors] = useState<Partial<typeof form>>({});
     const [sent, setSent] = useState(false);
     const { schedule } = useWorkshopSchedule();
@@ -19,7 +19,7 @@ export default function RegistrationModal() {
             const ctaId = customEvent.detail?.ctaId || 'direct';
             setIsOpen(true);
             setSent(false);
-            setForm({ name: '', email: '', phone: '', occupation: '', city: '' });
+            setForm({ name: '', email: '', phone: '', occupation: '', collegeName: '', city: '' });
             setErrors({});
             document.body.style.overflow = 'hidden';
             trackFunnelEvent('modal_open', { ctaId });
@@ -40,6 +40,9 @@ export default function RegistrationModal() {
         if (!form.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) e.email = 'Valid email required';
         if (!form.phone.match(/^[0-9]{10}$/)) e.phone = '10-digit phone number is required';
         if (!form.occupation) e.occupation = 'Please select your occupation';
+        if (form.occupation === 'Student' && !form.collegeName.trim()) {
+            e.collegeName = 'College name is required';
+        }
         if (!form.city.trim()) e.city = 'City is required';
         return e;
     };
@@ -107,7 +110,7 @@ export default function RegistrationModal() {
                                     </div>
                                     <div className={styles.detail}>
                                         <Clock size={16} className={styles.icon} />
-                                        <span>{schedule.time} (2 Hours)</span>
+                                        <span>{schedule.time} (3 Hours)</span>
                                     </div>
                                     <div className={styles.detail}>
                                         <Laptop size={16} className={styles.icon} />
@@ -193,6 +196,21 @@ export default function RegistrationModal() {
                                             </select>
                                             {errors.occupation && <span className={styles.errorText}>{errors.occupation}</span>}
                                         </div>
+
+                                        {form.occupation === 'Student' && (
+                                            <div className={styles.field}>
+                                                <label htmlFor="modal-college">College Name *</label>
+                                                <input 
+                                                    id="modal-college"
+                                                    type="text" 
+                                                    placeholder="Enter your college/university name"
+                                                    value={form.collegeName}
+                                                    onChange={(e) => setForm({ ...form, collegeName: e.target.value })}
+                                                    className={errors.collegeName ? styles.inputError : ''}
+                                                />
+                                                {errors.collegeName && <span className={styles.errorText}>{errors.collegeName}</span>}
+                                            </div>
+                                        )}
 
                                         <div className={styles.field}>
                                             <label htmlFor="modal-city">City *</label>

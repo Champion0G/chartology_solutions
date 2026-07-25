@@ -749,6 +749,7 @@ export default function AdminDashboard() {
                                             <th>Email</th>
                                             <th>Phone</th>
                                             <th>Occupation</th>
+                                            <th>College</th>
                                             <th>City</th>
                                             <th>Date Registered</th>
                                         </tr>
@@ -777,6 +778,11 @@ export default function AdminDashboard() {
                                                         </span>
                                                     </td>
                                                     <td>
+                                                        <span style={{ fontSize: '0.85rem', color: reg.collegeName ? 'var(--white)' : 'var(--muted)' }}>
+                                                            {reg.collegeName || '-'}
+                                                        </span>
+                                                    </td>
+                                                    <td>
                                                         <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                                                             <MapPin size={12} /> {reg.city}
                                                         </span>
@@ -786,7 +792,7 @@ export default function AdminDashboard() {
                                             ))
                                         ) : (
                                             <tr>
-                                                <td colSpan={6} className={styles.noData}>No registrations found.</td>
+                                                <td colSpan={7} className={styles.noData}>No registrations found.</td>
                                             </tr>
                                         )}
                                     </tbody>

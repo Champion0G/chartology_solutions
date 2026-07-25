@@ -26,7 +26,7 @@ export async function GET() {
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { name, email, phone, occupation, city } = body;
+        const { name, email, phone, occupation, collegeName, city } = body;
 
         if (!name || !email || !phone || !occupation || !city) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -38,6 +38,7 @@ export async function POST(req: Request) {
             email,
             phone,
             occupation,
+            collegeName: occupation === 'Student' ? collegeName || '' : '',
             city,
             timestamp: new Date().toISOString()
         };

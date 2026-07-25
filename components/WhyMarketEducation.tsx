@@ -7,11 +7,11 @@ export default function WhyMarketEducation() {
     const { ref, visible } = useScrollReveal();
 
     const skills = [
-        { icon: Brain, title: 'Analytical Thinking', desc: 'Synthesize complex chart dynamics and price behaviors systematically.' },
-        { icon: Compass, title: 'Decision Making', desc: 'Make rational, rule-based choices in fast-moving and volatile conditions.' },
-        { icon: ShieldCheck, title: 'Risk Assessment', desc: 'Quantify probabilities and protect resources through math-based limits.' },
-        { icon: Landmark, title: 'Financial Literacy', desc: 'Build a solid baseline of wealth mechanics, inflation protection, and asset classes.' },
-        { icon: BarChart3, title: 'Market Understanding', desc: 'Gain clarity on stock exchanges, central banks, and global currency dynamics.' }
+        { icon: Landmark, title: 'Financial Literacy', desc: 'Master the absolute fundamentals of money, assets, and inflation.' },
+        { icon: Compass, title: 'Global Market Understanding', desc: 'See the big picture of macroeconomics and global trade cycles.' },
+        { icon: Brain, title: 'Analytical Thinking & Decision Making', desc: 'Turn complex market data into clear, rule-based actions.' },
+        { icon: BarChart3, title: 'Financial Planning & Investments', desc: 'Structure your investments to align with long-term financial goals.' },
+        { icon: ShieldCheck, title: 'Capital Allocation & Portfolio Management', desc: 'Balance risk and reward effectively across a diversified portfolio.' }
     ];
 
     return (
@@ -21,10 +21,14 @@ export default function WhyMarketEducation() {
                 <div className={`${styles.left} ${visible ? styles.visible : ''}`}>
                     <p className="section-label">A Core Life Skill</p>
                     <h2 className="section-heading">Financial Market Knowledge Is Becoming An Essential Skill</h2>
-                    <p className={styles.intro}>
+                    
+                    <p className={styles.body} style={{ fontSize: '0.88rem', lineHeight: '1.7', color: 'var(--muted)' }}>
                         Whether you are a student preparing for your career or a working professional planning your financial future, traditional education rarely teaches the mechanics of financial markets.
                     </p>
-                    <p className={styles.body}>
+                    <p className={styles.body} style={{ fontSize: '0.88rem', lineHeight: '1.7', color: 'var(--muted)', marginTop: '14px', fontWeight: 'bold' }}>
+                        While industry trends like IT, AI, and emerging technologies will continuously evolve and disrupt, financial markets are a permanent fixture of our global economy that will endure for our lifetimes.
+                    </p>
+                    <p className={styles.body} style={{ fontSize: '0.88rem', lineHeight: '1.7', color: 'var(--muted)', marginTop: '14px' }}>
                         Developing market competency is not about chasing speculative gains. It is about understanding global economic cycles, learning to structure risk, and building critical thinking frameworks that apply to any business, career, or personal venture.
                     </p>
                 </div>

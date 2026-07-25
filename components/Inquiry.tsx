@@ -6,7 +6,7 @@ import useWorkshopSchedule from '@/hooks/useWorkshopSchedule';
 import { trackFunnelEvent } from '@/lib/analytics';
 
 export default function Inquiry() {
-    const [form, setForm] = useState({ name: '', email: '', phone: '', occupation: '', city: '' });
+    const [form, setForm] = useState({ name: '', email: '', phone: '', occupation: '', collegeName: '', city: '' });
     const [errors, setErrors] = useState<Partial<typeof form>>({});
     const [sent, setSent] = useState(false);
     const [submitting, setSubmitting] = useState(false);
@@ -18,6 +18,9 @@ export default function Inquiry() {
         if (!form.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) e.email = 'Valid email required';
         if (!form.phone.match(/^[0-9]{10}$/)) e.phone = '10-digit phone number is required';
         if (!form.occupation) e.occupation = 'Please select your occupation';
+        if (form.occupation === 'Student' && !form.collegeName.trim()) {
+            e.collegeName = 'College name is required';
+        }
         if (!form.city.trim()) e.city = 'City is required';
         return e;
     };
@@ -182,6 +185,21 @@ export default function Inquiry() {
                                 </select>
                                 {errors.occupation && <span className={styles.errorText}>{errors.occupation}</span>}
                             </div>
+
+                            {form.occupation === 'Student' && (
+                                <div className={styles.field}>
+                                    <label htmlFor="reg-college">College Name *</label>
+                                    <input
+                                        id="reg-college"
+                                        type="text"
+                                        placeholder="Enter your college/university name"
+                                        value={form.collegeName}
+                                        onChange={(e) => setForm({ ...form, collegeName: e.target.value })}
+                                        className={errors.collegeName ? styles.inputError : ''}
+                                    />
+                                    {errors.collegeName && <span className={styles.errorText}>{errors.collegeName}</span>}
+                                </div>
+                            )}
 
                             <div className={styles.field}>
                                 <label htmlFor="reg-city">City *</label>

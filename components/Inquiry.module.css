@@ -90,11 +90,11 @@
 /* Right Side: Form */
 .formWrap {
     background: var(--bg);
-    border: 1.5px solid var(--border);
+    border: 2px solid var(--red);
     border-radius: var(--radius-card);
     padding: 40px;
     position: relative;
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 4px 24px rgba(225, 6, 0, 0.1);
 }
 
 .form {

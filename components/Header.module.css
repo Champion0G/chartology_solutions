@@ -130,3 +130,22 @@
         display: flex;
     }
 }
+
+.blinkBtn {
+    animation: headerBlink 1.8s infinite ease-in-out;
+    will-change: opacity;
+}
+
+.blinkBtn:hover {
+    animation-play-state: paused;
+    opacity: 1 !important;
+}
+
+@keyframes headerBlink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.35;
+    }
+}

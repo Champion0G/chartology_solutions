@@ -6,9 +6,9 @@ export default function SocialProofBar() {
     const { ref, visible } = useScrollReveal();
 
     const stats = [
-        { val: '10,000+', label: 'Learners Reached' },
-        { val: '100+', label: 'Workshops Conducted' },
-        { val: '5,000+', label: 'Community Members' },
+        { val: '7,483+', label: 'Learners Reached' },
+        { val: '70+', label: 'Workshops Conducted' },
+        { val: '4k+', label: 'Community Members' },
         { val: '8', label: 'Certification Tracks' }
     ];
 

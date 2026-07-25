@@ -1,5 +1,5 @@
 'use client';
-import { Landmark, TrendingUp, Search, Briefcase, Rocket, ShieldAlert, LineChart } from 'lucide-react';
+import { Landmark, Search, LineChart, TrendingUp, Briefcase, ShieldAlert, Compass, GraduationCap } from 'lucide-react';
 import styles from './CareerOutcomes.module.css';
 import useScrollReveal from '@/hooks/useScrollReveal';
 
@@ -7,13 +7,46 @@ export default function CareerOutcomes() {
     const { ref, visible } = useScrollReveal();
 
     const outcomes = [
-        { icon: Landmark, title: 'Financial Analysis', desc: 'Read corporate balance sheets, evaluate cash flows, and build analytical valuations.' },
-        { icon: Search, title: 'Market Research', desc: 'Synthesize data and macroeconomic variables to write comprehensive industry research.' },
-        { icon: LineChart, title: 'Investment Understanding', desc: 'Identify high-quality equities and growth sectors for long-term capital preservation.' },
-        { icon: TrendingUp, title: 'Trading Competency', desc: 'Develop rule-based price action setups and execution tactics across multiple markets.' },
-        { icon: Briefcase, title: 'Business Development', desc: 'Apply financial modeling and metrics to drive enterprise value and partnerships.' },
-        { icon: Rocket, title: 'Entrepreneurship', desc: 'Understand capitalization, risk assessment, and market cycles to launch robust ventures.' },
-        { icon: ShieldAlert, title: 'Personal Wealth Management', desc: 'Build personal asset allocation plans, protect downside risk, and battle inflation.' }
+        {
+            icon: Landmark,
+            title: 'Financial Analysis',
+            desc: 'Read corporate balance sheets, evaluate cash flows, and build analytical valuations.'
+        },
+        {
+            icon: Search,
+            title: 'Equity Market Research',
+            desc: 'Synthesize stock patterns, sector trends, and macroeconomic variables to compile research.'
+        },
+        {
+            icon: LineChart,
+            title: 'Investment Understanding',
+            desc: 'Identify high-quality asset classes and growth sectors for capital preservation.'
+        },
+        {
+            icon: TrendingUp,
+            title: 'Trading & Investing Competency',
+            desc: 'Develop rule-based price action setups and risk-adjusted tactical execution.'
+        },
+        {
+            icon: Briefcase,
+            title: 'Personal Wealth Management',
+            desc: 'Build structured personal finance allocation plans to safeguard capital.'
+        },
+        {
+            icon: ShieldAlert,
+            title: 'Beating Inflation',
+            desc: 'Deploy resources effectively across yield-generating assets to preserve purchasing power.'
+        },
+        {
+            icon: Compass,
+            title: 'Short & Long-Term Investing',
+            desc: 'Navigate varying market horizons, aligning trade cycles with compounding goals.'
+        },
+        {
+            icon: GraduationCap,
+            title: 'Unlock Careers in Finance',
+            desc: 'Qualify for analytical, operations, and advisory roles in modern financial institutions.'
+        }
     ];
 
     return (
@@ -27,16 +60,18 @@ export default function CareerOutcomes() {
                     </p>
                 </div>
 
-                <div className={`${styles.grid} ${visible ? styles.visible : ''}`}>
+                <div className={`${styles.list} ${visible ? styles.visible : ''}`}>
                     {outcomes.map((o, i) => {
                         const Icon = o.icon;
                         return (
-                            <div key={o.title} className={styles.card}>
+                            <div key={o.title} className={styles.item}>
                                 <div className={styles.iconWrap}>
                                     <Icon size={20} className={styles.icon} />
                                 </div>
-                                <h3>{o.title}</h3>
-                                <p>{o.desc}</p>
+                                <div className={styles.textWrap}>
+                                    <h3>{o.title}</h3>
+                                    <p>{o.desc}</p>
+                                </div>
                             </div>
                         );
                     })}

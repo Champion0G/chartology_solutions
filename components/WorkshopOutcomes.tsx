@@ -7,6 +7,10 @@ export default function WorkshopOutcomes() {
     const { ref, visible } = useScrollReveal();
 
     const outcomes = [
+        'Basics of Trading & Investing',
+        'How Prop firms fund',
+        'AI for Trading & Investing',
+        'Algo Trading & Automation',
         'How Financial Markets Actually Work',
         'Common Mistakes Beginners Make',
         'Risk Management Fundamentals',
@@ -22,7 +26,7 @@ export default function WorkshopOutcomes() {
                     <p className="section-label">Webinar Blueprint</p>
                     <h2 className="section-heading">What You'll Learn In The Live Workshop</h2>
                     <p className="section-sub">
-                        Skip the commercial hype. In this structured 2-hour session, we break down the operational realities of global exchanges.
+                        Skip the commercial hype. In this structured 3-hour session, we break down the operational realities of global exchanges.
                     </p>
                 </div>
 

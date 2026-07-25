@@ -1,5 +1,5 @@
 'use client';
-import { GraduationCap, Briefcase, BarChart4, Compass } from 'lucide-react';
+import { GraduationCap, Briefcase, BarChart4, Home } from 'lucide-react';
 import styles from './WhoIsThisFor.module.css';
 import useScrollReveal from '@/hooks/useScrollReveal';
 
@@ -9,8 +9,8 @@ export default function WhoIsThisFor() {
     const targets = [
         {
             icon: GraduationCap,
-            title: 'Students',
-            desc: 'Build future-ready financial skills and gain practical market exposure early in your academic journey.'
+            title: 'College Students',
+            desc: 'Build future-ready financial skills, gain practical market exposure, and unlock more career opportunities early in your academic journey.'
         },
         {
             icon: Briefcase,
@@ -19,13 +19,13 @@ export default function WhoIsThisFor() {
         },
         {
             icon: BarChart4,
-            title: 'Investors',
-            desc: 'Understand the underlying mechanics of stocks, cycles, and risk parameters to allocate resources wisely.'
+            title: 'Investors & Aspiring Traders',
+            desc: 'Master the markets - Whether you are an investor allocating resources wisely through market cycles, or a trader building a professional, rule-based system.'
         },
         {
-            icon: Compass,
-            title: 'Aspiring Traders',
-            desc: 'Skip random tip groups and learn a professional, rule-based approach to market participation.'
+            icon: Home,
+            title: 'Homemakers',
+            desc: 'Build financial confidence from home. Learn how the markets actually work so you can make informed, independent investment decisions.'
         }
     ];
 
@@ -52,8 +52,10 @@ export default function WhoIsThisFor() {
                                 <div className={styles.iconWrap}>
                                     <Icon size={24} className={styles.icon} />
                                 </div>
-                                <h3>{t.title}</h3>
-                                <p>{t.desc}</p>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                    <h3 style={{ margin: 0 }}>{t.title}</h3>
+                                    <p style={{ margin: 0 }}>{t.desc}</p>
+                                </div>
                             </div>
                         );
                     })}

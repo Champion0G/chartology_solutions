@@ -1,7 +1,7 @@
 'use client';
 import Hero from '@/components/Hero';
 import SocialProofBar from '@/components/SocialProofBar';
-import Marquee from '@/components/Marquee';
+import AsSeenInMarquee from '@/components/AsSeenInMarquee';
 import TheProblem from '@/components/TheProblem';
 import WhyMarketEducation from '@/components/WhyMarketEducation';
 import MarketsCovered from '@/components/MarketsCovered';
@@ -29,8 +29,8 @@ export default function Home() {
         {/* Section 2: Social Proof Bar */}
         <SocialProofBar />
 
-        {/* Trust Booster: Partner/Exchange Logos */}
-        <Marquee />
+        {/* Got Featured In News Marquee */}
+        <AsSeenInMarquee />
 
         {/* Section 3: The Problem */}
         <TheProblem />

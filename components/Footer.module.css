@@ -1,5 +1,5 @@
 .footer {
-    background: #050505;
+    background: linear-gradient(185deg, #050505 0%, #180303 100%);
     border-top: 1px solid var(--border);
 }
 
@@ -18,7 +18,7 @@
 .logo {
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .logoImg {
@@ -29,9 +29,9 @@
 }
 
 .desc {
-    font-size: 0.875rem;
     color: var(--muted);
-    line-height: 1.75;
+    font-size: 0.9rem;
+    line-height: 1.6;
     margin-bottom: 24px;
 }
 
@@ -41,9 +41,9 @@
 }
 
 .social {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
     border: 1px solid var(--border);
     display: flex;
     align-items: center;
@@ -53,9 +53,9 @@
 }
 
 .social:hover {
-    border-color: var(--red);
-    color: var(--red);
-    background: rgba(225, 6, 0, 0.08);
+    border-color: var(--brand-color, var(--red));
+    color: var(--brand-color, var(--red));
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .colTitle {

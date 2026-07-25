@@ -1,5 +1,5 @@
 'use client';
-import { Users, MessageSquare, ShieldCheck, Share2 } from 'lucide-react';
+import { BookOpen, Video, Trophy, Users, MessageSquare, ChevronRight } from 'lucide-react';
 import styles from './Community.module.css';
 import useScrollReveal from '@/hooks/useScrollReveal';
 
@@ -11,80 +11,134 @@ export default function Community() {
         window.dispatchEvent(new CustomEvent('open-register-modal', { detail: { ctaId: 'community_section' } }));
     };
 
+    const features = [
+        {
+            icon: BookOpen,
+            title: 'Learning Management System (LMS)',
+            desc: 'Access 100+ hours of structured video lessons, research templates, and documentation 24/7.'
+        },
+        {
+            icon: Video,
+            title: 'Doubt-Clearing Sessions',
+            desc: 'Join weekly live Q&A sessions to clarify doubts, audit trade logs, and review charting setups.'
+        },
+        {
+            icon: Trophy,
+            title: 'Weekly Competitions',
+            desc: 'Apply your strategies in simulated live-market challenges to build consistency and confidence.'
+        },
+        {
+            icon: Users,
+            title: 'Peer Groups',
+            desc: 'Collaborate with a highly motivated network of fellow learners, sharing research and backtest logs.'
+        },
+        {
+            icon: MessageSquare,
+            title: 'Daily Discussions',
+            desc: 'Discuss market opening indicators, macroeconomic events, and post-session audits every day.'
+        }
+    ];
+
     return (
         <section id="community" className={styles.section}>
             <div className={`container ${styles.inner}`} ref={ref as any}>
+                {/* Left Side: Copy features */}
                 <div className={`${styles.content} ${visible ? styles.visible : ''}`}>
-                    <p className="section-label">The Network Effect</p>
-                    <h2 className="section-heading">You're Not Learning Alone</h2>
+                    <p className="section-label">The Learning Ecosystem</p>
+                    <h2 className="section-heading">Everything You Need to Build Market Competency</h2>
                     <p className="section-sub">
-                        Trading and investing can be lonely and emotionally challenging in isolation. At Chartologic, you join an active, moderated ecosystem of like-minded learners and expert mentors across WhatsApp, Discord, and Telegram.
+                        Skip the isolation. Our structured curriculum is supported by a comprehensive system of materials, tools, mentors, and accountability groups.
                     </p>
 
                     <div className={styles.benefits}>
-                        <div className={styles.benefit}>
-                            <Users className={styles.icon} size={20} />
-                            <div>
-                                <h4 className={styles.benefitTitle}>Peer Accountability Groups</h4>
-                                <p className={styles.benefitDesc}>Get paired with study buddies to review trades, track homework, and keep each other disciplined.</p>
-                            </div>
-                        </div>
-
-                        <div className={styles.benefit}>
-                            <MessageSquare className={styles.icon} size={20} />
-                            <div>
-                                <h4 className={styles.benefitTitle}>Daily Market Discussions</h4>
-                                <p className={styles.benefitDesc}>Discuss pre-market watchlists, active setups, and share charts in real time during trading hours.</p>
-                            </div>
-                        </div>
-
-                        <div className={styles.benefit}>
-                            <Share2 className={styles.icon} size={20} />
-                            <div>
-                                <h4 className={styles.benefitTitle}>Lifetime Network Access</h4>
-                                <p className={styles.benefitDesc}>Connect with alumni, form regional meetups, and leverage institutional level resources.</p>
-                            </div>
-                        </div>
+                        {features.map((f, idx) => {
+                            const Icon = f.icon;
+                            return (
+                                <div key={f.title} className={styles.benefit}>
+                                    <div className={styles.iconWrap}>
+                                        <Icon className={styles.icon} size={20} />
+                                    </div>
+                                    <div>
+                                        <h4 className={styles.benefitTitle}>{f.title}</h4>
+                                        <p className={styles.benefitDesc}>{f.desc}</p>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
 
                     <a href="#register" onClick={handleRegisterClick} className="btn-primary" style={{ marginTop: '36px' }}>
-                        Join Our Community
+                        Reserve Seat & Access Portal
                     </a>
                 </div>
 
+                {/* Right Side: Animated LMS dashboard iPhone mockup */}
                 <div className={`${styles.visual} ${visible ? styles.visible : ''}`} style={{ transitionDelay: '150ms' }}>
-                    <div className={styles.meshBg}>
-                        <div className={styles.chatPreview}>
-                            <div className={styles.chatMessage}>
-                                <span className={styles.avatar}>👤</span>
-                                <div>
-                                    <div className={styles.sender}>Aman K. <span className={styles.time}>10:14 AM</span></div>
-                                    <p className={styles.msgText}>Spotting a beautiful double bottom pattern on Tata Motors 15m chart. Volume is validating. What do you think?</p>
+                    <div className={styles.phoneMockup}>
+                        <div className={styles.phoneNotch} />
+                        
+                        <div className={styles.phoneScreen}>
+                            {/* App Header */}
+                            <div className={styles.phoneHeader}>
+                                <div className={styles.portalLogo}>
+                                    Charto<span>logic</span>
                                 </div>
+                                <div className={styles.portalUser}>AS</div>
                             </div>
-                            <div className={styles.chatMessage}>
-                                <span className={styles.avatar} style={{ background: 'var(--red)' }}>🎙</span>
-                                <div>
-                                    <div className={styles.sender}>Mentor <span className={styles.time}>10:16 AM</span></div>
-                                    <p className={styles.msgText}>Looks clean, Aman. Ensure your stop-loss sits right below the swing low. Keep position sizing to 0.5% risk for this market environment.</p>
-                                </div>
-                            </div>
-                            <div className={styles.chatMessage}>
-                                <span className={styles.avatar}>👤</span>
-                                <div>
-                                    <div className={styles.sender}>Rohan S. <span className={styles.time}>10:18 AM</span></div>
-                                    <p className={styles.msgText}>Thanks for the review, entering with 1% total risk. System rules aligned.</p>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div className={styles.indicatorCard}>
-                            <div className={styles.indHeader}>
-                                <Users size={16} className={styles.indIcon} />
-                                <span className={styles.indTitle}>Active Members</span>
+                            {/* Course Progress Card */}
+                            <div className={styles.courseCard}>
+                                <h5>Technical Trader Practitioner</h5>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: 'var(--muted)' }}>
+                                    <span>Course Progress</span>
+                                    <span>68% Done</span>
+                                </div>
+                                <div className={styles.courseProgress}>
+                                    <div className={styles.progressBar} />
+                                </div>
                             </div>
-                            <div className={styles.indVal}>5,240+</div>
-                            <div className={styles.indSub}>Sharing charts daily</div>
+
+                            {/* Modules List */}
+                            <div className={styles.moduleList}>
+                                <div className={styles.moduleItem}>
+                                    <span className={styles.moduleCheck}>✓</span>
+                                    <div className={styles.moduleInfo}>
+                                        <h6 className={styles.moduleTitle}>1. Structural Mechanics</h6>
+                                        <span className={styles.moduleStatus}>Completed</span>
+                                    </div>
+                                </div>
+                                <div className={styles.moduleItem}>
+                                    <span className={styles.moduleCheck}>✓</span>
+                                    <div className={styles.moduleInfo}>
+                                        <h6 className={styles.moduleTitle}>2. Risk Calculator & Logs</h6>
+                                        <span className={styles.moduleStatus}>Completed</span>
+                                    </div>
+                                </div>
+                                <div className={styles.moduleItem}>
+                                    <div className={styles.moduleDot} />
+                                    <div className={styles.moduleInfo}>
+                                        <h6 className={styles.moduleTitle}>3. Sizing Challenge</h6>
+                                        <span className={styles.moduleStatus} style={{ color: 'var(--red)' }}>Active Practice</span>
+                                    </div>
+                                    <ChevronRight size={14} style={{ color: 'rgba(255,255,255,0.2)' }} />
+                                </div>
+                                <div className={styles.moduleItem} style={{ opacity: 0.6 }}>
+                                    <span style={{ fontSize: '0.85rem', color: 'var(--muted)', flexShrink: 0 }}>🔒</span>
+                                    <div className={styles.moduleInfo}>
+                                        <h6 className={styles.moduleTitle}>4. Algorithmic Automation</h6>
+                                        <span className={styles.moduleStatus}>Locked</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Live Session Widget */}
+                            <div className={styles.liveWidget}>
+                                <div className={styles.liveIndicator} />
+                                <div className={styles.liveText}>
+                                    <h6>Live Q&A Session</h6>
+                                    <p>Starts in 2 hours • Join with Mentor</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -92,4 +146,3 @@ export default function Community() {
         </section>
     );
 }
-

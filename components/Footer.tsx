@@ -7,7 +7,7 @@ const quickLinks = [
     { label: 'Curriculum', href: '/programs#curriculum' },
     { label: 'Workshop', href: '/#register' },
     { label: 'FAQ', href: '/#faq' },
-    { label: 'Contact', href: '/#register' }
+    { label: 'Contact', href: '/contact' }
 ];
 
 const legalLinks = [
@@ -32,12 +32,17 @@ export default function Footer() {
                     </p>
                     <div className={styles.socials}>
                         {[
-                            { Icon: Instagram, label: 'Instagram', href: '#' },
-                            { Icon: Linkedin, label: 'LinkedIn', href: '#' },
-                            { Icon: Youtube, label: 'YouTube', href: '#' },
-                            { Icon: Send, label: 'Telegram', href: '#' },
-                        ].map(({ Icon, label, href }) => (
-                            <a key={label} href={href} aria-label={label} className={styles.social}>
+                            { Icon: Instagram, label: 'Instagram', href: '#', brandColor: '#e1306c' },
+                            { Icon: Linkedin, label: 'LinkedIn', href: '#', brandColor: '#0077b5' },
+                            { Icon: Youtube, label: 'YouTube', href: '#', brandColor: '#ff0000' },
+                        ].map(({ Icon, label, href, brandColor }) => (
+                            <a 
+                                key={label} 
+                                href={href} 
+                                aria-label={label} 
+                                className={`${styles.social} styles_social_${label.toLowerCase()}`}
+                                style={{ '--brand-color': brandColor } as React.CSSProperties}
+                            >
                                 <Icon size={16} />
                             </a>
                         ))}

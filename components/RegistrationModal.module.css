@@ -21,10 +21,10 @@
     width: 100%;
     max-width: 850px;
     background: var(--bg-dark);
-    border: 1px solid var(--border);
+    border: 2px solid var(--red);
     border-radius: var(--radius-card);
     overflow: hidden;
-    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 32px 64px rgba(225, 6, 0, 0.15);
 }
 
 .closeBtn {

@@ -7,10 +7,10 @@ export default function AboutTrainer() {
     const { ref, visible } = useScrollReveal();
 
     const qualities = [
-        { icon: Award, label: '12+ Years Experience', desc: 'Active market participation across multi-asset categories since 2014.' },
-        { icon: Microscope, label: 'Research Backed', desc: 'Focus on mathematical position sizing models and structured trade logging.' },
-        { icon: GraduationCap, label: '10K+ Students Mentored', desc: 'Delivering structured workshops and professional education frameworks.' },
-        { icon: Library, label: 'SEBI Certified RA', desc: 'Qualified credentials ensuring strict, compliant educational standards.' }
+        { icon: Award, label: '6+ Years Experience', desc: 'Active market participation across multi-asset categories since 2019.' },
+        { icon: GraduationCap, label: '7,483+ Students Mentored', desc: 'Delivering structured workshops and frameworks.' },
+        { icon: Microscope, label: 'Research Backed', desc: 'Focus on mathematical position sizing and trade logging.' },
+        { icon: Library, label: 'NISM Certified', desc: 'Qualified credentials ensuring strict, compliant educational standards.' }
     ];
 
     const handleRegisterClick = (e: React.MouseEvent) => {
@@ -51,26 +51,26 @@ export default function AboutTrainer() {
                              );
                         })}
                     </div>
-
+ 
                     <a href="#register" onClick={handleRegisterClick} className={styles.cta}>
                         <span>🎓</span> Reserve My Workshop Seat <ArrowRight size={16} />
                     </a>
                 </div>
-
+ 
                 {/* Right: Trainer profile photo */}
                 <div className={`${styles.imgCol} ${visible ? styles.visible : ''}`} style={{ transitionDelay: '130ms' }}>
                     <div className={styles.imgWrap}>
                         <img
-                            src="/trainer-profile.png"
-                            alt="Lead market education instructor"
-                            className={styles.img}
-                            loading="lazy"
+                             src="/trainer-profile.png"
+                             alt="Lead market education instructor"
+                             className={styles.img}
+                             loading="lazy"
                         />
                         <div className={styles.floatCard}>
                             <div className={styles.floatIcon}>🏆</div>
                             <div>
-                                <div className={styles.floatTitle}>SEBI Certified</div>
-                                <div className={styles.floatSub}>Research Analyst</div>
+                                <div className={styles.floatTitle}>NISM Certified</div>
+                                <div className={styles.floatSub}>Market Education</div>
                             </div>
                         </div>
                     </div>
