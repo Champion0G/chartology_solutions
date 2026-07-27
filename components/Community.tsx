@@ -1,5 +1,5 @@
 'use client';
-import { BookOpen, Video, Trophy, Users, MessageSquare, ChevronRight } from 'lucide-react';
+import { BookOpen, Video, Trophy, Users, MessageSquare } from 'lucide-react';
 import styles from './Community.module.css';
 import useScrollReveal from '@/hooks/useScrollReveal';
 
@@ -72,74 +72,15 @@ export default function Community() {
                     </a>
                 </div>
 
-                {/* Right Side: Animated LMS dashboard iPhone mockup */}
+                {/* Right Side: High-res phone screenshot */}
                 <div className={`${styles.visual} ${visible ? styles.visible : ''}`} style={{ transitionDelay: '150ms' }}>
-                    <div className={styles.phoneMockup}>
-                        <div className={styles.phoneNotch} />
-                        
-                        <div className={styles.phoneScreen}>
-                            {/* App Header */}
-                            <div className={styles.phoneHeader}>
-                                <div className={styles.portalLogo}>
-                                    Charto<span>logic</span>
-                                </div>
-                                <div className={styles.portalUser}>AS</div>
-                            </div>
-
-                            {/* Course Progress Card */}
-                            <div className={styles.courseCard}>
-                                <h5>Technical Trader Practitioner</h5>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: 'var(--muted)' }}>
-                                    <span>Course Progress</span>
-                                    <span>68% Done</span>
-                                </div>
-                                <div className={styles.courseProgress}>
-                                    <div className={styles.progressBar} />
-                                </div>
-                            </div>
-
-                            {/* Modules List */}
-                            <div className={styles.moduleList}>
-                                <div className={styles.moduleItem}>
-                                    <span className={styles.moduleCheck}>✓</span>
-                                    <div className={styles.moduleInfo}>
-                                        <h6 className={styles.moduleTitle}>1. Structural Mechanics</h6>
-                                        <span className={styles.moduleStatus}>Completed</span>
-                                    </div>
-                                </div>
-                                <div className={styles.moduleItem}>
-                                    <span className={styles.moduleCheck}>✓</span>
-                                    <div className={styles.moduleInfo}>
-                                        <h6 className={styles.moduleTitle}>2. Risk Calculator & Logs</h6>
-                                        <span className={styles.moduleStatus}>Completed</span>
-                                    </div>
-                                </div>
-                                <div className={styles.moduleItem}>
-                                    <div className={styles.moduleDot} />
-                                    <div className={styles.moduleInfo}>
-                                        <h6 className={styles.moduleTitle}>3. Sizing Challenge</h6>
-                                        <span className={styles.moduleStatus} style={{ color: 'var(--red)' }}>Active Practice</span>
-                                    </div>
-                                    <ChevronRight size={14} style={{ color: 'rgba(255,255,255,0.2)' }} />
-                                </div>
-                                <div className={styles.moduleItem} style={{ opacity: 0.6 }}>
-                                    <span style={{ fontSize: '0.85rem', color: 'var(--muted)', flexShrink: 0 }}>🔒</span>
-                                    <div className={styles.moduleInfo}>
-                                        <h6 className={styles.moduleTitle}>4. Algorithmic Automation</h6>
-                                        <span className={styles.moduleStatus}>Locked</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Live Session Widget */}
-                            <div className={styles.liveWidget}>
-                                <div className={styles.liveIndicator} />
-                                <div className={styles.liveText}>
-                                    <h6>Live Q&A Session</h6>
-                                    <p>Starts in 2 hours • Join with Mentor</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div className={styles.phoneImageContainer}>
+                        <img 
+                            src="/phone-mockup-screenshot.png" 
+                            alt="Watchlist interface on iPhone"
+                            className={styles.phoneImage}
+                            loading="lazy"
+                        />
                     </div>
                 </div>
             </div>

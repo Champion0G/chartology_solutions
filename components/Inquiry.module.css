@@ -90,11 +90,11 @@
 /* Right Side: Form */
 .formWrap {
     background: var(--bg);
-    border: 2px solid var(--red);
+    border: 1.5px solid rgba(225, 6, 0, 0.35);
     border-radius: var(--radius-card);
     padding: 40px;
     position: relative;
-    box-shadow: 0 4px 24px rgba(225, 6, 0, 0.1);
+    box-shadow: 0 0 30px rgba(225, 6, 0, 0.15), 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .form {
@@ -130,16 +130,54 @@
 }
 
 .field input, .field select {
-    background: var(--bg-dark);
-    border: 1px solid var(--border);
+    background: #ffffff !important;
+    border: 1px solid #d2d6dc;
     border-radius: var(--radius-btn);
     padding: 13px 16px;
-    color: var(--white);
+    color: #1a202c !important;
     font-size: 0.95rem;
     font-family: var(--font);
     transition: border-color 0.2s, box-shadow 0.2s;
     outline: none;
     width: 100%;
+}
+
+.field input::placeholder {
+    color: #718096 !important;
+    opacity: 0.85 !important;
+}
+
+.field input::-webkit-input-placeholder {
+    color: #718096 !important;
+    opacity: 0.85 !important;
+}
+
+.field input::-moz-placeholder {
+    color: #718096 !important;
+    opacity: 0.85 !important;
+}
+
+.field input:-ms-input-placeholder {
+    color: #718096 !important;
+    opacity: 0.85 !important;
+}
+
+.field input:-moz-placeholder {
+    color: #718096 !important;
+    opacity: 0.85 !important;
+}
+
+.field select.placeholderActive {
+    color: #718096 !important;
+}
+
+.field select option {
+    background: #ffffff;
+    color: #1a202c;
+}
+
+.field select option:first-child {
+    color: #718096;
 }
 
 .field input:focus, .field select:focus {

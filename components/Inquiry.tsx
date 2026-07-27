@@ -176,7 +176,7 @@ export default function Inquiry() {
                                     id="reg-occ"
                                     value={form.occupation}
                                     onChange={(e) => setForm({ ...form, occupation: e.target.value })}
-                                    className={errors.occupation ? styles.inputError : ''}
+                                    className={`${errors.occupation ? styles.inputError : ''} ${!form.occupation ? styles.placeholderActive : ''}`}
                                 >
                                     <option value="">Select your occupation</option>
                                     <option value="Student">Student</option>

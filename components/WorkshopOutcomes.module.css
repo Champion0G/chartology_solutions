@@ -28,20 +28,20 @@
 
 .item {
     background: var(--bg-dark);
-    border: 2px solid var(--red);
+    border: 1.5px solid rgba(225, 6, 0, 0.15);
     border-radius: var(--radius-card);
     padding: 24px;
     display: flex;
     align-items: center;
     gap: 16px;
     transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 12px rgba(225, 6, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .item:hover {
     transform: translateX(4px);
-    border-color: #cc0500;
-    box-shadow: 0 4px 20px rgba(225, 6, 0, 0.15);
+    border-color: rgba(225, 6, 0, 0.4);
+    box-shadow: 0 4px 20px rgba(225, 6, 0, 0.08);
 }
 
 .checkWrap {

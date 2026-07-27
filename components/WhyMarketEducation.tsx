@@ -28,10 +28,10 @@ export default function WhyMarketEducation() {
                         <p className={styles.body} style={{ fontSize: '0.88rem', lineHeight: '1.7', color: 'var(--muted)' }}>
                             Whether you are a student preparing for your career or a working professional planning your financial future, traditional education rarely teaches the mechanics of financial markets.
                         </p>
-                        <p className={styles.body} style={{ fontSize: '0.88rem', lineHeight: '1.7', color: 'var(--muted)', marginTop: '14px', fontWeight: 'bold' }}>
+                        <p className={styles.body} style={{ fontSize: '0.88rem', lineHeight: '1.7', color: 'var(--muted)', marginTop: '18px', fontWeight: 'bold' }}>
                             While industry trends like IT, AI, and emerging technologies will continuously evolve and disrupt, financial markets are a permanent fixture of our global economy that will endure for our lifetimes.
                         </p>
-                        <p className={styles.body} style={{ fontSize: '0.88rem', lineHeight: '1.7', color: 'var(--muted)', marginTop: '14px' }}>
+                        <p className={styles.body} style={{ fontSize: '0.88rem', lineHeight: '1.7', color: 'var(--muted)', marginTop: '18px' }}>
                             Developing market competency is not about chasing speculative gains. It is about understanding global economic cycles, learning to structure risk, and building critical thinking frameworks that apply to any business, career, or personal venture.
                         </p>
                     </div>
@@ -45,7 +45,7 @@ export default function WhyMarketEducation() {
                             return (
                                 <div key={s.title} className={styles.skillCard}>
                                     <div className={styles.iconWrap}>
-                                        <Icon size={22} className={styles.icon} />
+                                        <Icon size={18} className={styles.icon} />
                                     </div>
                                     <div>
                                         <h4>{s.title}</h4>

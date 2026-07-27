@@ -69,8 +69,7 @@ export default function AboutTrainer() {
                         <div className={styles.floatCard}>
                             <div className={styles.floatIcon}>🏆</div>
                             <div>
-                                <div className={styles.floatTitle}>NISM Certified</div>
-                                <div className={styles.floatSub}>Market Education</div>
+                                <div className={styles.floatTitle} style={{ margin: 0 }}>NISM Certified</div>
                             </div>
                         </div>
                     </div>

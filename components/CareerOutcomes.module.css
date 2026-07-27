@@ -11,11 +11,11 @@
 }
 
 .list {
-    max-width: 850px;
+    max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -30,17 +30,18 @@
     background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: var(--radius-card);
-    padding: 22px 28px;
+    padding: 24px 20px;
     display: flex;
-    align-items: center;
-    gap: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
     transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .item:hover {
-    transform: translateX(6px);
+    transform: translateY(-4px);
     border-color: var(--red);
-    box-shadow: 0 5px 15px rgba(225, 6, 0, 0.04);
+    box-shadow: 0 10px 30px rgba(225, 6, 0, 0.08);
 }
 
 .iconWrap {
@@ -61,29 +62,33 @@
 .textWrap {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
     flex: 1;
 }
 
 .textWrap h3 {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 750;
     color: #0f0f0f;
     margin: 0;
 }
 
 .textWrap p {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
     color: #555555;
     line-height: 1.5;
     margin: 0;
 }
 
-@media (max-width: 768px) {
-    .item {
-        padding: 18px 20px;
-        gap: 16px;
-        flex-direction: column;
-        align-items: flex-start;
+@media (max-width: 992px) {
+    .list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .list {
+        grid-template-columns: 1fr;
     }
 }

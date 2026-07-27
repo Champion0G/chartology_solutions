@@ -21,10 +21,10 @@
     width: 100%;
     max-width: 850px;
     background: var(--bg-dark);
-    border: 2px solid var(--red);
+    border: 1.5px solid rgba(225, 6, 0, 0.35);
     border-radius: var(--radius-card);
     overflow: hidden;
-    box-shadow: 0 32px 64px rgba(225, 6, 0, 0.15);
+    box-shadow: 0 0 30px rgba(225, 6, 0, 0.15), 0 32px 64px rgba(0, 0, 0, 0.7);
 }
 
 .closeBtn {
@@ -175,15 +175,53 @@
 }
 
 .field input, .field select {
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background: #ffffff !important;
+    border: 1px solid #d2d6dc;
     border-radius: var(--radius-btn);
     padding: 10px 14px;
-    color: var(--white);
+    color: #1a202c !important;
     font-size: 0.9rem;
     font-family: var(--font);
     outline: none;
     width: 100%;
+}
+
+.field input::placeholder {
+    color: #718096 !important;
+    opacity: 0.85 !important;
+}
+
+.field input::-webkit-input-placeholder {
+    color: #718096 !important;
+    opacity: 0.85 !important;
+}
+
+.field input::-moz-placeholder {
+    color: #718096 !important;
+    opacity: 0.85 !important;
+}
+
+.field input:-ms-input-placeholder {
+    color: #718096 !important;
+    opacity: 0.85 !important;
+}
+
+.field input:-moz-placeholder {
+    color: #718096 !important;
+    opacity: 0.85 !important;
+}
+
+.field select.placeholderActive {
+    color: #718096 !important;
+}
+
+.field select option {
+    background: #ffffff;
+    color: #1a202c;
+}
+
+.field select option:first-child {
+    color: #718096;
 }
 
 .field input:focus, .field select:focus {
