@@ -1,5 +1,4 @@
 'use client';
-import { useRef, useEffect, useState } from 'react';
 import styles from './AsSeenInMarquee.module.css';
 
 const publications = [
@@ -16,27 +15,12 @@ const publications = [
 ];
 
 export default function AsSeenInMarquee() {
-    const [paused, setPaused] = useState(false);
-    const prefersReduced = useRef(false);
-
-    useEffect(() => {
-        prefersReduced.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (prefersReduced.current) setPaused(true);
-    }, []);
-
-    // Duplicate list to achieve continuous loop
-    const items = [...publications, ...publications, ...publications];
-
     return (
         <section className={styles.section} aria-label="Featured media publications">
             <p className={styles.title}>AS SEEN IN</p>
-            <div className={styles.track}>
-                <div
-                    className={`${styles.inner} ${paused || prefersReduced.current ? styles.paused : ''}`}
-                    onMouseEnter={() => setPaused(true)}
-                    onMouseLeave={() => setPaused(false)}
-                >
-                    {items.map((p, i) => (
+            <div className="container">
+                <div className={styles.grid}>
+                    {publications.map((p, i) => (
                         <div 
                             key={i} 
                             className={styles.item}
