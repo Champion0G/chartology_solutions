@@ -17,7 +17,7 @@ const publications = [
 export default function AsSeenInMarquee() {
     return (
         <section className={styles.section} aria-label="Featured media publications">
-            <p className={styles.title}>AS SEEN IN</p>
+            <p className={styles.title}>GOT FEATURED IN</p>
             <div className="container">
                 <div className={styles.grid}>
                     {publications.map((p, i) => (
