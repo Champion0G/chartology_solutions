@@ -41,16 +41,16 @@
 .skillsGrid {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
 }
 
 .skillCard {
     background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: var(--radius-card);
-    padding: 24px;
+    padding: 14px 20px;
     display: flex;
-    gap: 20px;
+    gap: 16px;
     align-items: flex-start;
     transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -65,7 +65,7 @@
     background: rgba(225, 6, 0, 0.08);
     border: 1px solid rgba(225, 6, 0, 0.15);
     border-radius: 8px;
-    padding: 10px;
+    padding: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -77,16 +77,16 @@
 }
 
 .skillCard h4 {
-    font-size: 1.15rem;
+    font-size: 1.02rem;
     font-weight: 700;
     color: #0f0f0f;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .skillCard p {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     color: #555555;
-    line-height: 1.5;
+    line-height: 1.45;
 }
 
 @media (max-width: 992px) {
