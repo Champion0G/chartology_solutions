@@ -40,21 +40,21 @@ export default function Testimonials() {
             name: 'Ankit Verma',
             title: 'Systems Analyst at TCS',
             quote: 'Chartologic replaced my speculative trading habits with a scientific, backtested execution strategy. The risk modules are absolute gold for corporate professionals planning long-term capital stability.',
-            avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&q=80'
+            avatarUrl: '/avatar-ankit.jpg'
         },
         {
             name: 'Sneha Rao',
             title: 'MBA Student, IIM Bangalore',
             quote: 'The structured 8-module timeline is incredibly thorough. I cleared my institutional NISM certification assessments easily after completing their price action and risk modules. Highly structured!',
-            avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&q=80'
+            avatarUrl: '/avatar-sneha.jpg'
         }
     ];
 
     const studentTestimonials = [
-        { name: 'Rahul Mehta', role: 'Delhi', quote: 'The interactive sessions are outstanding. The mentors break down order flow concepts logically. Best investment in financial education.', avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&q=80' },
-        { name: 'Ananya Patel', role: 'Bangalore', quote: 'I was skeptical, but the curriculum builds real confidence. Excellent support channels and assignments.', avatarUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&q=80' },
-        { name: 'Vikram Singh', role: 'Pune', quote: 'Discipline models in Module 4 completely transformed my execution. The position sizing templates are highly practical.', avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&q=80' },
-        { name: 'Neha Kapoor', role: 'Hyderabad', quote: 'Reading raw market structure instead of lagging indicators has given me massive clarity. The curriculum is extremely detailed.', avatarUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&q=80' }
+        { name: 'Rahul Mehta', role: 'Delhi', quote: 'The interactive sessions are outstanding. The mentors break down order flow concepts logically. Best investment in financial education.', avatarUrl: '/avatar-rahul.jpg' },
+        { name: 'Ananya Patel', role: 'Bangalore', quote: 'I was skeptical, but the curriculum builds real confidence. Excellent support channels and assignments.', avatarUrl: '/avatar-ananya.jpg' },
+        { name: 'Vikram Singh', role: 'Pune', quote: 'Discipline models in Module 4 completely transformed my execution. The position sizing templates are highly practical.', avatarUrl: '/avatar-vikram.jpg' },
+        { name: 'Neha Kapoor', role: 'Hyderabad', quote: 'Reading raw market structure instead of lagging indicators has given me massive clarity. The curriculum is extremely detailed.', avatarUrl: '/avatar-neha.jpg' }
     ];
 
     return (

@@ -2,7 +2,7 @@
     background: var(--bg-dark);
     border-top: 1.5px solid var(--border);
     border-bottom: 1.5px solid var(--border);
-    padding: 40px 0;
+    padding: 32px 0;
     position: relative;
     z-index: 10;
 }
@@ -17,7 +17,7 @@
     color: var(--red);
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .grid {

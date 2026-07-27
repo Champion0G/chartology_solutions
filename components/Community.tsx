@@ -72,15 +72,19 @@ export default function Community() {
                     </a>
                 </div>
 
-                {/* Right Side: High-res phone screenshot */}
+                {/* Right Side: Phone Image with embedded video screen */}
                 <div className={`${styles.visual} ${visible ? styles.visible : ''}`} style={{ transitionDelay: '150ms' }}>
-                    <div className={styles.phoneImageContainer}>
-                        <img 
-                            src="/phone-mockup-screenshot-v2.png" 
-                            alt="Watchlist interface on iPhone"
-                            className={styles.phoneImage}
-                            loading="lazy"
-                        />
+                    <div className={styles.phoneMockup}>
+                        <div className={styles.phoneScreen}>
+                            <video 
+                                className={styles.phoneVideo}
+                                src="/SR_cropped_bottom.mp4"
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
