@@ -3,7 +3,7 @@ import styles from './WhoIsThisFor.module.css';
 import useScrollReveal from '@/hooks/useScrollReveal';
 
 const StudentIcon = () => (
-    <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="24" cy="25" r="9" fill="#ffdbb5"/>
         <path d="M15 23c0-6 4-8 9-8s9 2 9 8c0 1-1 2-2 2h-14c-1 0-2-1-2-2z" fill="#2d3748"/>
         <path d="M24 8l14 4-14 4-14-4 14-4z" fill="#1a202c"/>
@@ -16,7 +16,7 @@ const StudentIcon = () => (
 );
 
 const ProfessionalIcon = () => (
-    <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="24" cy="24" r="9" fill="#ffdbb5"/>
         <path d="M15 22c0-5 3-7 9-7s9 2 9 7v2H15v-2z" fill="#1a202c"/>
         <rect x="22" y="31" width="4" height="4" fill="#ffdbb5"/>
@@ -27,7 +27,7 @@ const ProfessionalIcon = () => (
 );
 
 const TraderIcon = () => (
-    <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="24" cy="24" r="9" fill="#ffdbb5"/>
         <path d="M15 22c0-5 3-7 9-7s9 2 9 7v2H15v-2z" fill="#2d3748"/>
         <rect x="17" y="21" width="6" height="4" rx="1" stroke="#1a202c" strokeWidth="1.5" fill="#e2e8f0"/>
@@ -41,7 +41,7 @@ const TraderIcon = () => (
 );
 
 const HomemakerIcon = () => (
-    <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="24" cy="24" r="9" fill="#ffdbb5"/>
         <path d="M14 22c0-6 4-7 10-7s10 1 10 7v3c0 2-2 3-4 3h-12c-2 0-4-1-4-3v-3z" fill="#744210"/>
         <rect x="22" y="31" width="4" height="4" fill="#ffdbb5"/>
