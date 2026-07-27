@@ -7,7 +7,7 @@
 
 .inner {
     display: grid;
-    grid-template-columns: 1fr 1.1fr;
+    grid-template-columns: 1.35fr 0.65fr;
     gap: 60px;
     align-items: flex-start;
 }
@@ -42,6 +42,9 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    max-width: 440px;
+    margin-left: auto;
+    width: 100%;
 }
 
 .skillCard {
@@ -93,5 +96,9 @@
     .inner {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+    .skillsGrid {
+        max-width: 100%;
+        margin-left: 0;
     }
 }
