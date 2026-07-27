@@ -8,6 +8,7 @@ const navLinks = [
     { label: 'About Us', href: '/about-us' },
     { label: 'Programs', href: '/programs' },
     { label: 'Live Workshop', href: '/#register' },
+    { label: 'Contact', href: '/contact' }
 ];
 
 export default function Header() {
