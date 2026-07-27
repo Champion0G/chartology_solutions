@@ -75,6 +75,42 @@
       "event": "scroll_50",
       "path": "/",
       "sessionId": "sess_t21fc76oj_1785156435946",
+      "timestamp": "2026-07-27T12:50:43.029Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "Direct",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_t21fc76oj_1785156435946",
+      "timestamp": "2026-07-27T12:50:42.597Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "Direct",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "scroll_50",
+      "path": "/",
+      "sessionId": "sess_t21fc76oj_1785156435946",
       "timestamp": "2026-07-27T12:49:03.869Z",
       "device": {
         "type": "Desktop",
