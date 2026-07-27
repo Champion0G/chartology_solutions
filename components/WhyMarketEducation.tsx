@@ -19,18 +19,22 @@ export default function WhyMarketEducation() {
             <div className={`container ${styles.inner}`}>
                 {/* Left Side: Editorial Text */}
                 <div className={`${styles.left} ${visible ? styles.visible : ''}`}>
-                    <p className="section-label">A Core Life Skill</p>
-                    <h2 className="section-heading">Financial Market Knowledge Is Becoming An Essential Skill</h2>
+                    <div className={styles.headerBlock}>
+                        <p className="section-label">A Core Life Skill</p>
+                        <h2 className="section-heading">Financial Market Knowledge Is Becoming An Essential Skill</h2>
+                    </div>
                     
-                    <p className={styles.body} style={{ fontSize: '0.88rem', lineHeight: '1.7', color: 'var(--muted)' }}>
-                        Whether you are a student preparing for your career or a working professional planning your financial future, traditional education rarely teaches the mechanics of financial markets.
-                    </p>
-                    <p className={styles.body} style={{ fontSize: '0.88rem', lineHeight: '1.7', color: 'var(--muted)', marginTop: '14px', fontWeight: 'bold' }}>
-                        While industry trends like IT, AI, and emerging technologies will continuously evolve and disrupt, financial markets are a permanent fixture of our global economy that will endure for our lifetimes.
-                    </p>
-                    <p className={styles.body} style={{ fontSize: '0.88rem', lineHeight: '1.7', color: 'var(--muted)', marginTop: '14px' }}>
-                        Developing market competency is not about chasing speculative gains. It is about understanding global economic cycles, learning to structure risk, and building critical thinking frameworks that apply to any business, career, or personal venture.
-                    </p>
+                    <div className={styles.bodyText}>
+                        <p className={styles.body} style={{ fontSize: '0.88rem', lineHeight: '1.7', color: 'var(--muted)' }}>
+                            Whether you are a student preparing for your career or a working professional planning your financial future, traditional education rarely teaches the mechanics of financial markets.
+                        </p>
+                        <p className={styles.body} style={{ fontSize: '0.88rem', lineHeight: '1.7', color: 'var(--muted)', marginTop: '14px', fontWeight: 'bold' }}>
+                            While industry trends like IT, AI, and emerging technologies will continuously evolve and disrupt, financial markets are a permanent fixture of our global economy that will endure for our lifetimes.
+                        </p>
+                        <p className={styles.body} style={{ fontSize: '0.88rem', lineHeight: '1.7', color: 'var(--muted)', marginTop: '14px' }}>
+                            Developing market competency is not about chasing speculative gains. It is about understanding global economic cycles, learning to structure risk, and building critical thinking frameworks that apply to any business, career, or personal venture.
+                        </p>
+                    </div>
                 </div>
 
                 {/* Right Side: Essential Skills Grid */}
