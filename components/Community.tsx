@@ -76,7 +76,7 @@ export default function Community() {
                 <div className={`${styles.visual} ${visible ? styles.visible : ''}`} style={{ transitionDelay: '150ms' }}>
                     <div className={styles.phoneImageContainer}>
                         <img 
-                            src="/phone-mockup-screenshot.png" 
+                            src="/phone-mockup-screenshot-v2.png" 
                             alt="Watchlist interface on iPhone"
                             className={styles.phoneImage}
                             loading="lazy"
