@@ -34,12 +34,15 @@ export default function Hero() {
         <section id="hero" className={styles.hero} ref={heroRef}>
             {/* Background Image / Gradient */}
             <div className={styles.photoBg} aria-hidden="true">
-                <img
-                    src="/trainer.jpg"
-                    alt="Financial markets charting"
-                    className={styles.trainerImg}
-                    loading="eager"
-                />
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className={styles.bgVideo}
+                >
+                    <source src="/hero_chart_loop.mp4" type="video/mp4" />
+                </video>
                 <div className={styles.dotGrid} aria-hidden="true" />
                 <div className={styles.fadeOverlay} aria-hidden="true" />
             </div>

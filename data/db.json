@@ -72,6 +72,150 @@
   ],
   "clickStream": [
     {
+      "event": "exit_intent_trigger",
+      "path": "/",
+      "sessionId": "sess_silktoz2n_1785225286001",
+      "timestamp": "2026-07-28T07:56:27.266Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "Direct",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "exit_intent_trigger",
+      "path": "/",
+      "sessionId": "sess_silktoz2n_1785225286001",
+      "timestamp": "2026-07-28T07:55:36.021Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "Direct",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_silktoz2n_1785225286001",
+      "timestamp": "2026-07-28T07:54:46.027Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "Direct",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "exit_intent_trigger",
+      "path": "/",
+      "sessionId": "sess_7obricoi7_1785224242501",
+      "timestamp": "2026-07-28T07:38:17.136Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "Direct",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "exit_intent_trigger",
+      "path": "/",
+      "sessionId": "sess_7obricoi7_1785224242501",
+      "timestamp": "2026-07-28T07:38:12.525Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "Direct",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_7obricoi7_1785224242501",
+      "timestamp": "2026-07-28T07:37:22.533Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "Direct",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "exit_intent_trigger",
+      "path": "/",
+      "sessionId": "sess_u9h791h7i_1785223908390",
+      "timestamp": "2026-07-28T07:32:38.410Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "Direct",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_u9h791h7i_1785223908390",
+      "timestamp": "2026-07-28T07:31:48.561Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "Direct",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
       "event": "scroll_90",
       "path": "/",
       "sessionId": "sess_oygeqvypo_1785182546966",
