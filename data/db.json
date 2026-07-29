@@ -72,6 +72,24 @@
   ],
   "clickStream": [
     {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_silktoz2n_1785225286001",
+      "timestamp": "2026-07-28T11:18:15.792Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "Direct",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
       "event": "exit_intent_trigger",
       "path": "/",
       "sessionId": "sess_silktoz2n_1785225286001",
