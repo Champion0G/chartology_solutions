@@ -1,27 +1,8 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-
-const dbPath = path.join(process.cwd(), 'data', 'db.json');
-
-function getDb() {
-    try {
-        const fileContent = fs.readFileSync(dbPath, 'utf-8');
-        return JSON.parse(fileContent);
-    } catch {
-        return {
-            schedule: { date: "Upcoming Sunday", time: "11:00 AM IST", seats: 100 },
-            registrations: [],
-            starterKitLeads: [],
-            certificates: [],
-            clickStream: []
-        };
-    }
-}
+import { getDb, saveDb } from '@/lib/db';
 
 export async function GET() {
     const db = getDb();
-    // Return newest events first
     return NextResponse.json(db.clickStream || []);
 }
 
@@ -54,7 +35,7 @@ export async function POST(req: Request) {
             db.clickStream = db.clickStream.slice(0, 5000);
         }
         
-        fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'utf-8');
+        saveDb(db);
         return NextResponse.json({ success: true, tracking: newEvent });
     } catch (error) {
         return NextResponse.json({ error: 'Server error tracking event' }, { status: 500 });

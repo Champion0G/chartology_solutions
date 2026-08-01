@@ -1,22 +1,5 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-
-const dbPath = path.join(process.cwd(), 'data', 'db.json');
-
-function getDb() {
-    try {
-        const fileContent = fs.readFileSync(dbPath, 'utf-8');
-        return JSON.parse(fileContent);
-    } catch {
-        return {
-            schedule: { date: "Upcoming Sunday", time: "11:00 AM IST", seats: 100 },
-            registrations: [],
-            starterKitLeads: [],
-            certificates: []
-        };
-    }
-}
+import { getDb, saveDb } from '@/lib/db';
 
 export async function GET() {
     const db = getDb();
@@ -32,7 +15,6 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
         }
 
-        const db = getDb();
         const newReg = {
             name,
             email,
@@ -43,10 +25,36 @@ export async function POST(req: Request) {
             timestamp: new Date().toISOString()
         };
 
-        db.registrations.unshift(newReg);
+        // 1. Sync to Google Sheets if configured
+        const googleSheetUrl = process.env.GOOGLE_SHEET_WEBAPP_URL;
+        let syncedToSheet = false;
         
-        fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'utf-8');
-        return NextResponse.json({ success: true, registration: newReg });
+        if (googleSheetUrl) {
+            try {
+                const response = await fetch(googleSheetUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newReg),
+                    signal: AbortSignal.timeout(6000)
+                });
+                if (response.ok) {
+                    syncedToSheet = true;
+                }
+            } catch (e) {
+                console.error("Google Sheets sync failed:", e);
+            }
+        }
+
+        // 2. Save locally (to /tmp/db.json on Vercel)
+        const db = getDb();
+        db.registrations.unshift(newReg);
+        saveDb(db);
+
+        return NextResponse.json({ 
+            success: true, 
+            registration: newReg,
+            synced: syncedToSheet
+        });
     } catch (error) {
         return NextResponse.json({ error: 'Server error saving registration' }, { status: 500 });
     }

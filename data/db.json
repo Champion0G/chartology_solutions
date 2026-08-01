@@ -72,6 +72,42 @@
   ],
   "clickStream": [
     {
+      "event": "exit_intent_trigger",
+      "path": "/",
+      "sessionId": "sess_4h2ms789m_1785591396183",
+      "timestamp": "2026-08-01T13:36:46.788Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "Direct",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
+      "event": "page_view",
+      "path": "/",
+      "sessionId": "sess_4h2ms789m_1785591396183",
+      "timestamp": "2026-08-01T13:36:36.402Z",
+      "device": {
+        "type": "Desktop",
+        "os": "Windows",
+        "browser": "Chrome"
+      },
+      "attribution": {
+        "referrer": "Direct",
+        "utm_source": "organic",
+        "utm_medium": "direct",
+        "utm_campaign": "none"
+      },
+      "metadata": {}
+    },
+    {
       "event": "page_view",
       "path": "/",
       "sessionId": "sess_silktoz2n_1785225286001",

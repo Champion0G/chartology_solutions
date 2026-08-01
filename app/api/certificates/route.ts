@@ -1,22 +1,5 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-
-const dbPath = path.join(process.cwd(), 'data', 'db.json');
-
-function getDb() {
-    try {
-        const fileContent = fs.readFileSync(dbPath, 'utf-8');
-        return JSON.parse(fileContent);
-    } catch {
-        return {
-            schedule: { date: "Upcoming Sunday", time: "11:00 AM IST", seats: 100 },
-            registrations: [],
-            starterKitLeads: [],
-            certificates: []
-        };
-    }
-}
+import { getDb, saveDb } from '@/lib/db';
 
 export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
@@ -60,8 +43,8 @@ export async function POST(req: Request) {
         };
 
         db.certificates.unshift(newCert);
+        saveDb(db);
         
-        fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'utf-8');
         return NextResponse.json({ success: true, certificate: newCert });
     } catch (error) {
         return NextResponse.json({ error: 'Server error issuing certificate' }, { status: 500 });
