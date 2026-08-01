@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description: 'We help students and working professionals understand financial markets through structured learning, mentorship, certifications, and practical exposure.',
     type: 'website',
     locale: 'en_IN',
-    url: 'https://Chartologic-solutions.vercel.app/',
+    url: 'https://www.chartologic.com/',
     siteName: 'Chartologic',
   },
 };
@@ -25,9 +25,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     '@graph': [
       {
         '@type': 'EducationalOrganization',
-        '@id': 'https://Chartologic-solutions.vercel.app/#organization',
+        '@id': 'https://www.chartologic.com/#organization',
         'name': 'Chartologic',
-        'url': 'https://Chartologic-solutions.vercel.app/',
+        'url': 'https://www.chartologic.com/',
         'description': 'Premium educational platform helping students learn trading through structured programs, mentorship, and community support in India.',
         'address': {
           '@type': 'PostalAddress',
@@ -38,52 +38,52 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       },
       {
         '@type': 'WebSite',
-        '@id': 'https://Chartologic-solutions.vercel.app/#website',
-        'url': 'https://Chartologic-solutions.vercel.app/',
+        '@id': 'https://www.chartologic.com/#website',
+        'url': 'https://www.chartologic.com/',
         'name': 'Chartologic',
         'publisher': {
-          '@id': 'https://Chartologic-solutions.vercel.app/#organization'
+          '@id': 'https://www.chartologic.com/#organization'
         },
         'potentialAction': {
           '@type': 'SearchAction',
-          'target': 'https://Chartologic-solutions.vercel.app/programs?search={search_term_string}',
+          'target': 'https://www.chartologic.com/programs?search={search_term_string}',
           'query-input': 'required name=search_term_string'
         }
       },
       {
         '@type': 'ItemList',
-        '@id': 'https://Chartologic-solutions.vercel.app/#sitelinks',
+        '@id': 'https://www.chartologic.com/#sitelinks',
         'name': 'Site Navigation Links',
         'itemListElement': [
           {
             '@type': 'SiteNavigationElement',
             'position': 1,
             'name': 'Our Programs',
-            'url': 'https://Chartologic-solutions.vercel.app/programs'
+            'url': 'https://www.chartologic.com/programs'
           },
           {
             '@type': 'SiteNavigationElement',
             'position': 2,
             'name': 'About Us',
-            'url': 'https://Chartologic-solutions.vercel.app/about-us'
+            'url': 'https://www.chartologic.com/about-us'
           },
           {
             '@type': 'SiteNavigationElement',
             'position': 3,
             'name': 'Careers',
-            'url': 'https://Chartologic-solutions.vercel.app/careers'
+            'url': 'https://www.chartologic.com/careers'
           },
           {
             '@type': 'SiteNavigationElement',
             'position': 4,
             'name': 'Contact Us',
-            'url': 'https://Chartologic-solutions.vercel.app/contact'
+            'url': 'https://www.chartologic.com/contact'
           },
           {
             '@type': 'SiteNavigationElement',
             'position': 5,
             'name': 'Privacy Policy',
-            'url': 'https://Chartologic-solutions.vercel.app/privacy-policy'
+            'url': 'https://www.chartologic.com/privacy-policy'
           }
         ]
       }
