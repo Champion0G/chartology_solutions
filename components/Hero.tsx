@@ -39,6 +39,8 @@ export default function Hero() {
                     loop
                     muted
                     playsInline
+                    preload="metadata"
+                    poster="/hero-poster.jpg"
                     className={styles.bgVideo}
                 >
                     <source src="/hero_chart_loop.mp4" type="video/mp4" />

@@ -83,6 +83,8 @@ export default function Community() {
                                 loop
                                 muted
                                 playsInline
+                                preload="none"
+                                poster="/sr-first-frame.jpg"
                             />
                         </div>
                     </div>

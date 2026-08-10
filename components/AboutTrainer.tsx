@@ -61,7 +61,7 @@ export default function AboutTrainer() {
                 <div className={`${styles.imgCol} ${visible ? styles.visible : ''}`} style={{ transitionDelay: '130ms' }}>
                     <div className={styles.imgWrap}>
                         <img
-                             src="/trainer-profile.png"
+                             src="/trainer-profile.jpg"
                              alt="Lead market education instructor"
                              className={styles.img}
                              loading="lazy"

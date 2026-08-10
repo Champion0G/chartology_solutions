@@ -48,7 +48,13 @@ export default function WhoIsThisFor() {
                                 style={{ transitionDelay: `${i * 100}ms` }}
                             >
                                 <div className={styles.iconWrap}>
-                                    <img src={t.imgSrc} alt={t.title} className={styles.illustration} />
+                                    <img 
+                                        src={t.imgSrc} 
+                                        alt={t.title} 
+                                        className={styles.illustration} 
+                                        loading="lazy" 
+                                        decoding="async" 
+                                    />
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
                                     <h3 style={{ margin: 0 }}>{t.title}</h3>

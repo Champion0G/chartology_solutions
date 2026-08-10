@@ -85,7 +85,7 @@ export default function Testimonials() {
                                         />
                                     ) : (
                                         <div className={styles.thumbOverlay} onClick={() => setPlayingVideo(v.name)}>
-                                            <img src={v.thumb} alt={v.name} className={styles.thumbImg} />
+                                            <img src={v.thumb} alt={v.name} className={styles.thumbImg} loading="lazy" decoding="async" />
                                             <div className={styles.playBtn}>
                                                 <Play size={20} fill="var(--white)" />
                                             </div>
@@ -111,7 +111,7 @@ export default function Testimonials() {
                             <div key={l.name} className={styles.linkedinCard}>
                                 <div className={styles.linkedinHeader}>
                                     <div className={styles.avatar} style={{ overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                        <img src={l.avatarUrl} alt={l.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                        <img src={l.avatarUrl} alt={l.name} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                     </div>
                                     <div>
                                         <h4>{l.name}</h4>
@@ -139,7 +139,7 @@ export default function Testimonials() {
                                 <p className={styles.writtenQuote}>"{s.quote}"</p>
                                 <div className={styles.writtenAuthor}>
                                     <div className={styles.userIconWrap} style={{ overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'none', border: 'none' }}>
-                                        <img src={s.avatarUrl} alt={s.name} style={{ width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover' }} />
+                                        <img src={s.avatarUrl} alt={s.name} loading="lazy" decoding="async" style={{ width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover' }} />
                                     </div>
                                     <div>
                                         <span className={styles.writtenName}>{s.name}</span>
