@@ -74,7 +74,7 @@ export default function RegistrationModal() {
     return (
         <AnimatePresence>
             {isOpen && (
-                <div className={styles.overlay} role="dialog" aria-modal="true">
+                <div className={styles.overlay} role="dialog" aria-modal="true" aria-label="Workshop Registration Modal">
                     {/* Backdrop */}
                     <motion.div 
                         className={styles.backdrop} 
@@ -134,12 +134,12 @@ export default function RegistrationModal() {
                                 {sent ? (
                                     <div className={styles.success}>
                                         <span className={styles.successEmoji}>🎉</span>
-                                        <h4>Seat Reserved!</h4>
+                                        <h3>Seat Reserved!</h3>
                                         <p>We sent the live links and calendar invites to {form.email}. See you at the workshop!</p>
                                     </div>
                                 ) : (
                                     <form onSubmit={handleSubmit} noValidate className={styles.form}>
-                                        <h4 className={styles.formTitle}>Reserve Your Seat</h4>
+                                        <h3 className={styles.formTitle}>Reserve Your Seat</h3>
                                         
                                         <div className={styles.field}>
                                             <label htmlFor="modal-name">Full Name *</label>

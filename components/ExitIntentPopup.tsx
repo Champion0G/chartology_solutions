@@ -70,7 +70,7 @@ export default function ExitIntentPopup() {
     return (
         <AnimatePresence>
             {isOpen && (
-                <div className={styles.overlay} role="dialog" aria-modal="true">
+                <div className={styles.overlay} role="dialog" aria-modal="true" aria-label="Trading Starter Kit Offer">
                     {/* Backdrop */}
                     <motion.div 
                         className={styles.backdrop} 
@@ -98,7 +98,7 @@ export default function ExitIntentPopup() {
                                 <div className={styles.giftIconWrap}>
                                     <Gift size={32} className={styles.giftIcon} />
                                 </div>
-                                <h3 className={styles.offerHeading}>Starter Kit</h3>
+                                <h4 className={styles.offerHeading}>Starter Kit</h4>
                                 <p className={styles.offerDesc}>Get our "Stock Market Blueprint" PDF guide and unlock 3 exclusive webinar recordings.</p>
                                 <ul className={styles.perks}>
                                     <li>✓ Core Price Action Cheat Sheet</li>
@@ -110,7 +110,7 @@ export default function ExitIntentPopup() {
                             {/* Right Side: Form */}
                             <div className={styles.right}>
                                 <span className={styles.label}>🔴 LIMITED TIME OFFER</span>
-                                <h4 className={styles.title}>Don't Leave Empty Handed!</h4>
+                                <h3 className={styles.title}>Don't Leave Empty Handed!</h3>
                                 <p className={styles.sub}>Enter your details to receive our comprehensive trading starter bundle instantly.</p>
 
                                 {!submitted ? (
@@ -157,7 +157,7 @@ export default function ExitIntentPopup() {
                                         animate={{ opacity: 1, scale: 1 }}
                                     >
                                         <div className={styles.successIcon}>✓</div>
-                                        <h5>Sent Successfully!</h5>
+                                        <h4 style={{ fontSize: '1.2rem', fontWeight: '700', color: 'var(--white)', margin: '8px 0' }}>Sent Successfully!</h4>
                                         <p>Check your inbox. The PDF guide & resources are on the way.</p>
                                     </motion.div>
                                 )}

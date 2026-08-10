@@ -44,7 +44,7 @@ export default function AboutTrainer() {
                                         <Icon size={18} className={styles.icon} />
                                     </div>
                                     <div>
-                                        <h4 className={styles.statLabel}>{q.label}</h4>
+                                        <h3 className={styles.statLabel}>{q.label}</h3>
                                         <p className={styles.statDesc}>{q.desc}</p>
                                     </div>
                                 </div>
@@ -64,7 +64,10 @@ export default function AboutTrainer() {
                              src="/trainer-profile.jpg"
                              alt="Lead market education instructor"
                              className={styles.img}
+                             width="450"
+                             height="450"
                              loading="lazy"
+                             decoding="async"
                         />
                         <div className={styles.floatCard}>
                             <div className={styles.floatIcon}>🏆</div>

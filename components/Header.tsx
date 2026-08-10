@@ -35,7 +35,7 @@ export default function Header() {
                 <div className={`container ${styles.inner}`}>
                     {/* Logo */}
                     <a href="/#hero" className={styles.logo}>
-                        <img src="/logo.png" alt="Chartologic" className={styles.logoImg} />
+                        <img src="/logo.png" alt="Chartologic" width="160" height="38" className={styles.logoImg} />
                     </a>
 
                     {/* Desktop nav */}
@@ -63,7 +63,7 @@ export default function Header() {
             </header>
 
             {/* Mobile drawer */}
-            <div className={`${styles.drawer} ${open ? styles.drawerOpen : ''}`} role="dialog" aria-modal="true">
+            <div className={`${styles.drawer} ${open ? styles.drawerOpen : ''}`} role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
                 <nav aria-label="Mobile navigation">
                     {navLinks.map((l) => (
                         <a key={l.label} href={l.href} className={styles.drawerLink} onClick={closeMenu}>{l.label}</a>

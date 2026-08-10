@@ -1,9 +1,19 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import RegistrationModal from '@/components/RegistrationModal';
 import AnalyticsTracker from '@/components/AnalyticsTracker';
+import dynamic from 'next/dynamic';
+
+const RegistrationModal = dynamic(() => import('@/components/RegistrationModal'));
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+  weight: ['400', '500', '600', '700', '800', '900'],
+});
 
 export const metadata: Metadata = {
   title: 'Chartologic — Master Financial Markets & Trading Intelligence',
@@ -91,7 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
         <script
           type="application/ld+json"

@@ -1,7 +1,6 @@
-'use client';
+import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
 import SocialProofBar from '@/components/SocialProofBar';
-// import AsSeenInMarquee from '@/components/AsSeenInMarquee';
 import TheProblem from '@/components/TheProblem';
 import WhyMarketEducation from '@/components/WhyMarketEducation';
 import MarketsCovered from '@/components/MarketsCovered';
@@ -15,9 +14,10 @@ import WorkshopOutcomes from '@/components/WorkshopOutcomes';
 import Inquiry from '@/components/Inquiry';
 import FAQ from '@/components/FAQ';
 import CTABanner from '@/components/CTABanner';
-import FloatingWhatsApp from '@/components/FloatingWhatsApp';
-import ExitIntentPopup from '@/components/ExitIntentPopup';
-import StickyEnrollBar from '@/components/StickyEnrollBar';
+
+const StickyEnrollBar = dynamic(() => import('@/components/StickyEnrollBar'));
+const FloatingWhatsApp = dynamic(() => import('@/components/FloatingWhatsApp'));
+const ExitIntentPopup = dynamic(() => import('@/components/ExitIntentPopup'));
 
 export default function Home() {
   return (

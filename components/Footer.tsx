@@ -25,7 +25,7 @@ export default function Footer() {
                 {/* Col 1: Brand */}
                 <div className={styles.col}>
                     <div className={styles.logo}>
-                        <img src="/logo.png" alt="Chartologic" className={styles.logoImg} />
+                        <img src="/logo.png" alt="Chartologic" width="160" height="38" className={styles.logoImg} />
                     </div>
                     <p className={styles.desc}>
                         We help students and working professionals understand financial markets through structured learning, mentorship, certifications, and practical exposure.
@@ -51,7 +51,7 @@ export default function Footer() {
 
                 {/* Col 2: Quick Links */}
                 <div className={styles.col}>
-                    <h4 className={styles.colTitle}>Quick Links</h4>
+                    <h3 className={styles.colTitle}>Quick Links</h3>
                     <ul className={styles.links}>
                         {quickLinks.map((l) => (
                             <li key={l.label}><a href={l.href} className={styles.link}>{l.label}</a></li>
@@ -61,7 +61,7 @@ export default function Footer() {
 
                 {/* Col 3: Legal */}
                 <div className={styles.col}>
-                    <h4 className={styles.colTitle}>Legal</h4>
+                    <h3 className={styles.colTitle}>Legal</h3>
                     <ul className={styles.links}>
                         {legalLinks.map((l) => (
                             <li key={l.label}><a href={l.href} className={styles.link}>{l.label}</a></li>

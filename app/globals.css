@@ -1,20 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
 /* ── Design Tokens ── */
 :root {
-  --red: #E10600;
-  --red-hover: #B80000;
+  --red: #FF4D4D;
+  --red-hover: #E10600;
+  --red-btn: #E10600;
   --bg: #000000;
   --bg-dark: #0A0A0A;
   --card: #111111;
   --white: #ffffff;
-  --muted: #B3B3B3;
+  --muted: #CCCCCC;
   --border: rgba(255,255,255,0.08);
   --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
   --radius-card: 14px;
   --radius-btn: 8px;
   --section-py: 100px;
-  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ── Reset ── */

@@ -95,7 +95,7 @@ export default function Inquiry() {
                     </div>
 
                     <div className={styles.benefitsSection}>
-                        <h4>Key Session Benefits:</h4>
+                        <h3 style={{ fontSize: '1.05rem', fontWeight: '700', color: 'var(--white)', marginBottom: '16px' }}>Key Session Benefits:</h3>
                         <ul className={styles.benefitsList}>
                             <li>
                                 <Check size={16} className={styles.check} />

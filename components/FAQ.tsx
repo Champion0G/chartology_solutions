@@ -49,21 +49,32 @@ export default function FAQ() {
 
                 {/* Tabs */}
                 <div className={styles.tabs} role="tablist" aria-label="FAQ categories">
-                    {tabs.map((tab) => (
-                        <button
-                            key={tab}
-                            role="tab"
-                            aria-selected={activeTab === tab}
-                            className={`${styles.tab} ${activeTab === tab ? styles.active : ''}`}
-                            onClick={() => { setActiveTab(tab); setOpenIndex(0); }}
-                        >
-                            {tab}
-                        </button>
-                    ))}
+                    {tabs.map((tab) => {
+                        const tabId = `faq-tab-${tab.toLowerCase().replace(/\s+/g, '-')}`;
+                        const panelId = `faq-panel-${tab.toLowerCase().replace(/\s+/g, '-')}`;
+                        return (
+                            <button
+                                key={tab}
+                                id={tabId}
+                                role="tab"
+                                aria-selected={activeTab === tab}
+                                aria-controls={panelId}
+                                className={`${styles.tab} ${activeTab === tab ? styles.active : ''}`}
+                                onClick={() => { setActiveTab(tab); setOpenIndex(0); }}
+                            >
+                                {tab}
+                            </button>
+                        );
+                    })}
                 </div>
 
                 {/* Accordion */}
-                <div className={styles.accordion} role="tabpanel">
+                <div 
+                    id={`faq-panel-${activeTab.toLowerCase().replace(/\s+/g, '-')}`}
+                    className={styles.accordion} 
+                    role="tabpanel" 
+                    aria-labelledby={`faq-tab-${activeTab.toLowerCase().replace(/\s+/g, '-')}`}
+                >
                     {items.map((item, i) => (
                         <div key={i} className={`${styles.item} ${openIndex === i ? styles.open : ''}`}>
                             <button

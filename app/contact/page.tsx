@@ -49,7 +49,7 @@ export default function Contact() {
                                 <Mail size={18} />
                             </div>
                             <div>
-                                <h4>Email Support</h4>
+                                <h3 style={{ fontSize: '1.05rem', fontWeight: '700', color: 'var(--white)', margin: 0 }}>Email Support</h3>
                                 <p><a href="mailto:support@chartologic.com">support@chartologic.com</a></p>
                             </div>
                         </div>
@@ -59,7 +59,7 @@ export default function Contact() {
                                 <Phone size={18} />
                             </div>
                             <div>
-                                <h4>WhatsApp Support</h4>
+                                <h3 style={{ fontSize: '1.05rem', fontWeight: '700', color: 'var(--white)', margin: 0 }}>WhatsApp Support</h3>
                                 <p><a href="https://wa.me/917595881240" target="_blank" rel="noopener noreferrer">+91 7595 881 240</a></p>
                             </div>
                         </div>
@@ -69,7 +69,7 @@ export default function Contact() {
                                 <MapPin size={18} />
                             </div>
                             <div>
-                                <h4>HQ Location</h4>
+                                <h3 style={{ fontSize: '1.05rem', fontWeight: '700', color: 'var(--white)', margin: 0 }}>HQ Location</h3>
                                 <p>Kolkata, West Bengal, India</p>
                             </div>
                         </div>

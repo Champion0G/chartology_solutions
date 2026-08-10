@@ -143,32 +143,32 @@
 }
 
 .field input::placeholder {
-    color: #718096 !important;
-    opacity: 0.85 !important;
+    color: #4a5568 !important;
+    opacity: 1 !important;
 }
 
 .field input::-webkit-input-placeholder {
-    color: #718096 !important;
-    opacity: 0.85 !important;
+    color: #4a5568 !important;
+    opacity: 1 !important;
 }
 
 .field input::-moz-placeholder {
-    color: #718096 !important;
-    opacity: 0.85 !important;
+    color: #4a5568 !important;
+    opacity: 1 !important;
 }
 
 .field input:-ms-input-placeholder {
-    color: #718096 !important;
-    opacity: 0.85 !important;
+    color: #4a5568 !important;
+    opacity: 1 !important;
 }
 
 .field input:-moz-placeholder {
-    color: #718096 !important;
-    opacity: 0.85 !important;
+    color: #4a5568 !important;
+    opacity: 1 !important;
 }
 
 .field select.placeholderActive {
-    color: #718096 !important;
+    color: #4a5568 !important;
 }
 
 .field select option {
@@ -177,7 +177,7 @@
 }
 
 .field select option:first-child {
-    color: #718096;
+    color: #4a5568;
 }
 
 .field input:focus, .field select:focus {

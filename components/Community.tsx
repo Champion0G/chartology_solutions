@@ -59,7 +59,7 @@ export default function Community() {
                                         <Icon className={styles.icon} size={20} />
                                     </div>
                                     <div>
-                                        <h4 className={styles.benefitTitle}>{f.title}</h4>
+                                        <h3 className={styles.benefitTitle}>{f.title}</h3>
                                         <p className={styles.benefitDesc}>{f.desc}</p>
                                     </div>
                                 </div>
@@ -85,7 +85,10 @@ export default function Community() {
                                 playsInline
                                 preload="none"
                                 poster="/sr-first-frame.jpg"
-                            />
+                                aria-hidden="true"
+                            >
+                                <track kind="captions" src="data:text/vtt,WEBVTT" srcLang="en" label="English" default />
+                            </video>
                         </div>
                     </div>
                 </div>

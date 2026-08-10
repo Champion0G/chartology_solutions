@@ -1,17 +1,8 @@
 'use client';
-import { useEffect, useRef } from 'react';
 import { ArrowRight, Check } from 'lucide-react';
 import styles from './Hero.module.css';
 
 export default function Hero() {
-    const heroRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const el = heroRef.current;
-        if (!el) return;
-        requestAnimationFrame(() => { el.classList.add(styles.visible); });
-    }, []);
-
     const trustItems = [
         'Students & Professionals',
         'Live Workshops',
@@ -31,7 +22,7 @@ export default function Hero() {
     };
 
     return (
-        <section id="hero" className={styles.hero} ref={heroRef}>
+        <section id="hero" className={styles.hero}>
             {/* Background Image / Gradient */}
             <div className={styles.photoBg} aria-hidden="true">
                 <video
@@ -39,11 +30,13 @@ export default function Hero() {
                     loop
                     muted
                     playsInline
-                    preload="metadata"
+                    preload="none"
                     poster="/hero-poster.jpg"
                     className={styles.bgVideo}
+                    aria-hidden="true"
                 >
                     <source src="/hero_chart_loop.mp4" type="video/mp4" />
+                    <track kind="captions" src="data:text/vtt,WEBVTT" srcLang="en" label="English" default />
                 </video>
                 <div className={styles.dotGrid} aria-hidden="true" />
                 <div className={styles.fadeOverlay} aria-hidden="true" />

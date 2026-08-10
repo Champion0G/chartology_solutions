@@ -121,7 +121,7 @@
 
 .copy {
     font-size: 0.8rem;
-    color: #555;
+    color: var(--muted);
 }
 
 .legal {
@@ -131,7 +131,7 @@
 
 .legal a {
     font-size: 0.78rem;
-    color: #555;
+    color: var(--muted);
     transition: color 0.2s;
 }
 
@@ -146,8 +146,8 @@
 }
 
 .disclaimerText {
-    font-size: 0.72rem;
-    color: #666;
+    font-size: 0.75rem;
+    color: var(--muted);
     line-height: 1.6;
     text-align: justify;
 }

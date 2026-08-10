@@ -97,7 +97,7 @@ function VerifyContent() {
             {!loading && result && (
                 <div className={styles.certCard}>
                     <div className={styles.cardHeader}>
-                        <img src="/logo.png" alt="Chartologic" className={styles.logoImg} />
+                        <img src="/logo.png" alt="Chartologic" width="160" height="38" className={styles.logoImg} />
                         <div className={styles.statusBadge}>
                             <ShieldCheck size={16} /> Verified Certificate
                         </div>

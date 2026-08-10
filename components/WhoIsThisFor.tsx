@@ -51,6 +51,8 @@ export default function WhoIsThisFor() {
                                     <img 
                                         src={t.imgSrc} 
                                         alt={t.title} 
+                                        width="160"
+                                        height="160"
                                         className={styles.illustration} 
                                         loading="lazy" 
                                         decoding="async" 
