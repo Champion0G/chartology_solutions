@@ -48,8 +48,8 @@ export default function WhyMarketEducation() {
                                         <Icon size={18} className={styles.icon} />
                                     </div>
                                     <div>
-                                        <h3 style={{ fontSize: '1rem', fontWeight: '700', color: 'var(--white)', marginBottom: '4px' }}>{s.title}</h3>
-                                        <p style={{ fontSize: '0.85rem', color: 'var(--muted)', margin: 0 }}>{s.desc}</p>
+                                        <h3 className={styles.skillTitle}>{s.title}</h3>
+                                        <p className={styles.skillDesc}>{s.desc}</p>
                                     </div>
                                 </div>
                             );
