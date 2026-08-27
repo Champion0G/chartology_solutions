@@ -10,28 +10,36 @@ export default function Testimonials() {
 
     const videoTestimonials = [
         {
-            name: 'Priyanka Gupta',
-            role: 'B.Com Student, Delhi University',
-            skills: 'Cleared CM-PAS Exam',
-            thumb: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=480&q=80&auto=format',
-            videoUrl: 'https://www.youtube.com/embed/g6iAABykS4E',
-            duration: '1m 45s'
+            name: 'Ayush',
+            role: 'Final Year Student, Cohort Member',
+            skills: 'Price Action & Risk Control',
+            thumb: 'https://i.ytimg.com/vi/hhjG29SiSvo/hqdefault.jpg',
+            videoUrl: 'https://www.youtube.com/embed/hhjG29SiSvo',
+            duration: 'Video Story'
         },
         {
-            name: 'Suresh Nair',
-            role: 'Software Architect, Bangalore',
-            skills: 'CM-RMA Risk Certified',
-            thumb: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=480&q=80&auto=format',
-            videoUrl: 'https://www.youtube.com/embed/SF7p9S5fVb0',
-            duration: '2m 10s'
+            name: 'Sikandar',
+            role: 'Trading & Investing Cohort Member',
+            skills: 'Multi-Asset Strategy Builder',
+            thumb: 'https://i.ytimg.com/vi/u6nJsHiyACk/hqdefault.jpg',
+            videoUrl: 'https://www.youtube.com/embed/u6nJsHiyACk',
+            duration: 'Cohort Experience'
         },
         {
-            name: 'Amit Patel',
-            role: 'Business Consultant, Mumbai',
-            skills: 'Portfolio Allocation Builder',
-            thumb: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=480&q=80&auto=format',
-            videoUrl: 'https://www.youtube.com/embed/7hP5nZ0eFEE',
-            duration: '3m 05s'
+            name: 'Chetna',
+            role: 'Cohort Graduate',
+            skills: 'Trading Competency Transformation',
+            thumb: 'https://i.ytimg.com/vi/TvulDMFgpa8/hqdefault.jpg',
+            videoUrl: 'https://www.youtube.com/embed/TvulDMFgpa8',
+            duration: 'Transformation Story'
+        },
+        {
+            name: 'Samadrita',
+            role: "St. Xavier's College Student",
+            skills: 'Stock Market Execution Mastery',
+            thumb: 'https://i.ytimg.com/vi/VoOBM-WDLwk/hqdefault.jpg',
+            videoUrl: 'https://www.youtube.com/embed/VoOBM-WDLwk',
+            duration: 'Success Story'
         }
     ];
 
