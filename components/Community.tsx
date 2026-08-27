@@ -6,10 +6,7 @@ import useScrollReveal from '@/hooks/useScrollReveal';
 export default function Community() {
     const { ref, visible } = useScrollReveal();
 
-    const handleRegisterClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-        window.dispatchEvent(new CustomEvent('open-register-modal', { detail: { ctaId: 'community_section' } }));
-    };
+
 
     const features = [
         {
@@ -67,7 +64,7 @@ export default function Community() {
                         })}
                     </div>
 
-                    <a href="#register" onClick={handleRegisterClick} className="btn-primary" style={{ marginTop: '36px' }}>
+                    <a href="/register" className="btn-primary" style={{ marginTop: '36px' }}>
                         Reserve Seat & Access Portal
                     </a>
                 </div>

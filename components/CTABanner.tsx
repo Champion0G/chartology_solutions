@@ -2,10 +2,6 @@
 import styles from './CTABanner.module.css';
 
 export default function CTABanner() {
-    const handleRegisterClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-        window.dispatchEvent(new CustomEvent('open-register-modal', { detail: { ctaId: 'bottom_cta_banner' } }));
-    };
 
     return (
         <section className={styles.section} id="cta-banner">
@@ -16,7 +12,7 @@ export default function CTABanner() {
                     <p className={styles.sub}>
                         Join the next live workshop and discover the roadmap followed by successful market participants.
                     </p>
-                    <a href="#register" onClick={handleRegisterClick} className={styles.btn}>
+                    <a href="/register" className={styles.btn}>
                         Reserve My Workshop Seat
                     </a>
                 </div>

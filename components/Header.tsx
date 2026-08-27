@@ -7,7 +7,7 @@ const navLinks = [
     { label: 'Home', href: '/#hero' },
     { label: 'About Us', href: '/about-us' },
     { label: 'Programs', href: '/programs' },
-    { label: 'Live Workshop', href: '/#register' },
+    { label: 'Live Workshop', href: '/register' },
     { label: 'Contact', href: '/contact' }
 ];
 
@@ -22,12 +22,6 @@ export default function Header() {
     }, []);
 
     const closeMenu = () => setOpen(false);
-
-    const handleRegisterClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-        window.dispatchEvent(new CustomEvent('open-register-modal', { detail: { ctaId: 'header_nav' } }));
-        closeMenu();
-    };
 
     return (
         <>
@@ -47,7 +41,7 @@ export default function Header() {
 
                     {/* Desktop CTA */}
                     <div className={styles.ctas}>
-                        <a href="/#register" onClick={handleRegisterClick} className={`btn-primary ${styles.blinkBtn}`} style={{ padding: '10px 22px' }}>Reserve Seat</a>
+                        <a href="/register" className={`btn-primary ${styles.blinkBtn}`} style={{ padding: '10px 22px' }}>Reserve Seat</a>
                     </div>
 
                     {/* Hamburger */}
@@ -69,7 +63,7 @@ export default function Header() {
                         <a key={l.label} href={l.href} className={styles.drawerLink} onClick={closeMenu}>{l.label}</a>
                     ))}
                     <div className={styles.drawerCtas}>
-                        <a href="/#register" className={`btn-primary ${styles.blinkBtn}`} onClick={handleRegisterClick} style={{ width: '100%', justifyContent: 'center' }}>Reserve Seat</a>
+                        <a href="/register" className={`btn-primary ${styles.blinkBtn}`} onClick={closeMenu} style={{ width: '100%', justifyContent: 'center' }}>Reserve Seat</a>
                     </div>
                 </nav>
             </div>

@@ -13,10 +13,7 @@ export default function AboutTrainer() {
         { icon: Library, label: 'NISM Certified', desc: 'Qualified credentials ensuring strict, compliant educational standards.' }
     ];
 
-    const handleRegisterClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-        window.dispatchEvent(new CustomEvent('open-register-modal', { detail: { ctaId: 'mentor_section' } }));
-    };
+
 
     return (
         <section id="trainer" className={styles.section} ref={ref as any}>
@@ -52,7 +49,7 @@ export default function AboutTrainer() {
                         })}
                     </div>
  
-                    <a href="#register" onClick={handleRegisterClick} className={styles.cta}>
+                    <a href="/register" className={styles.cta}>
                         <span>🎓</span> Reserve My Workshop Seat <ArrowRight size={16} />
                     </a>
                 </div>

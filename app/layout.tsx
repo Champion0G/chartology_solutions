@@ -4,9 +4,6 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AnalyticsTracker from '@/components/AnalyticsTracker';
-import dynamic from 'next/dynamic';
-
-const RegistrationModal = dynamic(() => import('@/components/RegistrationModal'));
 
 const inter = Inter({
   subsets: ['latin'],
@@ -113,7 +110,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         {children}
         <Footer />
-        <RegistrationModal />
       </body>
     </html>
   );

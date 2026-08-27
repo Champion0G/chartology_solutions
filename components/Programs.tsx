@@ -39,10 +39,7 @@ export default function Programs() {
         'Trading Psychology & Professional Trade Journaling'
     ];
 
-    const handleRegisterClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-        window.dispatchEvent(new CustomEvent('open-register-modal', { detail: { ctaId: 'programs_page_residency' } }));
-    };
+
 
     return (
         <section id="programs" className={styles.section}>
@@ -115,7 +112,7 @@ export default function Programs() {
                             <p className={styles.ctaText}>
                                 Learn how to qualify for capital allocation. Register for our upcoming live workshop.
                             </p>
-                            <a href="/#register" onClick={handleRegisterClick} className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+                            <a href="/register" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
                                 Register for Workshop <ArrowRight size={16} />
                             </a>
                         </div>
