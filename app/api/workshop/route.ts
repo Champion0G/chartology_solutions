@@ -108,10 +108,18 @@ async function saveCloudWorkshopState(state: any) {
 }
 
 export async function GET() {
+    const { url, token } = getKvConfig();
+    const detectedKeys = Object.keys(process.env).filter(k => 
+        k.includes('STORAGE') || k.includes('UPSTASH') || k.includes('REDIS') || k.includes('KV')
+    );
+
     // 1. Try KV cloud store first for cross-instance sync
     const cloudState = await getCloudWorkshopState();
     if (cloudState && typeof cloudState === 'object') {
-        return NextResponse.json(cloudState, {
+        return NextResponse.json({
+            ...cloudState,
+            _debug: { hasCloud: true, detectedKeys, hasUrl: Boolean(url), hasToken: Boolean(token) }
+        }, {
             headers: {
                 'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
                 'Pragma': 'no-cache',
@@ -130,7 +138,10 @@ export async function GET() {
         updatedAt: new Date().toISOString()
     };
 
-    return NextResponse.json(liveWorkshop, {
+    return NextResponse.json({
+        ...liveWorkshop,
+        _debug: { hasCloud: false, detectedKeys, hasUrl: Boolean(url), hasToken: Boolean(token) }
+    }, {
         headers: {
             'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
             'Pragma': 'no-cache',
