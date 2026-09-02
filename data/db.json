@@ -5,11 +5,11 @@
     "seats": 100
   },
   "liveWorkshop": {
-    "isLive": true,
+    "isLive": false,
     "title": "Financial Markets Masterclass — Live Session",
     "description": "Welcome to today's live cohort session. Institutional charting and trade auditing in real-time.",
-    "videoId": "L1NoiCGrgVE",
-    "updatedAt": "2026-09-03T01:36:00.000Z"
+    "videoId": "",
+    "updatedAt": "2026-09-03T00:00:00.000Z"
   },
   "registrations": [
     {

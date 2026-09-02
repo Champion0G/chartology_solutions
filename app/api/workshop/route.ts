@@ -143,8 +143,8 @@ export async function POST(req: Request) {
         const db = getDb();
         const currentWorkshop = db.liveWorkshop || {};
 
-        // If attempting to go live, must have either new extracted videoId or existing valid videoId
-        const finalVideoId = videoId || currentWorkshop.videoId || '';
+        // If videoInput was provided, use extracted videoId. If videoInput was explicitly empty string, clear it.
+        const finalVideoId = videoId ? videoId : (videoInput === '' ? '' : (currentWorkshop.videoId || ''));
 
         if (willBeLive && !finalVideoId) {
             return NextResponse.json(

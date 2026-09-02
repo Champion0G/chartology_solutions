@@ -21,10 +21,10 @@ export function getDb() {
             starterKitLeads: [],
             certificates: [],
             liveWorkshop: {
-                isLive: true,
+                isLive: false,
                 title: "Financial Markets Masterclass — Live Session",
                 description: "Welcome to today's live cohort session. Institutional charting and trade auditing in real-time.",
-                videoId: "L1NoiCGrgVE",
+                videoId: "",
                 updatedAt: new Date().toISOString()
             }
         };
