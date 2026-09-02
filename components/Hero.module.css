@@ -144,6 +144,46 @@
     background: rgba(255, 255, 255, 0.07);
 }
 
+.btnLive {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: #e10600;
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.97rem;
+    padding: 14px 28px;
+    border-radius: 8px;
+    white-space: nowrap;
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.5);
+    animation: heroGlowPulse 2s infinite ease-in-out;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.btnLive:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 30px rgba(225, 6, 0, 0.85);
+}
+
+.livePulseDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffffff;
+    animation: heroDotPulse 1.4s infinite ease-in-out;
+    flex-shrink: 0;
+}
+
+@keyframes heroDotPulse {
+    0%, 100% { opacity: 0.8; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.35); box-shadow: 0 0 6px #fff; }
+}
+
+@keyframes heroGlowPulse {
+    0%, 100% { box-shadow: 0 0 16px rgba(225, 6, 0, 0.4); }
+    50% { box-shadow: 0 0 28px rgba(225, 6, 0, 0.75); }
+}
+
 /* Trust Bar below CTA */
 .trustBar {
     display: flex;

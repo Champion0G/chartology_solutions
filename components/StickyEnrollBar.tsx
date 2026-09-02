@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock } from 'lucide-react';
 import styles from './StickyEnrollBar.module.css';
+import useLiveWorkshop from '@/hooks/useLiveWorkshop';
 
 export default function StickyEnrollBar() {
     const [isVisible, setIsVisible] = useState(false);
+    const { isLive } = useLiveWorkshop();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -34,14 +36,21 @@ export default function StickyEnrollBar() {
                     <div className={`container ${styles.inner}`}>
                         <div className={styles.left}>
                             <span className={styles.dot}>🔴</span>
-                            <span className={styles.text}>Live Trading Workshop Coming Up!</span>
+                            <span className={styles.text}>
+                                {isLive ? "Masterclass is LIVE NOW!" : "Live Trading Workshop Coming Up!"}
+                            </span>
                             <span className={styles.divider}>•</span>
                             <span className={styles.seats}>
-                                <Clock size={14} className={styles.icon} /> Limited Seats Left
+                                <Clock size={14} className={styles.icon} /> {isLive ? "Streaming Live" : "Limited Seats Left"}
                             </span>
                         </div>
-                        <div className={styles.right}>
-                            <a href="/register" className={styles.cta}>
+                        <div className={styles.right} style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                            {isLive && (
+                                <a href="/workshop" className={styles.cta} style={{ background: '#e10600', boxShadow: '0 0 16px rgba(225, 6, 0, 0.5)' }}>
+                                    🔴 Join Live Workshop
+                                </a>
+                            )}
+                            <a href="/register" className={styles.cta} style={{ background: isLive ? 'rgba(255,255,255,0.08)' : 'var(--red)', border: isLive ? '1px solid rgba(255,255,255,0.15)' : 'none' }}>
                                 Reserve Workshop Seat
                             </a>
                         </div>

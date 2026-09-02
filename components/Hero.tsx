@@ -1,8 +1,10 @@
 'use client';
 import { ArrowRight, Check } from 'lucide-react';
 import styles from './Hero.module.css';
+import useLiveWorkshop from '@/hooks/useLiveWorkshop';
 
 export default function Hero() {
+    const { isLive } = useLiveWorkshop();
     const trustItems = [
         'Students & Professionals',
         'Live Workshops',
@@ -38,7 +40,7 @@ export default function Hero() {
             <div className={styles.inner}>
                 <div className={styles.content}>
                     <p className={styles.eyebrow}>
-                        Premium Market Education
+                        The Institutional Way
                     </p>
 
                     <h1 className={styles.headline}>
@@ -52,6 +54,12 @@ export default function Hero() {
                     </p>
 
                     <div className={styles.ctas}>
+                        {isLive && (
+                            <a href="/workshop" className={styles.btnLive}>
+                                <span className={styles.livePulseDot} />
+                                Join Live Workshop
+                            </a>
+                        )}
                         <a href="/register" className={styles.btnPrimary}>
                             Reserve My Workshop Seat
                         </a>

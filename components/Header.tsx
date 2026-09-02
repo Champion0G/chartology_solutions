@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import styles from './Header.module.css';
+import useLiveWorkshop from '@/hooks/useLiveWorkshop';
 
 const navLinks = [
     { label: 'Home', href: '/#hero' },
@@ -14,6 +15,7 @@ const navLinks = [
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [open, setOpen] = useState(false);
+    const { isLive } = useLiveWorkshop();
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 20);
@@ -41,6 +43,12 @@ export default function Header() {
 
                     {/* Desktop CTA */}
                     <div className={styles.ctas}>
+                        {isLive && (
+                            <a href="/workshop" className={styles.liveBtn}>
+                                <span className={styles.livePulseDot} />
+                                Join Live Workshop
+                            </a>
+                        )}
                         <a href="/register" className={`btn-primary ${styles.blinkBtn}`} style={{ padding: '10px 22px' }}>Reserve Seat</a>
                     </div>
 
@@ -63,6 +71,12 @@ export default function Header() {
                         <a key={l.label} href={l.href} className={styles.drawerLink} onClick={closeMenu}>{l.label}</a>
                     ))}
                     <div className={styles.drawerCtas}>
+                        {isLive && (
+                            <a href="/workshop" className={styles.liveBtn} onClick={closeMenu} style={{ width: '100%', justifyContent: 'center', marginBottom: '10px' }}>
+                                <span className={styles.livePulseDot} />
+                                Join Live Workshop
+                            </a>
+                        )}
                         <a href="/register" className={`btn-primary ${styles.blinkBtn}`} onClick={closeMenu} style={{ width: '100%', justifyContent: 'center' }}>Reserve Seat</a>
                     </div>
                 </nav>
