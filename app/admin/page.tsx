@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import { 
     Users, Download, RefreshCw, Calendar, Clock, 
     Award, ShieldCheck, Mail, Phone, MapPin, 
-    Lock, CheckCircle2, ChevronRight, LogOut, Info 
+    Lock, CheckCircle2, ChevronRight, LogOut, Info,
+    Video, ExternalLink
 } from 'lucide-react';
 import styles from './admin.module.css';
 
@@ -12,10 +13,20 @@ export default function AdminDashboard() {
     const [password, setPassword] = useState('');
     const [authError, setAuthError] = useState('');
 
-    const [activeTab, setActiveTab] = useState<'overview' | 'schedule' | 'funnel' | 'workshop' | 'starter' | 'certs'>('overview');
+    const [activeTab, setActiveTab] = useState<'overview' | 'schedule' | 'liveWorkshop' | 'funnel' | 'workshop' | 'starter' | 'certs'>('overview');
     
     // DB states
     const [schedule, setSchedule] = useState({ date: '', time: '', seats: 100 });
+    const [liveWorkshop, setLiveWorkshop] = useState({
+        isLive: false,
+        title: '',
+        description: '',
+        videoId: '',
+        videoInput: ''
+    });
+    const [savingLiveWorkshop, setSavingLiveWorkshop] = useState(false);
+    const [liveWorkshopMsg, setLiveWorkshopMsg] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
     const [registrations, setRegistrations] = useState<any[]>([]);
     const [starterKitLeads, setStarterKitLeads] = useState<any[]>([]);
     const [certificates, setCertificates] = useState<any[]>([]);
@@ -98,12 +109,13 @@ export default function AdminDashboard() {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const [resSched, resReg, resKit, resCert, resTrack] = await Promise.all([
+            const [resSched, resReg, resKit, resCert, resTrack, resWorkshop] = await Promise.all([
                 fetch('/api/schedule'),
                 fetch('/api/register'),
                 fetch('/api/starter-kit'),
                 fetch('/api/certificates'),
-                fetch('/api/track')
+                fetch('/api/track'),
+                fetch('/api/workshop')
             ]);
 
             if (resSched.ok) setSchedule(await resSched.json());
@@ -111,6 +123,16 @@ export default function AdminDashboard() {
             if (resKit.ok) setStarterKitLeads(await resKit.json());
             if (resCert.ok) setCertificates(await resCert.json());
             if (resTrack.ok) setClickStream(await resTrack.json());
+            if (resWorkshop.ok) {
+                const wsData = await resWorkshop.json();
+                setLiveWorkshop({
+                    isLive: wsData.isLive ?? false,
+                    title: wsData.title || '',
+                    description: wsData.description || '',
+                    videoId: wsData.videoId || '',
+                    videoInput: wsData.videoId || ''
+                });
+            }
         } catch (err) {
             console.error("Failed to load admin data:", err);
         } finally {
@@ -136,6 +158,46 @@ export default function AdminDashboard() {
             alert('Error updating schedule.');
         } finally {
             setSavingSchedule(false);
+        }
+    };
+
+    const handleSaveLiveWorkshop = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setSavingLiveWorkshop(true);
+        setLiveWorkshopMsg(null);
+        try {
+            const res = await fetch('/api/workshop', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    title: liveWorkshop.title,
+                    description: liveWorkshop.description,
+                    videoInput: liveWorkshop.videoInput,
+                    isLive: liveWorkshop.isLive
+                })
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+                setLiveWorkshop({
+                    isLive: data.liveWorkshop.isLive,
+                    title: data.liveWorkshop.title,
+                    description: data.liveWorkshop.description,
+                    videoId: data.liveWorkshop.videoId,
+                    videoInput: data.liveWorkshop.videoId
+                });
+                setLiveWorkshopMsg({
+                    type: 'success',
+                    text: data.liveWorkshop.isLive 
+                        ? '🟢 Workshop is now LIVE on /workshop!' 
+                        : 'Workshop settings saved (Status: Inactive).'
+                });
+            } else {
+                setLiveWorkshopMsg({ type: 'error', text: data.error || 'Failed to save workshop settings.' });
+            }
+        } catch (err) {
+            setLiveWorkshopMsg({ type: 'error', text: 'Network error updating workshop settings.' });
+        } finally {
+            setSavingLiveWorkshop(false);
         }
     };
 
@@ -549,6 +611,19 @@ export default function AdminDashboard() {
                     </span>
                 </button>
                 <button 
+                    className={`${styles.tabBtn} ${activeTab === 'liveWorkshop' ? styles.activeTab : ''}`}
+                    onClick={() => setActiveTab('liveWorkshop')}
+                >
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        🔴 Live Stream
+                        {liveWorkshop.isLive ? (
+                            <span style={{ fontSize: '0.68rem', background: 'var(--red)', color: '#fff', padding: '1px 6px', borderRadius: '4px', fontWeight: 800 }}>LIVE</span>
+                        ) : (
+                            <span style={{ fontSize: '0.68rem', background: 'rgba(255,255,255,0.08)', color: 'var(--muted)', padding: '1px 6px', borderRadius: '4px' }}>OFF</span>
+                        )}
+                    </span>
+                </button>
+                <button 
                     className={`${styles.tabBtn} ${activeTab === 'workshop' ? styles.activeTab : ''}`}
                     onClick={() => setActiveTab('workshop')}
                 >
@@ -703,6 +778,125 @@ export default function AdminDashboard() {
 
                                 <button type="submit" disabled={savingSchedule} className={styles.button}>
                                     {savingSchedule ? 'Saving Details...' : 'Update Workshop Schedule'}
+                                </button>
+                            </form>
+                        </div>
+                    )}
+
+                    {activeTab === 'liveWorkshop' && (
+                        <div className={styles.panel}>
+                            <div className={styles.panelHeader}>
+                                <div>
+                                    <h2 className={styles.panelTitle} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                        <Video size={22} style={{ color: 'var(--red)' }} />
+                                        Live Workshop Streaming Control
+                                    </h2>
+                                    <p style={{ color: 'var(--muted)', fontSize: '0.88rem', marginTop: '4px' }}>
+                                        Control the unlisted YouTube Live stream embedded on the participant-facing <strong>/workshop</strong> page.
+                                    </p>
+                                </div>
+                                <a 
+                                    href="/workshop" 
+                                    target="_blank" 
+                                    rel="noreferrer" 
+                                    className={styles.exportBtn}
+                                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                                >
+                                    <ExternalLink size={15} /> Open /workshop Page
+                                </a>
+                            </div>
+
+                            {liveWorkshopMsg && (
+                                <div style={{
+                                    padding: '12px 16px',
+                                    borderRadius: '8px',
+                                    marginBottom: '20px',
+                                    fontSize: '0.9rem',
+                                    background: liveWorkshopMsg.type === 'success' ? 'rgba(74, 222, 128, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                                    border: liveWorkshopMsg.type === 'success' ? '1px solid rgba(74, 222, 128, 0.3)' : '1px solid rgba(239, 68, 68, 0.3)',
+                                    color: liveWorkshopMsg.type === 'success' ? '#4ade80' : '#f87171'
+                                }}>
+                                    {liveWorkshopMsg.text}
+                                </div>
+                            )}
+
+                            <form onSubmit={handleSaveLiveWorkshop} className={styles.form}>
+                                <div className={styles.field}>
+                                    <label htmlFor="ws-status">Workshop Status *</label>
+                                    <div style={{ display: 'flex', gap: '24px', alignItems: 'center', marginTop: '6px' }}>
+                                        <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '0.95rem', color: !liveWorkshop.isLive ? 'var(--white)' : 'var(--muted)' }}>
+                                            <input 
+                                                type="radio" 
+                                                name="wsStatus" 
+                                                checked={!liveWorkshop.isLive} 
+                                                onChange={() => setLiveWorkshop({ ...liveWorkshop, isLive: false })} 
+                                            />
+                                            <span>○ Not Live (Inactive Placeholder)</span>
+                                        </label>
+                                        <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '0.95rem', color: liveWorkshop.isLive ? '#4ade80' : 'var(--muted)' }}>
+                                            <input 
+                                                type="radio" 
+                                                name="wsStatus" 
+                                                checked={liveWorkshop.isLive} 
+                                                onChange={() => setLiveWorkshop({ ...liveWorkshop, isLive: true })} 
+                                            />
+                                            <span style={{ fontWeight: 700 }}>● Live (Broadcast Active)</span>
+                                        </label>
+                                    </div>
+                                    <span style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>
+                                        When Not Live, participants see a clean "Workshop isn't live yet" message. When Live, the YouTube player starts streaming.
+                                    </span>
+                                </div>
+
+                                <div className={styles.field}>
+                                    <label htmlFor="ws-title">Workshop Title *</label>
+                                    <input 
+                                        id="ws-title"
+                                        type="text" 
+                                        value={liveWorkshop.title} 
+                                        onChange={(e) => setLiveWorkshop({ ...liveWorkshop, title: e.target.value })} 
+                                        className={styles.input}
+                                        placeholder="e.g. Chartology Cohort — Live Workshop"
+                                        required
+                                    />
+                                </div>
+
+                                <div className={styles.field}>
+                                    <label htmlFor="ws-desc">Workshop Description / Agenda</label>
+                                    <textarea 
+                                        id="ws-desc"
+                                        rows={3}
+                                        value={liveWorkshop.description} 
+                                        onChange={(e) => setLiveWorkshop({ ...liveWorkshop, description: e.target.value })} 
+                                        className={styles.input}
+                                        style={{ resize: 'vertical' }}
+                                        placeholder="e.g. Welcome to today's live cohort session. We will cover institutional order flow and live chart setups."
+                                    />
+                                </div>
+
+                                <div className={styles.field}>
+                                    <label htmlFor="ws-video">YouTube Video ID or URL {liveWorkshop.isLive ? '*' : ''}</label>
+                                    <input 
+                                        id="ws-video"
+                                        type="text" 
+                                        value={liveWorkshop.videoInput} 
+                                        onChange={(e) => setLiveWorkshop({ ...liveWorkshop, videoInput: e.target.value })} 
+                                        className={styles.input}
+                                        placeholder="e.g. dQw4w9WgXcQ or https://youtu.be/dQw4w9WgXcQ"
+                                    />
+                                    <span style={{ fontSize: '0.75rem', color: 'var(--muted)' }}>
+                                        Accepts either an 11-character Video ID or any standard YouTube URL (Watch, Live, Shorts, Embed). Unlisted streams are fully supported.
+                                    </span>
+                                    {liveWorkshop.videoId && (
+                                        <div style={{ marginTop: '8px', fontSize: '0.8rem', color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                            <CheckCircle2 size={14} style={{ color: '#4ade80' }} />
+                                            Active Video ID: <code style={{ background: 'rgba(255,255,255,0.08)', padding: '2px 6px', borderRadius: '4px', color: 'var(--white)' }}>{liveWorkshop.videoId}</code>
+                                        </div>
+                                    )}
+                                </div>
+
+                                <button type="submit" disabled={savingLiveWorkshop} className={styles.button} style={{ marginTop: '10px' }}>
+                                    {savingLiveWorkshop ? 'Saving Workshop Settings...' : 'Save Workshop Settings'}
                                 </button>
                             </form>
                         </div>

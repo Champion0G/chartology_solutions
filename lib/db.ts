@@ -19,7 +19,14 @@ export function getDb() {
             schedule: { date: "Upcoming Sunday", time: "11:00 AM IST", seats: 100 },
             registrations: [],
             starterKitLeads: [],
-            certificates: []
+            certificates: [],
+            liveWorkshop: {
+                isLive: false,
+                title: "Financial Markets Masterclass — Live Session",
+                description: "Welcome to today's live cohort session. Institutional charting and trade auditing in real-time.",
+                videoId: "",
+                updatedAt: new Date().toISOString()
+            }
         };
     }
 }

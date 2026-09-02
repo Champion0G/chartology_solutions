@@ -4,6 +4,13 @@
     "time": "11:00 AM IST",
     "seats": 100
   },
+  "liveWorkshop": {
+    "isLive": false,
+    "title": "Financial Markets Masterclass — Live Session",
+    "description": "Welcome to today's live cohort session. Institutional charting and trade auditing in real-time.",
+    "videoId": "",
+    "updatedAt": "2026-09-03T00:00:00.000Z"
+  },
   "registrations": [
     {
       "name": "Ayush Singh",
