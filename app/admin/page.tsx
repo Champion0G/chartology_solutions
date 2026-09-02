@@ -115,7 +115,7 @@ export default function AdminDashboard() {
                 fetch('/api/starter-kit'),
                 fetch('/api/certificates'),
                 fetch('/api/track'),
-                fetch('/api/workshop')
+                fetch(`/api/workshop?t=${Date.now()}`, { cache: 'no-store' })
             ]);
 
             if (resSched.ok) setSchedule(await resSched.json());

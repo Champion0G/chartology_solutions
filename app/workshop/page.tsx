@@ -1,54 +1,20 @@
 'use client';
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import { Radio, RefreshCw, MessageSquare, Headphones, BookOpen, AlertCircle } from 'lucide-react';
 import styles from './workshop.module.css';
-
-interface WorkshopData {
-    isLive: boolean;
-    title: string;
-    description: string;
-    videoId: string;
-    updatedAt?: string;
-}
+import useLiveWorkshop from '@/hooks/useLiveWorkshop';
 
 export default function WorkshopPage() {
-    const [data, setData] = useState<WorkshopData | null>(null);
-    const [loading, setLoading] = useState(true);
+    const { isLive, title, description, videoId, loading, refresh } = useLiveWorkshop();
     const [refreshing, setRefreshing] = useState(false);
-    const [fetchError, setFetchError] = useState('');
 
-    const fetchWorkshopStatus = useCallback(async (isManual = false) => {
-        if (isManual) setRefreshing(true);
-        setFetchError('');
-        try {
-            const res = await fetch('/api/workshop', {
-                cache: 'no-store',
-                headers: { 'Cache-Control': 'no-cache' }
-            });
-            if (res.ok) {
-                const json = await res.json();
-                setData(json);
-            } else {
-                setFetchError('Unable to load workshop status. Please check your connection.');
-            }
-        } catch (err) {
-            setFetchError('Unable to load workshop status. Please check your connection.');
-        } finally {
-            setLoading(false);
-            if (isManual) setRefreshing(false);
-        }
-    }, []);
+    const handleManualRefresh = async () => {
+        setRefreshing(true);
+        await refresh();
+        setRefreshing(false);
+    };
 
-    useEffect(() => {
-        fetchWorkshopStatus();
-        // Poll every 30 seconds for live status changes
-        const interval = setInterval(() => {
-            fetchWorkshopStatus();
-        }, 30000);
-        return () => clearInterval(interval);
-    }, [fetchWorkshopStatus]);
-
-    const isValidVideoId = data?.videoId && /^[a-zA-Z0-9_-]{11}$/.test(data.videoId);
+    const isValidVideoId = videoId && /^[a-zA-Z0-9_-]{11}$/.test(videoId);
 
     return (
         <main className={styles.page}>
@@ -61,7 +27,7 @@ export default function WorkshopPage() {
                             <span className={styles.inactiveBadge}>
                                 <RefreshCw size={12} style={{ animation: 'spin 1.2s linear infinite' }} /> Checking Status...
                             </span>
-                        ) : data?.isLive ? (
+                        ) : isLive ? (
                             <span className={styles.liveBadge}>
                                 <span className={styles.liveDot} /> LIVE NOW
                             </span>
@@ -73,10 +39,10 @@ export default function WorkshopPage() {
                     </div>
 
                     <h1 className={styles.title}>
-                        {data?.title || 'Financial Markets Masterclass — Live Session'}
+                        {title || 'Financial Markets Masterclass — Live Session'}
                     </h1>
-                    {data?.description && (
-                        <p className={styles.subtitle}>{data.description}</p>
+                    {description && (
+                        <p className={styles.subtitle}>{description}</p>
                     )}
                 </div>
 
@@ -92,14 +58,14 @@ export default function WorkshopPage() {
                 )}
 
                 {/* Active Live Stream Player */}
-                {!loading && data?.isLive && (
+                {!loading && isLive && (
                     <>
                         {isValidVideoId ? (
                             <div className={styles.playerCard}>
                                 <div className={styles.videoWrapper}>
                                     <iframe
-                                        src={`https://www.youtube.com/embed/${encodeURIComponent(data.videoId)}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
-                                        title={data.title || "Live Workshop"}
+                                        src={`https://www.youtube.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                                        title={title || "Live Workshop"}
                                         className={styles.iframe}
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                         allowFullScreen
@@ -111,10 +77,10 @@ export default function WorkshopPage() {
                                 <AlertCircle size={32} style={{ marginBottom: '12px' }} />
                                 <h3 style={{ fontSize: '1.2rem', marginBottom: '8px' }}>Unable to load the workshop video</h3>
                                 <p style={{ fontSize: '0.9rem', opacity: 0.9 }}>
-                                    The stream is marked live, but the video could not be loaded. Please try again shortly or contact your mentor.
+                                    The stream is marked live, but the video link could not be loaded. Please check your admin configuration.
                                 </p>
                                 <button 
-                                    onClick={() => fetchWorkshopStatus(true)} 
+                                    onClick={handleManualRefresh} 
                                     disabled={refreshing}
                                     className={styles.refreshBtn}
                                     style={{ marginTop: '16px' }}
@@ -128,7 +94,7 @@ export default function WorkshopPage() {
                 )}
 
                 {/* Inactive State Placeholder */}
-                {!loading && !data?.isLive && (
+                {!loading && !isLive && (
                     <div className={styles.placeholderCard}>
                         <div className={styles.placeholderIconWrap}>
                             <Radio size={28} />
@@ -138,16 +104,16 @@ export default function WorkshopPage() {
                             The live cohort session will appear here when the workshop begins. Make sure you have your trading journal and charting software ready.
                         </p>
 
-                        {(data?.title || data?.description) && (
+                        {(title || description) && (
                             <div className={styles.agendaBox}>
                                 <span className={styles.agendaLabel}>Upcoming Topic</span>
-                                <h3 className={styles.agendaTitle}>{data.title}</h3>
-                                {data.description && <p className={styles.agendaDesc}>{data.description}</p>}
+                                <h3 className={styles.agendaTitle}>{title || "Financial Markets Masterclass — Live Session"}</h3>
+                                {description && <p className={styles.agendaDesc}>{description}</p>}
                             </div>
                         )}
 
                         <button 
-                            onClick={() => fetchWorkshopStatus(true)} 
+                            onClick={handleManualRefresh} 
                             disabled={refreshing}
                             className={styles.refreshBtn}
                         >
