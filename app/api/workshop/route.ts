@@ -33,13 +33,30 @@ export function extractYouTubeVideoId(input: string): string | null {
     return null;
 }
 
+function getKvConfig() {
+    const url = process.env.STORAGE_KV_REST_API_URL 
+        || process.env.STORAGE_UPSTASH_REDIS_REST_URL 
+        || process.env.STORAGE_REST_API_URL
+        || process.env.KV_REST_API_URL 
+        || process.env.UPSTASH_REDIS_REST_URL
+        || (process.env.STORAGE_URL?.startsWith('http') ? process.env.STORAGE_URL : undefined);
+
+    const token = process.env.STORAGE_KV_REST_API_TOKEN 
+        || process.env.STORAGE_UPSTASH_REDIS_REST_TOKEN 
+        || process.env.STORAGE_REST_API_TOKEN
+        || process.env.KV_REST_API_TOKEN 
+        || process.env.UPSTASH_REDIS_REST_TOKEN
+        || process.env.STORAGE_TOKEN;
+
+    return { url, token };
+}
+
 async function getCloudWorkshopState() {
-    const kvUrl = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-    const kvToken = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
-    if (kvUrl && kvToken) {
+    const { url, token } = getKvConfig();
+    if (url && token) {
         try {
-            const res = await fetch(`${kvUrl}/get/liveWorkshop`, {
-                headers: { Authorization: `Bearer ${kvToken}` },
+            const res = await fetch(`${url}/get/liveWorkshop`, {
+                headers: { Authorization: `Bearer ${token}` },
                 cache: 'no-store'
             });
             if (res.ok) {
@@ -56,14 +73,13 @@ async function getCloudWorkshopState() {
 }
 
 async function saveCloudWorkshopState(state: any) {
-    const kvUrl = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-    const kvToken = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
-    if (kvUrl && kvToken) {
+    const { url, token } = getKvConfig();
+    if (url && token) {
         try {
-            await fetch(`${kvUrl}/set/liveWorkshop`, {
+            await fetch(`${url}/set/liveWorkshop`, {
                 method: 'POST',
                 headers: { 
-                    Authorization: `Bearer ${kvToken}`,
+                    Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(state)
