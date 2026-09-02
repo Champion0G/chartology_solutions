@@ -34,16 +34,26 @@ export function extractYouTubeVideoId(input: string): string | null {
 }
 
 function getKvConfig() {
-    const url = process.env.STORAGE_KV_REST_API_URL 
-        || process.env.STORAGE_UPSTASH_REDIS_REST_URL 
-        || process.env.STORAGE_REST_API_URL
-        || process.env.KV_REST_API_URL 
-        || process.env.UPSTASH_REDIS_REST_URL
-        || (process.env.STORAGE_URL?.startsWith('http') ? process.env.STORAGE_URL : undefined);
+    const candidates = [
+        process.env.STORAGE_REST_API_URL,
+        process.env.STORAGE_KV_REST_API_URL,
+        process.env.STORAGE_UPSTASH_REDIS_REST_URL,
+        process.env.KV_REST_API_URL,
+        process.env.UPSTASH_REDIS_REST_URL,
+        process.env.STORAGE_URL
+    ];
 
-    const token = process.env.STORAGE_KV_REST_API_TOKEN 
+    let url: string | undefined;
+    for (const c of candidates) {
+        if (c && (c.startsWith('https://') || c.startsWith('http://'))) {
+            url = c.replace(/\/$/, '');
+            break;
+        }
+    }
+
+    const token = process.env.STORAGE_REST_API_TOKEN 
+        || process.env.STORAGE_KV_REST_API_TOKEN 
         || process.env.STORAGE_UPSTASH_REDIS_REST_TOKEN 
-        || process.env.STORAGE_REST_API_TOKEN
         || process.env.KV_REST_API_TOKEN 
         || process.env.UPSTASH_REDIS_REST_TOKEN
         || process.env.STORAGE_TOKEN;
@@ -55,8 +65,13 @@ async function getCloudWorkshopState() {
     const { url, token } = getKvConfig();
     if (url && token) {
         try {
-            const res = await fetch(`${url}/get/liveWorkshop`, {
-                headers: { Authorization: `Bearer ${token}` },
+            const res = await fetch(url, {
+                method: 'POST',
+                headers: { 
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(["GET", "liveWorkshop"]),
                 cache: 'no-store'
             });
             if (res.ok) {
@@ -76,18 +91,20 @@ async function saveCloudWorkshopState(state: any) {
     const { url, token } = getKvConfig();
     if (url && token) {
         try {
-            await fetch(`${url}/set/liveWorkshop`, {
+            const res = await fetch(url, {
                 method: 'POST',
                 headers: { 
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(state)
+                body: JSON.stringify(["SET", "liveWorkshop", JSON.stringify(state)])
             });
+            return await res.json();
         } catch (e) {
             console.error("KV save error:", e);
         }
     }
+    return null;
 }
 
 export async function GET() {
