@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getDb, saveDb } from '@/lib/db';
+import Redis from 'ioredis';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -33,93 +34,66 @@ export function extractYouTubeVideoId(input: string): string | null {
     return null;
 }
 
-function getKvConfig() {
-    const candidates = [
-        process.env.STORAGE_REST_API_URL,
-        process.env.STORAGE_KV_REST_API_URL,
-        process.env.STORAGE_UPSTASH_REDIS_REST_URL,
-        process.env.KV_REST_API_URL,
-        process.env.UPSTASH_REDIS_REST_URL,
-        process.env.STORAGE_URL
-    ];
+let redisClient: Redis | null = null;
 
-    let url: string | undefined;
-    for (const c of candidates) {
-        if (c && (c.startsWith('https://') || c.startsWith('http://'))) {
-            url = c.replace(/\/$/, '');
-            break;
+function getRedis(): Redis | null {
+    if (!redisClient && process.env.REDIS_URL) {
+        try {
+            redisClient = new Redis(process.env.REDIS_URL, {
+                lazyConnect: true,
+                connectTimeout: 5000,
+                maxRetriesPerRequest: 1,
+                enableReadyCheck: false
+            });
+            redisClient.on('error', (err) => {
+                console.error('Redis connection error:', err.message);
+            });
+        } catch (e) {
+            console.error('Failed to initialize Redis:', e);
         }
     }
-
-    const token = process.env.STORAGE_REST_API_TOKEN 
-        || process.env.STORAGE_KV_REST_API_TOKEN 
-        || process.env.STORAGE_UPSTASH_REDIS_REST_TOKEN 
-        || process.env.KV_REST_API_TOKEN 
-        || process.env.UPSTASH_REDIS_REST_TOKEN
-        || process.env.STORAGE_TOKEN;
-
-    return { url, token };
+    return redisClient;
 }
 
 async function getCloudWorkshopState() {
-    const { url, token } = getKvConfig();
-    if (url && token) {
+    const redis = getRedis();
+    if (redis) {
         try {
-            const res = await fetch(url, {
-                method: 'POST',
-                headers: { 
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(["GET", "liveWorkshop"]),
-                cache: 'no-store'
-            });
-            if (res.ok) {
-                const data = await res.json();
-                if (data && data.result) {
-                    return typeof data.result === 'string' ? JSON.parse(data.result) : data.result;
-                }
+            if (redis.status === 'wait') {
+                await redis.connect();
+            }
+            const raw = await redis.get('liveWorkshop');
+            if (raw) {
+                return JSON.parse(raw);
             }
         } catch (e) {
-            console.error("KV read error:", e);
+            console.error("Redis read error:", e);
         }
     }
     return null;
 }
 
 async function saveCloudWorkshopState(state: any) {
-    const { url, token } = getKvConfig();
-    if (url && token) {
+    const redis = getRedis();
+    if (redis) {
         try {
-            const res = await fetch(url, {
-                method: 'POST',
-                headers: { 
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(["SET", "liveWorkshop", JSON.stringify(state)])
-            });
-            return await res.json();
+            if (redis.status === 'wait') {
+                await redis.connect();
+            }
+            await redis.set('liveWorkshop', JSON.stringify(state));
+            return true;
         } catch (e) {
-            console.error("KV save error:", e);
+            console.error("Redis write error:", e);
         }
     }
-    return null;
+    return false;
 }
 
 export async function GET() {
-    const { url, token } = getKvConfig();
-    const detectedKeys = Object.keys(process.env).filter(k => 
-        k.includes('STORAGE') || k.includes('UPSTASH') || k.includes('REDIS') || k.includes('KV')
-    );
-
-    // 1. Try KV cloud store first for cross-instance sync
+    // 1. Try Redis cloud store first for cross-instance real-time sync
     const cloudState = await getCloudWorkshopState();
     if (cloudState && typeof cloudState === 'object') {
-        return NextResponse.json({
-            ...cloudState,
-            _debug: { hasCloud: true, detectedKeys, hasUrl: Boolean(url), hasToken: Boolean(token) }
-        }, {
+        return NextResponse.json(cloudState, {
             headers: {
                 'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
                 'Pragma': 'no-cache',
@@ -138,10 +112,7 @@ export async function GET() {
         updatedAt: new Date().toISOString()
     };
 
-    return NextResponse.json({
-        ...liveWorkshop,
-        _debug: { hasCloud: false, detectedKeys, hasUrl: Boolean(url), hasToken: Boolean(token) }
-    }, {
+    return NextResponse.json(liveWorkshop, {
         headers: {
             'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
             'Pragma': 'no-cache',
@@ -193,7 +164,7 @@ export async function POST(req: Request) {
         db.liveWorkshop = updatedState;
         saveDb(db);
 
-        // Save to cloud KV if connected
+        // Save to Redis cloud database
         await saveCloudWorkshopState(updatedState);
 
         return NextResponse.json({ success: true, liveWorkshop: updatedState });
